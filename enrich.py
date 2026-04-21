@@ -127,13 +127,17 @@ def main():
     existing = load_keywords()
     skip_meta_keys = {"_comment", "_format"}
 
-    # 処理対象: data.jsonに存在するが keywords.json にまだない曲
+    # 処理対象: data.jsonに存在するが keywords.json に未充填 or 新フィールド未付与のもの
+    # 「充填済み」の条件: keywords あり AND snippets/theme どちらかあり（新スキーマ）
     targets = []
     for title, corner in titles:
         if title in skip_meta_keys:
             continue
-        has = title in existing and isinstance(existing[title], dict) and existing[title].get("keywords")
-        if has and not args.overwrite:
+        ent = existing.get(title) if isinstance(existing.get(title), dict) else None
+        has_kw = ent and ent.get("keywords")
+        has_new_fields = ent and (ent.get("snippets") or ent.get("theme"))
+        fully_done = has_kw and has_new_fields
+        if fully_done and not args.overwrite:
             continue
         targets.append((title, corner))
 
