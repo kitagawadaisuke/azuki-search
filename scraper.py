@@ -248,10 +248,83 @@ def make_item(item_id: int, show_key: str, title: str, section: str, d: date) ->
     }
 
 
+def generate_inai_baa_items(weeks: int, start_id: int) -> List[Dict]:
+    """
+    いないいないばあっ！の予測データ生成。
+    実際の週報ソースが存在しないため、公式把握範囲のテンプレートから
+    平日（月〜金）分の推定放送内容を生成する。
+    OP/ED/月歌は共通、他曲はローテーション。
+    """
+    tmpl_path = Path(__file__).parent / "inai_baa_template.json"
+    if not tmpl_path.exists():
+        return []
+    tmpl = json.loads(tmpl_path.read_text(encoding="utf-8"))
+
+    common = tmpl.get("common_items", [])
+    rotating_songs = tmpl.get("rotating_songs", [])
+    rotating_anime = tmpl.get("rotating_anime", [])
+
+    items: List[Dict] = []
+    item_id = start_id
+    today = date.today()
+    # 直近 weeks*7 日分、平日のみ（いないばあは月〜金放送）
+    for delta in range(weeks * 7):
+        d = today - timedelta(days=delta)
+        if d.weekday() >= 5:  # 土日スキップ
+            continue
+
+        # OP（order=1）
+        for c in common:
+            if c.get("subcategory", "").startswith("OP"):
+                items.append(make_inai_item(item_id, c, d, c["order"], tag="predicted"))
+                item_id += 1
+
+        # 曜日ローテの歌 2〜3曲（曜日で循環）
+        idx = (d.weekday()) % len(rotating_songs)
+        for offset in range(3):
+            song = rotating_songs[(idx + offset) % len(rotating_songs)]
+            items.append(make_inai_item(item_id, song, d, 2 + offset, tag="predicted"))
+            item_id += 1
+
+        # アニメ（曜日で決める）
+        anime = rotating_anime[d.weekday() % len(rotating_anime)]
+        items.append(make_inai_item(item_id, anime, d, 5, tag="predicted"))
+        item_id += 1
+
+        # 月歌・ED（後ろ）
+        for c in common:
+            sc = c.get("subcategory", "")
+            if sc.startswith("2025") or sc.startswith("ED"):
+                items.append(make_inai_item(item_id, c, d, c["order"], tag="predicted"))
+                item_id += 1
+
+    return items
+
+
+def make_inai_item(item_id: int, tmpl: Dict, d: date, order: int, tag: str = "") -> Dict:
+    return {
+        "id": item_id,
+        "show": "inai",
+        "title": tmpl["title"],
+        "corner": tmpl.get("corner", "うた"),
+        "date": d.isoformat(),
+        "airtime": SHOWS["inai"]["airtime"],
+        "offset": "",
+        "order": order,
+        "fav": False,
+        "keywords": tmpl.get("keywords", []),
+        "mood": tmpl.get("mood", ""),
+        "snippet": tmpl.get("snippet", ""),
+        "subcategory": tmpl.get("subcategory", ""),
+        "source_tag": tag,  # "predicted" = 予測、実データではない
+    }
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--weeks", type=int, default=4, help="何週間分取るか（デフォルト4）")
     ap.add_argument("--out", default="data.json")
+    ap.add_argument("--no-inai", action="store_true", help="いないいないばあの予測データを含めない")
     args = ap.parse_args()
 
     print(f"📡 fetching latest {args.weeks} weekly reports from tokyofukubukuro.com ...")
@@ -287,6 +360,20 @@ def main():
         k = (x["date"], x["show"])
         by_day[k] = by_day.get(k, 0) + 1
         x["order"] = by_day[k]
+
+    # いないいないばあ予測データを追加
+    if not args.no_inai:
+        next_id = max((x["id"] for x in deduped), default=0) + 1
+        inai_items = generate_inai_baa_items(args.weeks, next_id)
+        # 重複除去（同日・同曲）
+        inai_seen = set()
+        for x in inai_items:
+            key = (x["date"], x["show"], x["title"])
+            if key in inai_seen:
+                continue
+            inai_seen.add(key)
+            deduped.append(x)
+        print(f"🔮 いないいないばあ予測データ: {len(inai_items)}件追加")
 
     print(f"\n✅ 合計 {len(deduped)} 件、{args.out} に保存（重複除去後）")
     with open(args.out, "w", encoding="utf-8") as f:

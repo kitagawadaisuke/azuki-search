@@ -132,6 +132,42 @@
     transition: transform 0.1s;
   }
   .voice-btn:active { transform: translateY(-50%) scale(0.92); }
+
+  /* 検索候補サジェスト */
+  .suggest-pop {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 6px);
+    background: var(--surface);
+    border-radius: 16px;
+    box-shadow: 0 8px 28px rgba(61,40,23,0.18);
+    z-index: 20;
+    overflow: hidden;
+    max-height: 280px;
+    overflow-y: auto;
+  }
+  .suggest-item {
+    padding: 11px 18px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(143,115,87,0.06);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    transition: background 0.1s;
+  }
+  .suggest-item:last-child { border-bottom: none; }
+  .suggest-item:hover, .suggest-item:active { background: var(--surface-2); }
+  .suggest-item .s-icon { font-size: 14px; opacity: 0.6; }
+  .suggest-item .s-title { font-weight: 700; flex: 1; }
+  .suggest-item .s-meta { font-size: 11px; color: var(--text-dim); }
+  .suggest-item mark {
+    background: rgba(255,138,61,0.25);
+    color: var(--text);
+    padding: 0 2px;
+    border-radius: 3px;
+  }
   .voice-btn.listening {
     background: linear-gradient(135deg, #ff4444 0%, #ff6b9d 100%);
     animation: pulse 1.4s infinite;
@@ -651,6 +687,27 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
+  .row-snippet {
+    font-size: 12px;
+    color: var(--accent);
+    margin-top: 4px;
+    font-weight: 600;
+    line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .predicted-badge {
+    display: inline-block;
+    font-size: 9px;
+    padding: 1px 6px;
+    background: rgba(106,198,232,0.18);
+    color: #3a9dc8;
+    border-radius: 999px;
+    margin-left: 4px;
+    vertical-align: middle;
+    font-weight: 700;
+  }
   .corner-uta { color: #e67a2e; font-weight: 700; }
   .corner-ningyo { color: #d94e8d; font-weight: 700; }
   .corner-anime { color: #3a9dc8; font-weight: 700; }
@@ -817,6 +874,7 @@
   <div class="search-wrap">
     <input type="search" id="search" class="search-box" placeholder="曲名・雰囲気で検索（例：太鼓／元気）" autocomplete="off" enterkeyhint="search" inputmode="search">
     <button type="button" id="voice-btn" class="voice-btn" aria-label="音声で検索" title="音声で検索">🎤</button>
+    <div id="suggest-pop" class="suggest-pop" style="display:none"></div>
   </div>
   <div class="filter-pills">
     <button class="pill active" data-filter="all">ぜんぶ</button>
@@ -1118,12 +1176,15 @@ function render() {
           const parentTag = d.parent ? ` ・ ${escapeHtml(d.parent)}内` : "";
           const isNested = !!d.parent;
           const moodChip = d.mood ? `<span class="mood-chip">${escapeHtml(d.mood)}</span>` : "";
+          const predBadge = d.source_tag === "predicted" ? `<span class="predicted-badge" title="予測データ（実放送記録未取得）">予測</span>` : "";
+          const snippetLine = d.snippet ? `<div class="row-snippet">♪ ${escapeHtml(d.snippet)}</div>` : "";
           return `
           <div class="timeline-row ${isFav?"is-fav":""} ${isNested?"is-nested":""}" data-id="${d.id}">
             <div class="seq">${isNested ? "♪" : (d.order || "?")}</div>
             <div class="row-main">
-              <div class="row-title">${escapeHtml(d.title)}</div>
+              <div class="row-title">${escapeHtml(d.title)}${predBadge}</div>
               <div class="row-tag ${cornerClass}">${escapeHtml(d.corner)}${parentTag}${moodChip}</div>
+              ${snippetLine}
             </div>
             <button class="row-fav ${isFav?"fav":""}" data-fav-id="${d.id}" aria-label="お気に入り">${isFav?"★":"☆"}</button>
           </div>`;
@@ -1223,9 +1284,77 @@ $search.addEventListener("input", e => {
   state.query = e.target.value;
   render();
   renderRecentSearches();
+  renderSuggestions();
   clearTimeout(searchDebounce);
   searchDebounce = setTimeout(() => pushRecent(state.query), 800);
 });
+$search.addEventListener("focus", () => renderSuggestions());
+$search.addEventListener("blur", () => {
+  // 候補内のクリック処理を待ってから消す
+  setTimeout(() => { document.getElementById("suggest-pop").style.display = "none"; }, 180);
+});
+
+function renderSuggestions() {
+  const pop = document.getElementById("suggest-pop");
+  if (!pop) return;
+  const qRaw = state.query.trim();
+  const q = normalize(qRaw);
+  if (!q || q.length < 1) { pop.style.display = "none"; return; }
+  const variants = expandQuery(qRaw);
+
+  // 候補：曲タイトル一致 → keywords/snippet 一致 → 出演者 一致
+  const titleHits = new Map();
+  const keywordHits = new Map();
+  const creditHits = new Map();
+  for (const d of data) {
+    const titleN = normalize(d.title);
+    const matchTitle = variants.some(v => titleN.includes(v));
+    if (matchTitle) {
+      const cur = titleHits.get(d.title);
+      if (!cur || d.date > cur.date) titleHits.set(d.title, d);
+      continue;
+    }
+    if (d.keywords) {
+      const matchKw = d.keywords.some(kw => variants.some(v => normalize(kw).includes(v)));
+      if (matchKw) {
+        const cur = keywordHits.get(d.title);
+        if (!cur || d.date > cur.date) keywordHits.set(d.title, d);
+        continue;
+      }
+    }
+    if (d.credits) {
+      const flat = Object.values(d.credits).flat();
+      const matchCr = flat.some(p => variants.some(v => normalize(p).includes(v)));
+      if (matchCr) {
+        const cur = creditHits.get(d.title);
+        if (!cur || d.date > cur.date) creditHits.set(d.title, d);
+      }
+    }
+  }
+
+  const allItems = [
+    ...[...titleHits.values()].slice(0, 5).map(d => ({d, kind: "曲名"})),
+    ...[...keywordHits.values()].slice(0, 4).map(d => ({d, kind: "雰囲気"})),
+    ...[...creditHits.values()].slice(0, 3).map(d => ({d, kind: "出演/作者"})),
+  ];
+
+  if (allItems.length === 0) { pop.style.display = "none"; return; }
+
+  const escapeRe = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const highlightRe = new RegExp(`(${variants.filter(Boolean).map(escapeRe).join("|")})`, "gi");
+
+  pop.innerHTML = allItems.map(({d, kind}) => {
+    const hl = escapeHtml(d.title).replace(highlightRe, "<mark>$1</mark>");
+    return `
+      <div class="suggest-item" data-suggest="${escapeHtml(d.title)}">
+        <span class="s-icon">🔍</span>
+        <span class="s-title">${hl}</span>
+        <span class="s-meta">${kind}</span>
+      </div>
+    `;
+  }).join("");
+  pop.style.display = "block";
+}
 
 document.addEventListener("click", e => {
   const tag = e.target.closest("[data-recent]");
@@ -1246,6 +1375,15 @@ document.addEventListener("click", e => {
   if (favShort) {
     state.query = favShort.dataset.favTitle;
     $search.value = state.query;
+    render();
+    renderRecentSearches();
+    return;
+  }
+  const sug = e.target.closest("[data-suggest]");
+  if (sug) {
+    state.query = sug.dataset.suggest;
+    $search.value = state.query;
+    document.getElementById("suggest-pop").style.display = "none";
     render();
     renderRecentSearches();
   }
@@ -1362,18 +1500,45 @@ function openModal(id) {
     <a class="action-btn" href="https://open.spotify.com/search/${q}" target="_blank" rel="noopener">
       <span class="action-icon icon-spo">🎧</span>Spotifyで聴く
     </a>
+    <button class="action-btn" id="share-btn" type="button" data-share-id="${d.id}" style="border:none;width:100%;text-align:left;font:inherit;">
+      <span class="action-icon" style="background:rgba(106,198,232,0.2);color:#3a9dc8;">📤</span>家族にシェア
+    </button>
   `;
 
   document.getElementById("modal-backdrop").classList.add("open");
 }
 
-document.getElementById("modal-backdrop").addEventListener("click", e => {
+document.getElementById("modal-backdrop").addEventListener("click", async e => {
   // 他の放送日へジャンプ
   const jump = e.target.closest("[data-jump-id]");
   if (jump) {
     document.getElementById("modal-backdrop").classList.remove("open");
     const id = +jump.dataset.jumpId;
     setTimeout(() => openModal(id), 220);
+    return;
+  }
+  // 共有ボタン
+  const share = e.target.closest("[data-share-id]");
+  if (share) {
+    e.stopPropagation();
+    const id = +share.dataset.shareId;
+    const d = data.find(x => x.id === id);
+    if (!d) return;
+    const url = `${location.origin}${location.pathname}#${encodeURIComponent(d.title)}`;
+    const text = `「${d.title}」（${SHOWS[d.show].name} ${fmtDate(d.date)} ${d.airtime}〜 #${d.order||"?"}曲目）`;
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: "あずきサーチ", text, url });
+      } catch (e) { /* キャンセル時は何もしない */ }
+    } else {
+      try {
+        await navigator.clipboard.writeText(`${text}\n${url}`);
+        share.querySelector("span:last-child").textContent = "コピーしたよ✓";
+        setTimeout(() => location.reload(), 1500);
+      } catch (e) {
+        alert(`${text}\n${url}`);
+      }
+    }
     return;
   }
   if (e.target.id === "modal-backdrop") {
@@ -1437,6 +1602,21 @@ document.getElementById("modal-backdrop").addEventListener("click", e => {
     btn.classList.remove("listening");
     btn.textContent = "🎤";
   };
+})();
+
+// URL hash（#曲名）で検索状態復元
+(function handleDeepLink() {
+  const hash = location.hash.replace(/^#/, "");
+  if (hash) {
+    try {
+      const decoded = decodeURIComponent(hash);
+      if (decoded) {
+        state.query = decoded;
+        const el = document.getElementById("search");
+        if (el) el.value = decoded;
+      }
+    } catch (e) { /* ignore */ }
+  }
 })();
 
 // データ読み込み
