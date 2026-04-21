@@ -409,6 +409,31 @@
   .icon-tv { background: rgba(255,184,77,0.2); color: var(--accent); }
   .icon-yt { background: rgba(255,68,68,0.2); color: #ff5555; }
   .icon-spo { background: rgba(30,215,96,0.2); color: #1ed760; }
+  .icon-lyrics { background: rgba(139,92,246,0.18); color: #7c4dff; }
+
+  .lyric-hero {
+    background: linear-gradient(135deg, rgba(255,138,61,0.1) 0%, rgba(255,95,156,0.08) 100%);
+    border: 1.5px solid rgba(255,138,61,0.2);
+    border-radius: 18px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    text-align: center;
+  }
+  .lyric-hero .lyric-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+  .lyric-hero .lyric-text {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
+  .lyric-hero .lyric-text::before { content: "♪ "; color: var(--accent); }
 
   .empty {
     text-align: center;
@@ -1287,9 +1312,7 @@ function openModal(id) {
   if (d.mood) {
     detailParts.push(`<div class="meta-line"><span class="meta-label">ムード</span><span>${escapeHtml(d.mood)}</span></div>`);
   }
-  if (d.snippet) {
-    detailParts.push(`<div class="meta-line"><span class="meta-label">歌い出し</span><span>♪ ${escapeHtml(d.snippet)}</span></div>`);
-  }
+  // 歌い出しは別途 lyric-hero で大きく表示するのでここでは省略
 
   // 同じ曲の他の放送日
   const sameTitle = data.filter(x => x.title === d.title && x.id !== d.id)
@@ -1303,7 +1326,22 @@ function openModal(id) {
   }
 
   const q = encodeURIComponent(d.title + " " + SHOWS[d.show].name);
+  const qYTShort = encodeURIComponent(d.title + " NHK");  // 公式チャンネル優先のため
+  const qLyric = encodeURIComponent(d.title);
+  // NHK公式YouTubeチャンネル名
+  const nhkChannel = d.show === "inai"
+    ? "https://www.youtube.com/@nhk-inaiinaibaa/search?query=" + qLyric
+    : "https://www.youtube.com/@nhk_okaasantoissho/search?query=" + qLyric;
+
+  // 歌い出しヒーローブロック（snippet あれば目立たせる）
+  const lyricHero = d.snippet
+    ? `<div class="lyric-hero">
+         <div class="lyric-label">歌い出し</div>
+         <div class="lyric-text">${escapeHtml(d.snippet)}</div>
+       </div>` : "";
+
   document.getElementById("modal-actions").innerHTML = `
+    ${lyricHero}
     ${detailParts.length ? `<div class="meta-block">${detailParts.join("")}</div>` : ""}
     <div class="action-btn" style="background: rgba(255,138,61,0.08); cursor: default;">
       <span class="action-icon icon-tv">📺</span>
@@ -1312,8 +1350,14 @@ function openModal(id) {
         <div style="font-size:13px; color:var(--text);">番組表 → ${fmtDate(d.date)} → ${SHOWS[d.show].name}<br>→ ${d.order || "?"}曲目（${d.airtime}〜）</div>
       </div>
     </div>
-    <a class="action-btn" href="https://www.youtube.com/results?search_query=${q}" target="_blank" rel="noopener">
-      <span class="action-icon icon-yt">▶</span>YouTubeで探す
+    <a class="action-btn" href="${nhkChannel}" target="_blank" rel="noopener">
+      <span class="action-icon icon-yt">▶</span>NHK公式YouTubeで探す
+    </a>
+    <a class="action-btn" href="https://www.youtube.com/results?search_query=${qYTShort}" target="_blank" rel="noopener">
+      <span class="action-icon icon-yt" style="background:rgba(255,68,68,0.12);">▶</span>YouTube全体で探す
+    </a>
+    <a class="action-btn" href="https://www.uta-net.com/search/?Aselect=2&Bselect=4&Keyword=${qLyric}" target="_blank" rel="noopener">
+      <span class="action-icon icon-lyrics">📝</span>歌詞を探す（うたネット）
     </a>
     <a class="action-btn" href="https://open.spotify.com/search/${q}" target="_blank" rel="noopener">
       <span class="action-icon icon-spo">🎧</span>Spotifyで聴く
