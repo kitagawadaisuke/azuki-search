@@ -468,6 +468,7 @@
     color: var(--text);
     line-height: 1.5;
     letter-spacing: 0.02em;
+    margin: 4px 0;
   }
   .lyric-hero .lyric-text::before { content: "♪ "; color: var(--accent); }
 
@@ -1067,12 +1068,14 @@ function searchMatches(d, q) {
   const creditsFlat = d.credits
     ? Object.values(d.credits).flat().map(normalize)
     : [];
+  const snippetsAll = (d.snippets && d.snippets.length) ? d.snippets : (d.snippet ? [d.snippet] : []);
   const haystack = [
     normalize(d.title),
     normalize(d.corner),
     d.subcategory ? normalize(d.subcategory) : "",
     d.mood ? normalize(d.mood) : "",
-    d.snippet ? normalize(d.snippet) : "",
+    d.theme ? normalize(d.theme) : "",
+    ...snippetsAll.map(normalize),
     ...(d.keywords || []).map(normalize),
     ...creditsFlat,
   ].join("|");
@@ -1471,12 +1474,18 @@ function openModal(id) {
     ? "https://www.youtube.com/@nhk-inaiinaibaa/search?query=" + qLyric
     : "https://www.youtube.com/@nhk_okaasantoissho/search?query=" + qLyric;
 
-  // 歌い出しヒーローブロック（snippet あれば目立たせる）
-  const lyricHero = d.snippet
+  // 歌い出しヒーローブロック（snippets配列 or snippet単体）
+  const snipList = (d.snippets && d.snippets.length) ? d.snippets : (d.snippet ? [d.snippet] : []);
+  const lyricHero = snipList.length
     ? `<div class="lyric-hero">
-         <div class="lyric-label">歌い出し</div>
-         <div class="lyric-text">${escapeHtml(d.snippet)}</div>
+         <div class="lyric-label">${snipList.length > 1 ? "印象的なフレーズ" : "歌い出し"}</div>
+         ${snipList.map(s => `<div class="lyric-text">${escapeHtml(s)}</div>`).join("")}
        </div>` : "";
+
+  // 歌のテーマ（AI生成、著作権セーフな描写）
+  if (d.theme) {
+    detailParts.unshift(`<div class="meta-line"><span class="meta-label">どんな歌</span><span>${escapeHtml(d.theme)}</span></div>`);
+  }
 
   document.getElementById("modal-actions").innerHTML = `
     ${lyricHero}

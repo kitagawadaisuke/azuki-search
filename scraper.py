@@ -232,6 +232,8 @@ def load_keywords_db() -> Dict:
 def make_item(item_id: int, show_key: str, title: str, section: str, d: date) -> Dict:
     kw_db = load_keywords_db()
     entry = kw_db.get(title, {}) if isinstance(kw_db.get(title), dict) else {}
+    snippets = entry.get("snippets", [])
+    snippet = entry.get("snippet", "") or (snippets[0] if snippets else "")
     return {
         "id": item_id,
         "show": show_key,
@@ -244,7 +246,9 @@ def make_item(item_id: int, show_key: str, title: str, section: str, d: date) ->
         "fav": False,
         "keywords": entry.get("keywords", []),
         "mood": entry.get("mood", ""),
-        "snippet": entry.get("snippet", ""),
+        "snippet": snippet,
+        "snippets": snippets,
+        "theme": entry.get("theme", ""),
     }
 
 

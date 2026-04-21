@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T06:17:47",
+  "generated_at": "2026-04-22T06:57:34",
   "source": "tokyofukubukuro.com okasan-fc weekly report (WP REST API)",
   "items": [
     {
@@ -22,6 +22,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > スタジオ (広場)",
       "credits": {
         "arrange": [
@@ -54,6 +56,8 @@
       ],
       "mood": "優しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ > 1993年04月の月の歌",
       "credits": {
         "lyrics": [
@@ -92,6 +96,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ",
       "credits": {
         "lyrics": [
@@ -125,6 +131,8 @@
       ],
       "mood": "にぎやか",
       "snippet": "ファンターネ！",
+      "snippets": [],
+      "theme": "",
       "subcategory": "人形劇のコーナー",
       "credits": {
         "lyrics": [
@@ -156,6 +164,8 @@
       ],
       "mood": "感動",
       "snippet": "あしたにむかって",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ > 今月の歌",
       "credits": {
         "cast": [
@@ -187,6 +197,8 @@
       ],
       "mood": "なつかしい",
       "snippet": "こんなこ いるかな",
+      "snippets": [],
+      "theme": "",
       "subcategory": "アニメのコーナー",
       "credits": {
         "original": [
@@ -218,6 +230,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "兄姉コーナー",
       "credits": {
         "music": [
@@ -251,6 +265,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "ロケ・VTRコーナー",
       "credits": {
         "lyrics": [
@@ -288,6 +304,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "インターミッション > 自然の映像"
     },
     {
@@ -315,6 +333,8 @@
       ],
       "mood": "元気",
       "snippet": "からだ☆ダンダン",
+      "snippets": [],
+      "theme": "",
       "subcategory": "体操のコーナー",
       "credits": {
         "lyrics": [
@@ -365,6 +385,8 @@
       ],
       "mood": "優しい",
       "snippet": "きんらきら ぽん",
+      "snippets": [],
+      "theme": "",
       "subcategory": "エンディング",
       "credits": {
         "lyrics": [
@@ -409,6 +431,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > スタジオ (広場) > 1997年12月の月の歌",
       "credits": {
         "lyrics": [
@@ -451,6 +475,8 @@
       ],
       "mood": "元気",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > アニメーション > 2010年05月の月の歌",
       "credits": {
         "lyrics": [
@@ -488,6 +514,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > アニメーション > 1982年の月の歌",
       "credits": {
         "lyrics": [
@@ -521,6 +549,8 @@
       ],
       "mood": "にぎやか",
       "snippet": "ファンターネ！",
+      "snippets": [],
+      "theme": "",
       "subcategory": "人形劇のコーナー",
       "credits": {
         "lyrics": [
@@ -552,6 +582,8 @@
       ],
       "mood": "感動",
       "snippet": "あしたにむかって",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ > 今月の歌",
       "credits": {
         "cast": [
@@ -583,6 +615,8 @@
       ],
       "mood": "なつかしい",
       "snippet": "こんなこ いるかな",
+      "snippets": [],
+      "theme": "",
       "subcategory": "アニメのコーナー",
       "credits": {
         "original": [
@@ -615,6 +649,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "兄姉コーナー",
       "credits": {
         "music": [
@@ -651,6 +687,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "ロケ・VTRコーナー",
       "credits": {
         "lyrics": [
@@ -686,6 +724,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "インターミッション > 自然の映像"
     },
     {
@@ -713,6 +753,8 @@
       ],
       "mood": "元気",
       "snippet": "からだ☆ダンダン",
+      "snippets": [],
+      "theme": "",
       "subcategory": "体操のコーナー",
       "credits": {
         "lyrics": [
@@ -763,6 +805,8 @@
       ],
       "mood": "優しい",
       "snippet": "きんらきら ぽん",
+      "snippets": [],
+      "theme": "",
       "subcategory": "エンディング",
       "credits": {
         "lyrics": [
@@ -805,6 +849,8 @@
       ],
       "mood": "元気",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > スタジオ (広場) > 1984年の月の歌",
       "credits": {
         "lyrics": [
@@ -845,6 +891,8 @@
       ],
       "mood": "元気",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > アニメーション > 2006年04月の月の歌",
       "credits": {
         "lyrics": [
@@ -880,6 +928,8 @@
       ],
       "mood": "なつかしい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ",
       "credits": {
         "lyrics": [
@@ -912,6 +962,8 @@
       ],
       "mood": "にぎやか",
       "snippet": "ファンターネ！",
+      "snippets": [],
+      "theme": "",
       "subcategory": "人形劇のコーナー",
       "credits": {
         "lyrics": [
@@ -943,6 +995,8 @@
       ],
       "mood": "感動",
       "snippet": "あしたにむかって",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ > 今月の歌",
       "credits": {
         "cast": [
@@ -974,6 +1028,8 @@
       ],
       "mood": "なつかしい",
       "snippet": "こんなこ いるかな",
+      "snippets": [],
+      "theme": "",
       "subcategory": "アニメのコーナー",
       "credits": {
         "original": [
@@ -1010,6 +1066,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "兄姉コーナー",
       "credits": {
         "music": [
@@ -1048,6 +1106,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "ロケ・VTRコーナー",
       "credits": {
         "lyrics": [
@@ -1084,6 +1144,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "インターミッション > 自然の映像"
     },
     {
@@ -1111,6 +1173,8 @@
       ],
       "mood": "元気",
       "snippet": "からだ☆ダンダン",
+      "snippets": [],
+      "theme": "",
       "subcategory": "体操のコーナー",
       "credits": {
         "lyrics": [
@@ -1161,6 +1225,8 @@
       ],
       "mood": "優しい",
       "snippet": "きんらきら ぽん",
+      "snippets": [],
+      "theme": "",
       "subcategory": "エンディング",
       "credits": {
         "lyrics": [
@@ -1205,6 +1271,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > スタジオ (広場) > 1982年の月の歌",
       "credits": {
         "cast": [
@@ -1238,6 +1306,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 人形 > 1984年の月の歌",
       "credits": {
         "lyrics": [
@@ -1275,6 +1345,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 人形",
       "credits": {
         "cast": [
@@ -1301,6 +1373,8 @@
       ],
       "mood": "にぎやか",
       "snippet": "ファンターネ！",
+      "snippets": [],
+      "theme": "",
       "subcategory": "人形劇のコーナー",
       "credits": {
         "lyrics": [
@@ -1332,6 +1406,8 @@
       ],
       "mood": "感動",
       "snippet": "あしたにむかって",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ > 今月の歌",
       "credits": {
         "cast": [
@@ -1366,6 +1442,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "アニメのコーナー",
       "credits": {
         "other": [
@@ -1397,6 +1475,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "兄姉コーナー",
       "credits": {
         "lyrics": [
@@ -1438,6 +1518,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "ロケ・VTRコーナー",
       "credits": {
         "lyrics": [
@@ -1479,6 +1561,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "インターミッション > 自然の映像"
     },
     {
@@ -1506,6 +1590,8 @@
       ],
       "mood": "元気",
       "snippet": "からだ☆ダンダン",
+      "snippets": [],
+      "theme": "",
       "subcategory": "体操のコーナー",
       "credits": {
         "lyrics": [
@@ -1556,6 +1642,8 @@
       ],
       "mood": "優しい",
       "snippet": "きんらきら ぽん",
+      "snippets": [],
+      "theme": "",
       "subcategory": "エンディング",
       "credits": {
         "lyrics": [
@@ -1601,6 +1689,8 @@
       ],
       "mood": "優しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > スタジオ (広場)",
       "credits": {
         "cast": [
@@ -1635,6 +1725,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > アニメーション > 2022年06月の月の歌",
       "credits": {
         "lyrics": [
@@ -1676,6 +1768,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 人形",
       "credits": {
         "lyrics": [
@@ -1708,6 +1802,8 @@
       ],
       "mood": "にぎやか",
       "snippet": "ファンターネ！",
+      "snippets": [],
+      "theme": "",
       "subcategory": "人形劇のコーナー",
       "credits": {
         "lyrics": [
@@ -1739,6 +1835,8 @@
       ],
       "mood": "感動",
       "snippet": "あしたにむかって",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ > 今月の歌",
       "credits": {
         "cast": [
@@ -1771,6 +1869,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "ロケ・VTRコーナー",
       "credits": {
         "music": [
@@ -1807,6 +1907,8 @@
       ],
       "mood": "楽しい",
       "snippet": "やぎさんゆうびん",
+      "snippets": [],
+      "theme": "",
       "subcategory": "兄姉コーナー",
       "credits": {
         "cast": [
@@ -1840,6 +1942,8 @@
       ],
       "mood": "楽しい",
       "snippet": "だんご だんご だんご",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > アニメーション > 1999年01月の月の歌",
       "credits": {
         "lyrics": [
@@ -1883,6 +1987,8 @@
       ],
       "mood": "元気",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "ロケ・VTRコーナー",
       "credits": {
         "lyrics": [
@@ -1920,6 +2026,8 @@
       ],
       "mood": "優しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "インターミッション > 自然の映像"
     },
     {
@@ -1947,6 +2055,8 @@
       ],
       "mood": "元気",
       "snippet": "からだ☆ダンダン",
+      "snippets": [],
+      "theme": "",
       "subcategory": "体操のコーナー",
       "credits": {
         "lyrics": [
@@ -1997,6 +2107,8 @@
       ],
       "mood": "優しい",
       "snippet": "きんらきら ぽん",
+      "snippets": [],
+      "theme": "",
       "subcategory": "エンディング",
       "credits": {
         "lyrics": [
@@ -2039,6 +2151,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > スタジオ (広場)",
       "credits": {
         "arrange": [
@@ -2073,6 +2187,8 @@
       ],
       "mood": "感動",
       "snippet": "あしたにむかって",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ > 今月の歌",
       "credits": {
         "cast": [
@@ -2104,6 +2220,8 @@
       ],
       "mood": "なつかしい",
       "snippet": "こんなこ いるかな",
+      "snippets": [],
+      "theme": "",
       "subcategory": "アニメのコーナー",
       "credits": {
         "original": [
@@ -2140,6 +2258,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "人形劇のコーナー > 歌",
       "credits": {
         "music": [
@@ -2171,6 +2291,8 @@
       ],
       "mood": "優しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "parent": "ファンターネ！とうたおう",
       "subcategory": "人形劇のコーナー > 歌",
       "credits": {
@@ -2204,6 +2326,8 @@
       ],
       "mood": "元気",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "兄姉コーナー > 親子体操",
       "credits": {
         "music": [
@@ -2235,6 +2359,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "アニメのコーナー",
       "credits": {
         "lyrics": [
@@ -2269,6 +2395,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 人形 > 1982年の月の歌",
       "credits": {
         "lyrics": [
@@ -2308,6 +2436,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > アニメーション > 2023年11月の月の歌"
     },
     {
@@ -2323,6 +2453,8 @@
       "keywords": [],
       "mood": "",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ",
       "credits": {
         "cast": [
@@ -2354,6 +2486,8 @@
       ],
       "mood": "優しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > イラスト",
       "credits": {
         "lyrics": [
@@ -2389,6 +2523,8 @@
       ],
       "mood": "優しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "インターミッション > 自然の映像"
     },
     {
@@ -2416,6 +2552,8 @@
       ],
       "mood": "元気",
       "snippet": "からだ☆ダンダン",
+      "snippets": [],
+      "theme": "",
       "subcategory": "体操のコーナー",
       "credits": {
         "lyrics": [
@@ -2466,6 +2604,8 @@
       ],
       "mood": "優しい",
       "snippet": "きんらきら ぽん",
+      "snippets": [],
+      "theme": "",
       "subcategory": "エンディング",
       "credits": {
         "lyrics": [
@@ -2505,6 +2645,8 @@
       ],
       "mood": "元気",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > スタジオ (広場)",
       "credits": {
         "lyrics": [
@@ -2542,6 +2684,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ",
       "credits": {
         "arrange": [
@@ -2578,6 +2722,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ > 1989年07・08月の月の歌",
       "credits": {
         "lyrics": [
@@ -2619,6 +2765,8 @@
       ],
       "mood": "にぎやか",
       "snippet": "ファンターネ！",
+      "snippets": [],
+      "theme": "",
       "subcategory": "人形劇のコーナー",
       "credits": {
         "lyrics": [
@@ -2650,6 +2798,8 @@
       ],
       "mood": "感動",
       "snippet": "あしたにむかって",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ > 今月の歌",
       "credits": {
         "cast": [
@@ -2681,6 +2831,8 @@
       ],
       "mood": "なつかしい",
       "snippet": "こんなこ いるかな",
+      "snippets": [],
+      "theme": "",
       "subcategory": "アニメのコーナー",
       "credits": {
         "original": [
@@ -2714,6 +2866,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "ロケ・VTRコーナー",
       "credits": {
         "lyrics": [
@@ -2745,6 +2899,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "兄姉コーナー",
       "credits": {
         "cast": [
@@ -2778,6 +2934,8 @@
       ],
       "mood": "優しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "インターミッション > 自然の映像"
     },
     {
@@ -2805,6 +2963,8 @@
       ],
       "mood": "元気",
       "snippet": "からだ☆ダンダン",
+      "snippets": [],
+      "theme": "",
       "subcategory": "体操のコーナー",
       "credits": {
         "lyrics": [
@@ -2855,6 +3015,8 @@
       ],
       "mood": "優しい",
       "snippet": "きんらきら ぽん",
+      "snippets": [],
+      "theme": "",
       "subcategory": "エンディング",
       "credits": {
         "lyrics": [
@@ -2898,6 +3060,8 @@
       ],
       "mood": "優しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > スタジオ (広場) > 1996年02・03月の月の歌",
       "credits": {
         "arrange": [
@@ -2924,6 +3088,8 @@
       "keywords": [],
       "mood": "",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > イラスト > 1999年04月の月の歌",
       "credits": {
         "lyrics": [
@@ -2954,6 +3120,8 @@
       "keywords": [],
       "mood": "",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 1982年の月の歌",
       "credits": {
         "lyrics": [
@@ -2986,6 +3154,8 @@
       ],
       "mood": "にぎやか",
       "snippet": "ファンターネ！",
+      "snippets": [],
+      "theme": "",
       "subcategory": "人形劇のコーナー",
       "credits": {
         "lyrics": [
@@ -3017,6 +3187,8 @@
       ],
       "mood": "感動",
       "snippet": "あしたにむかって",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ > 今月の歌",
       "credits": {
         "cast": [
@@ -3048,6 +3220,8 @@
       ],
       "mood": "なつかしい",
       "snippet": "こんなこ いるかな",
+      "snippets": [],
+      "theme": "",
       "subcategory": "アニメのコーナー",
       "credits": {
         "original": [
@@ -3083,6 +3257,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "ロケ・VTRコーナー",
       "credits": {
         "lyrics": [
@@ -3112,6 +3288,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "兄姉コーナー",
       "credits": {
         "music": [
@@ -3149,6 +3327,8 @@
       ],
       "mood": "優しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "インターミッション > 自然の映像"
     },
     {
@@ -3176,6 +3356,8 @@
       ],
       "mood": "元気",
       "snippet": "からだ☆ダンダン",
+      "snippets": [],
+      "theme": "",
       "subcategory": "体操のコーナー",
       "credits": {
         "lyrics": [
@@ -3226,6 +3408,8 @@
       ],
       "mood": "優しい",
       "snippet": "きんらきら ぽん",
+      "snippets": [],
+      "theme": "",
       "subcategory": "エンディング",
       "credits": {
         "lyrics": [
@@ -3266,6 +3450,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > スタジオ (広場)",
       "credits": {
         "choreo": [
@@ -3299,6 +3485,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 人形劇",
       "credits": {
         "lyrics": [
@@ -3336,6 +3524,8 @@
       ],
       "mood": "切ない",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ",
       "credits": {
         "cast": [
@@ -3363,6 +3553,8 @@
       ],
       "mood": "にぎやか",
       "snippet": "ファンターネ！",
+      "snippets": [],
+      "theme": "",
       "subcategory": "人形劇のコーナー",
       "credits": {
         "lyrics": [
@@ -3394,6 +3586,8 @@
       ],
       "mood": "感動",
       "snippet": "あしたにむかって",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ > 今月の歌",
       "credits": {
         "cast": [
@@ -3425,6 +3619,8 @@
       ],
       "mood": "なつかしい",
       "snippet": "こんなこ いるかな",
+      "snippets": [],
+      "theme": "",
       "subcategory": "アニメのコーナー",
       "credits": {
         "original": [
@@ -3463,6 +3659,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "ロケ・VTRコーナー",
       "credits": {
         "lyrics": [
@@ -3499,6 +3697,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "兄姉コーナー",
       "credits": {
         "music": [
@@ -3525,6 +3725,8 @@
       "keywords": [],
       "mood": "",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "インターミッション > 自然の映像"
     },
     {
@@ -3552,6 +3754,8 @@
       ],
       "mood": "元気",
       "snippet": "からだ☆ダンダン",
+      "snippets": [],
+      "theme": "",
       "subcategory": "体操のコーナー",
       "credits": {
         "lyrics": [
@@ -3602,6 +3806,8 @@
       ],
       "mood": "優しい",
       "snippet": "きんらきら ぽん",
+      "snippets": [],
+      "theme": "",
       "subcategory": "エンディング",
       "credits": {
         "lyrics": [
@@ -3646,6 +3852,8 @@
       ],
       "mood": "優しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > スタジオ (広場)",
       "credits": {
         "lyrics": [
@@ -3680,6 +3888,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > アニメーション",
       "credits": {
         "lyrics": [
@@ -3718,6 +3928,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > アニメーション",
       "credits": {
         "music": [
@@ -3747,6 +3959,8 @@
       ],
       "mood": "にぎやか",
       "snippet": "ファンターネ！",
+      "snippets": [],
+      "theme": "",
       "subcategory": "人形劇のコーナー",
       "credits": {
         "lyrics": [
@@ -3778,6 +3992,8 @@
       ],
       "mood": "感動",
       "snippet": "あしたにむかって",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ > 今月の歌",
       "credits": {
         "cast": [
@@ -3812,6 +4028,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "アニメのコーナー > 人形劇",
       "credits": {
         "other": [
@@ -3841,6 +4059,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "ロケ・VTRコーナー",
       "credits": {
         "lyrics": [
@@ -3881,6 +4101,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "兄姉コーナー",
       "credits": {
         "lyrics": [
@@ -3918,6 +4140,8 @@
       ],
       "mood": "優しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "インターミッション > 自然の映像"
     },
     {
@@ -3945,6 +4169,8 @@
       ],
       "mood": "元気",
       "snippet": "からだ☆ダンダン",
+      "snippets": [],
+      "theme": "",
       "subcategory": "体操のコーナー",
       "credits": {
         "lyrics": [
@@ -3995,6 +4221,8 @@
       ],
       "mood": "優しい",
       "snippet": "きんらきら ぽん",
+      "snippets": [],
+      "theme": "",
       "subcategory": "エンディング",
       "credits": {
         "lyrics": [
@@ -4037,6 +4265,8 @@
       ],
       "mood": "優しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > スタジオ (広場) > 2021年05月の月の歌",
       "credits": {
         "lyrics": [
@@ -4078,6 +4308,8 @@
       ],
       "mood": "優しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 1985年の月の歌",
       "credits": {
         "cast": [
@@ -4109,6 +4341,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 人形",
       "credits": {
         "lyrics": [
@@ -4141,6 +4375,8 @@
       ],
       "mood": "にぎやか",
       "snippet": "ファンターネ！",
+      "snippets": [],
+      "theme": "",
       "subcategory": "人形劇のコーナー",
       "credits": {
         "lyrics": [
@@ -4172,6 +4408,8 @@
       ],
       "mood": "感動",
       "snippet": "あしたにむかって",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ > 今月の歌",
       "credits": {
         "cast": [
@@ -4206,6 +4444,8 @@
       ],
       "mood": "元気",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "ロケ・VTRコーナー",
       "credits": {
         "lyrics": [
@@ -4245,6 +4485,8 @@
       ],
       "mood": "楽しい",
       "snippet": "やぎさんゆうびん",
+      "snippets": [],
+      "theme": "",
       "subcategory": "兄姉コーナー",
       "credits": {
         "cast": [
@@ -4277,6 +4519,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ",
       "credits": {
         "lyrics": [
@@ -4313,6 +4557,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "ロケ・VTRコーナー",
       "credits": {
         "other": [
@@ -4346,6 +4592,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "インターミッション > 自然の映像"
     },
     {
@@ -4373,6 +4621,8 @@
       ],
       "mood": "元気",
       "snippet": "からだ☆ダンダン",
+      "snippets": [],
+      "theme": "",
       "subcategory": "体操のコーナー",
       "credits": {
         "lyrics": [
@@ -4423,6 +4673,8 @@
       ],
       "mood": "優しい",
       "snippet": "きんらきら ぽん",
+      "snippets": [],
+      "theme": "",
       "subcategory": "エンディング",
       "credits": {
         "lyrics": [
@@ -4466,6 +4718,8 @@
       ],
       "mood": "元気",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > スタジオ (広場) > 2001年05月の月の歌",
       "credits": {
         "lyrics": [
@@ -4503,6 +4757,8 @@
       ],
       "mood": "感動",
       "snippet": "あしたにむかって",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ > 今月の歌"
     },
     {
@@ -4526,6 +4782,8 @@
       ],
       "mood": "なつかしい",
       "snippet": "こんなこ いるかな",
+      "snippets": [],
+      "theme": "",
       "subcategory": "アニメのコーナー",
       "credits": {
         "original": [
@@ -4562,6 +4820,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "人形劇のコーナー",
       "credits": {
         "music": [
@@ -4591,6 +4851,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "parent": "ファンターネ！とうたおう",
       "subcategory": "人形劇のコーナー",
       "credits": {
@@ -4624,6 +4886,8 @@
       ],
       "mood": "元気",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "兄姉コーナー > 親子体操",
       "credits": {
         "music": [
@@ -4659,6 +4923,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "アニメのコーナー",
       "credits": {
         "lyrics": [
@@ -4699,6 +4965,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > アニメーション > 2022年01月の月の歌",
       "credits": {
         "lyrics": [
@@ -4738,6 +5006,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > アニメーション > 2002年06月の月の歌",
       "credits": {
         "lyrics": [
@@ -4772,6 +5042,8 @@
       ],
       "mood": "元気",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ > 2026年01月の月の歌",
       "credits": {
         "arrange": [
@@ -4805,6 +5077,8 @@
       ],
       "mood": "元気",
       "snippet": "おおきな たいこ ドーン ドン ドン",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 人形",
       "credits": {
         "lyrics": [
@@ -4845,6 +5119,8 @@
       ],
       "mood": "優しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "インターミッション > 自然の映像"
     },
     {
@@ -4872,6 +5148,8 @@
       ],
       "mood": "元気",
       "snippet": "からだ☆ダンダン",
+      "snippets": [],
+      "theme": "",
       "subcategory": "体操のコーナー",
       "credits": {
         "lyrics": [
@@ -4922,6 +5200,8 @@
       ],
       "mood": "優しい",
       "snippet": "きんらきら ぽん",
+      "snippets": [],
+      "theme": "",
       "subcategory": "エンディング",
       "credits": {
         "lyrics": [
@@ -4964,6 +5244,8 @@
       ],
       "mood": "優しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > スタジオ > 1981年の月の歌",
       "credits": {
         "cast": [
@@ -4997,6 +5279,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ > 2008年04月の月の歌",
       "credits": {
         "lyrics": [
@@ -5035,6 +5319,8 @@
       ],
       "mood": "優しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 人形",
       "credits": {
         "lyrics": [
@@ -5067,6 +5353,8 @@
       ],
       "mood": "にぎやか",
       "snippet": "ファンターネ！",
+      "snippets": [],
+      "theme": "",
       "subcategory": "人形劇のコーナー",
       "credits": {
         "lyrics": [
@@ -5098,6 +5386,8 @@
       ],
       "mood": "感動",
       "snippet": "あしたにむかって",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ > 今月の歌",
       "credits": {
         "cast": [
@@ -5129,6 +5419,8 @@
       ],
       "mood": "なつかしい",
       "snippet": "こんなこ いるかな",
+      "snippets": [],
+      "theme": "",
       "subcategory": "アニメのコーナー",
       "credits": {
         "original": [
@@ -5162,6 +5454,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "ロケ・VTRコーナー",
       "credits": {
         "lyrics": [
@@ -5190,6 +5484,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "兄姉コーナー",
       "credits": {
         "cast": [
@@ -5225,6 +5521,8 @@
       ],
       "mood": "優しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "インターミッション > 自然の映像"
     },
     {
@@ -5252,6 +5550,8 @@
       ],
       "mood": "元気",
       "snippet": "からだ☆ダンダン",
+      "snippets": [],
+      "theme": "",
       "subcategory": "体操のコーナー",
       "credits": {
         "lyrics": [
@@ -5302,6 +5602,8 @@
       ],
       "mood": "優しい",
       "snippet": "きんらきら ぽん",
+      "snippets": [],
+      "theme": "",
       "subcategory": "エンディング",
       "credits": {
         "lyrics": [
@@ -5344,6 +5646,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > スタジオ > 2001年04月の月の歌",
       "credits": {
         "cast": [
@@ -5378,6 +5682,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > アニメーション > 2016年07月の月の歌",
       "credits": {
         "lyrics": [
@@ -5417,6 +5723,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ",
       "credits": {
         "lyrics": [
@@ -5449,6 +5757,8 @@
       ],
       "mood": "にぎやか",
       "snippet": "ファンターネ！",
+      "snippets": [],
+      "theme": "",
       "subcategory": "人形劇のコーナー",
       "credits": {
         "lyrics": [
@@ -5480,6 +5790,8 @@
       ],
       "mood": "感動",
       "snippet": "あしたにむかって",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ > 今月の歌",
       "credits": {
         "cast": [
@@ -5511,6 +5823,8 @@
       ],
       "mood": "なつかしい",
       "snippet": "こんなこ いるかな",
+      "snippets": [],
+      "theme": "",
       "subcategory": "アニメのコーナー",
       "credits": {
         "original": [
@@ -5546,6 +5860,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "ロケ・VTRコーナー",
       "credits": {
         "lyrics": [
@@ -5575,6 +5891,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "兄姉コーナー",
       "credits": {
         "music": [
@@ -5613,6 +5931,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "インターミッション > 自然の映像"
     },
     {
@@ -5640,6 +5960,8 @@
       ],
       "mood": "元気",
       "snippet": "からだ☆ダンダン",
+      "snippets": [],
+      "theme": "",
       "subcategory": "体操のコーナー",
       "credits": {
         "lyrics": [
@@ -5690,6 +6012,8 @@
       ],
       "mood": "優しい",
       "snippet": "きんらきら ぽん",
+      "snippets": [],
+      "theme": "",
       "subcategory": "エンディング",
       "credits": {
         "lyrics": [
@@ -5735,6 +6059,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > スタジオ > 1999年05月の月の歌",
       "credits": {
         "lyrics": [
@@ -5776,6 +6102,8 @@
       ],
       "mood": "元気",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > アニメーション > 2023年06月の月の歌",
       "credits": {
         "vocals": [
@@ -5803,6 +6131,8 @@
       ],
       "mood": "優しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ > 1993年04月の月の歌",
       "credits": {
         "lyrics": [
@@ -5836,6 +6166,8 @@
       ],
       "mood": "にぎやか",
       "snippet": "ファンターネ！",
+      "snippets": [],
+      "theme": "",
       "subcategory": "人形劇のコーナー",
       "credits": {
         "lyrics": [
@@ -5867,6 +6199,8 @@
       ],
       "mood": "感動",
       "snippet": "あしたにむかって",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ > 今月の歌",
       "credits": {
         "cast": [
@@ -5898,6 +6232,8 @@
       ],
       "mood": "なつかしい",
       "snippet": "こんなこ いるかな",
+      "snippets": [],
+      "theme": "",
       "subcategory": "アニメのコーナー",
       "credits": {
         "original": [
@@ -5936,6 +6272,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "ロケ・VTRコーナー",
       "credits": {
         "lyrics": [
@@ -5972,6 +6310,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "兄姉コーナー",
       "credits": {
         "music": [
@@ -6008,6 +6348,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "インターミッション > 自然の映像"
     },
     {
@@ -6035,6 +6377,8 @@
       ],
       "mood": "元気",
       "snippet": "からだ☆ダンダン",
+      "snippets": [],
+      "theme": "",
       "subcategory": "体操のコーナー",
       "credits": {
         "lyrics": [
@@ -6085,6 +6429,8 @@
       ],
       "mood": "優しい",
       "snippet": "きんらきら ぽん",
+      "snippets": [],
+      "theme": "",
       "subcategory": "エンディング",
       "credits": {
         "lyrics": [
@@ -6129,6 +6475,8 @@
       ],
       "mood": "楽しい",
       "snippet": "こぶたぬきつねこ",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > スタジオ",
       "credits": {
         "cast": [
@@ -6163,6 +6511,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ",
       "credits": {
         "lyrics": [
@@ -6202,6 +6552,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ",
       "credits": {
         "lyrics": [
@@ -6235,6 +6587,8 @@
       ],
       "mood": "にぎやか",
       "snippet": "ファンターネ！",
+      "snippets": [],
+      "theme": "",
       "subcategory": "人形劇のコーナー",
       "credits": {
         "lyrics": [
@@ -6266,6 +6620,8 @@
       ],
       "mood": "感動",
       "snippet": "あしたにむかって",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ > 今月の歌",
       "credits": {
         "cast": [
@@ -6300,6 +6656,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "アニメのコーナー",
       "credits": {
         "other": [
@@ -6329,6 +6687,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "ロケ・VTRコーナー",
       "credits": {
         "lyrics": [
@@ -6369,6 +6729,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "兄姉コーナー",
       "credits": {
         "lyrics": [
@@ -6413,6 +6775,8 @@
       ],
       "mood": "優しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "インターミッション > 自然の映像"
     },
     {
@@ -6440,6 +6804,8 @@
       ],
       "mood": "元気",
       "snippet": "からだ☆ダンダン",
+      "snippets": [],
+      "theme": "",
       "subcategory": "体操のコーナー",
       "credits": {
         "lyrics": [
@@ -6490,6 +6856,8 @@
       ],
       "mood": "優しい",
       "snippet": "きんらきら ぽん",
+      "snippets": [],
+      "theme": "",
       "subcategory": "エンディング",
       "credits": {
         "lyrics": [
@@ -6531,6 +6899,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > スタジオ",
       "credits": {
         "cast": [
@@ -6568,6 +6938,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ > 1998年01月の月の歌",
       "credits": {
         "lyrics": [
@@ -6606,6 +6978,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 人形",
       "credits": {
         "lyrics": [
@@ -6642,6 +7016,8 @@
       ],
       "mood": "にぎやか",
       "snippet": "ファンターネ！",
+      "snippets": [],
+      "theme": "",
       "subcategory": "人形劇のコーナー",
       "credits": {
         "lyrics": [
@@ -6673,6 +7049,8 @@
       ],
       "mood": "感動",
       "snippet": "あしたにむかって",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ > 今月の歌",
       "credits": {
         "cast": [
@@ -6707,6 +7085,8 @@
       ],
       "mood": "元気",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "ロケ・VTRコーナー",
       "credits": {
         "lyrics": [
@@ -6746,6 +7126,8 @@
       ],
       "mood": "楽しい",
       "snippet": "やぎさんゆうびん",
+      "snippets": [],
+      "theme": "",
       "subcategory": "兄姉コーナー",
       "credits": {
         "cast": [
@@ -6779,6 +7161,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ > 2009年06月の月の歌",
       "credits": {
         "cast": [
@@ -6808,6 +7192,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "ロケ・VTRコーナー",
       "credits": {
         "other": [
@@ -6840,6 +7226,8 @@
       ],
       "mood": "優しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "インターミッション > 自然の映像"
     },
     {
@@ -6867,6 +7255,8 @@
       ],
       "mood": "元気",
       "snippet": "からだ☆ダンダン",
+      "snippets": [],
+      "theme": "",
       "subcategory": "体操のコーナー",
       "credits": {
         "lyrics": [
@@ -6917,6 +7307,8 @@
       ],
       "mood": "優しい",
       "snippet": "きんらきら ぽん",
+      "snippets": [],
+      "theme": "",
       "subcategory": "エンディング",
       "credits": {
         "lyrics": [
@@ -6961,6 +7353,8 @@
       ],
       "mood": "元気",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > スタジオ",
       "credits": {
         "lyrics": [
@@ -7001,6 +7395,8 @@
       ],
       "mood": "感動",
       "snippet": "あしたにむかって",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ > 今月の歌",
       "credits": {
         "cast": [
@@ -7032,6 +7428,8 @@
       ],
       "mood": "なつかしい",
       "snippet": "こんなこ いるかな",
+      "snippets": [],
+      "theme": "",
       "subcategory": "アニメのコーナー",
       "credits": {
         "original": [
@@ -7068,6 +7466,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "人形劇のコーナー",
       "credits": {
         "music": [
@@ -7099,6 +7499,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "parent": "ファンターネ！とうたおう",
       "subcategory": "人形劇のコーナー",
       "credits": {
@@ -7132,6 +7534,8 @@
       ],
       "mood": "元気",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "兄姉コーナー > 親子体操",
       "credits": {
         "music": [
@@ -7167,6 +7571,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "アニメのコーナー",
       "credits": {
         "lyrics": [
@@ -7206,6 +7612,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > アニメーション > 2020年05月の月の歌",
       "credits": {
         "lyrics": [
@@ -7244,6 +7652,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > 兄姉クリップ > 1993年01月の月の歌",
       "credits": {
         "lyrics": [
@@ -7282,6 +7692,8 @@
       ],
       "mood": "ユーモア",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > アニメーション > 2014年04月の月の歌",
       "credits": {
         "lyrics": [
@@ -7320,6 +7732,8 @@
       ],
       "mood": "楽しい",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "歌のコーナー > アニメーション > 2020年01月の月の歌",
       "credits": {
         "lyrics": [
@@ -7360,6 +7774,8 @@
       ],
       "mood": "元気",
       "snippet": "",
+      "snippets": [],
+      "theme": "",
       "subcategory": "インターミッション > 自然の映像"
     },
     {
@@ -7387,6 +7803,8 @@
       ],
       "mood": "元気",
       "snippet": "からだ☆ダンダン",
+      "snippets": [],
+      "theme": "",
       "subcategory": "体操のコーナー",
       "credits": {
         "lyrics": [
@@ -7437,6 +7855,8 @@
       ],
       "mood": "優しい",
       "snippet": "きんらきら ぽん",
+      "snippets": [],
+      "theme": "",
       "subcategory": "エンディング",
       "credits": {
         "lyrics": [
