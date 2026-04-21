@@ -3,7 +3,7 @@
 //   - 静的アセット（HTML/CSS/JS/icons）: Cache First（オフライン対応）
 //   - data.json: Network First → fallback to cache（鮮度優先、オフライン時は古くてもOK）
 
-const CACHE_VERSION = "v5";
+const CACHE_VERSION = "v6";
 const STATIC_CACHE = `etere-static-${CACHE_VERSION}`;
 const DATA_CACHE   = `etere-data-${CACHE_VERSION}`;
 

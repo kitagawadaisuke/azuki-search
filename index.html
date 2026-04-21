@@ -53,7 +53,7 @@
     font-family: -apple-system, BlinkMacSystemFont, "Hiragino Maru Gothic ProN", "Hiragino Sans", "Yu Gothic UI", sans-serif;
     min-height: 100vh;
     padding-top: var(--safe-top);
-    padding-bottom: calc(80px + var(--safe-bottom));
+    padding-bottom: calc(20px + var(--safe-bottom));
     line-height: 1.5;
   }
 
@@ -664,7 +664,7 @@
     <span class="title-text">あずきサーチ</span>
     <img class="azuki-side flip" src="assets/azuki-scene-thumb.png" alt="">
   </h1>
-  <input type="search" id="search" class="search-box" placeholder="曲名・コーナー名で検索…" autocomplete="off">
+  <input type="search" id="search" class="search-box" placeholder="曲名・雰囲気で検索（例：太鼓／元気）" autocomplete="off" enterkeyhint="search" inputmode="search">
   <div class="filter-pills">
     <button class="pill active" data-filter="all">ぜんぶ</button>
     <button class="pill" data-filter="okaasan">おかあさんといっしょ</button>
@@ -691,13 +691,6 @@
     <div class="action-list" id="modal-actions"></div>
   </div>
 </div>
-
-<nav class="bottom">
-  <button class="nav-btn active"><span class="nav-icon">🏠</span>ホーム</button>
-  <button class="nav-btn"><span class="nav-icon">⭐</span>お気に入り</button>
-  <button class="nav-btn"><span class="nav-icon">📅</span>番組表</button>
-  <button class="nav-btn"><span class="nav-icon">⚙️</span>設定</button>
-</nav>
 
 <script>
 // =================== Live Data ===================
