@@ -7,10 +7,11 @@ import sys
 OUT = Path("icons")
 OUT.mkdir(exist_ok=True)
 
-# 背景色（アプリのテーマカラーに合わせる：dark navy + accent orange）
-BG = (15, 20, 25)
-ACCENT = (255, 184, 77)
-ACCENT2 = (255, 107, 157)
+# 背景色（あたたかいEテレ感：クリーム + アクセントカラー）
+BG = (255, 247, 232)        # クリーム
+ACCENT = (255, 138, 61)      # あたたかオレンジ
+ACCENT2 = (255, 95, 156)     # いちごピンク
+TEXT = (61, 40, 23)          # 濃茶
 
 
 def find_jp_font(size: int):
@@ -35,41 +36,36 @@ def make_icon(size: int, maskable: bool = False) -> Image.Image:
     img = Image.new("RGB", (size, size), BG)
     draw = ImageDraw.Draw(img)
 
-    # 角丸風グラデーション背景（中央が少し明るい）
     cx, cy = size / 2, size / 2
-    radius = size * 0.45
-    # アクセント円をぼかして配置（光るドット風）
-    for r, color in [(radius * 1.0, (35, 42, 61)), (radius * 0.65, (50, 60, 85))]:
-        draw.ellipse([cx - r, cy - r, cx + r, cy + r], fill=color)
-
-    # 中央テキスト「E」+ 検索アイコン的な雰囲気
-    pad = size * 0.08 if maskable else 0
+    pad = size * 0.1 if maskable else 0
     inner = size - 2 * pad
 
-    # 大きな「E」を描く
-    font_size = int(inner * 0.55)
+    # 角丸正方形の温かいオレンジ背景
+    bg_r = inner * 0.5
+    draw.rounded_rectangle(
+        [cx - bg_r, cy - bg_r, cx + bg_r, cy + bg_r],
+        radius=int(size * 0.2),
+        fill=ACCENT,
+    )
+
+    # 中央テキスト「あ」
+    font_size = int(inner * 0.52)
     font = find_jp_font(font_size)
-    text = "E"
+    text = "あ"
     bbox = draw.textbbox((0, 0), text, font=font)
     tw = bbox[2] - bbox[0]
     th = bbox[3] - bbox[1]
     tx = (size - tw) / 2 - bbox[0]
-    ty = (size - th) / 2 - bbox[1] - size * 0.05
-    draw.text((tx, ty), text, font=font, fill=ACCENT)
+    ty = (size - th) / 2 - bbox[1] - size * 0.01
+    draw.text((tx, ty), text, font=font, fill=(255, 255, 255))
 
-    # 下に小さく「テレ」
-    sub_size = int(inner * 0.13)
-    sub_font = find_jp_font(sub_size)
-    sub = "テレ"
-    sb = draw.textbbox((0, 0), sub, font=sub_font)
-    sw = sb[2] - sb[0]
-    sh = sb[3] - sb[1]
-    draw.text(((size - sw) / 2 - sb[0], size * 0.72 - sb[1]), sub, font=sub_font, fill=(255, 255, 255))
-
-    # 検索アイコン的な小さな丸（右下）
-    dot_r = size * 0.06
-    draw.ellipse([size - dot_r * 3.5, size - dot_r * 3.5, size - dot_r * 0.8, size - dot_r * 0.8],
-                 outline=ACCENT2, width=max(2, int(size * 0.012)))
+    # 下部にちいさなピンクの●●●（リズム的ドット）
+    dot_r = size * 0.025
+    dot_y = cy + inner * 0.32
+    gap = dot_r * 3
+    for i, color in enumerate([(255, 255, 255, 230), ACCENT2, (255, 255, 255, 230)]):
+        x = cx + (i - 1) * gap
+        draw.ellipse([x - dot_r, dot_y - dot_r, x + dot_r, dot_y + dot_r], fill=color[:3] if len(color)==4 else color)
 
     return img
 
