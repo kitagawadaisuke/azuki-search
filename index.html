@@ -667,14 +667,26 @@ const $list = document.getElementById("list");
 const $search = document.getElementById("search");
 const $sectionTitle = document.getElementById("section-title");
 
+function todayDate() {
+  // ブラウザのローカルタイムで「今日の0時」を返す
+  const now = new Date();
+  return new Date(now.getFullYear(), now.getMonth(), now.getDate());
+}
+
 function fmtDate(iso) {
   const d = new Date(iso);
-  const today = new Date("2026-04-19");
+  const today = todayDate();
   const diff = Math.floor((today - d) / (1000 * 60 * 60 * 24));
   if (diff === 0) return "今日";
   if (diff === 1) return "きのう";
+  if (diff === -1) return "あした";
   const w = ["日","月","火","水","木","金","土"][d.getDay()];
   return `${d.getMonth()+1}/${d.getDate()}(${w})`;
+}
+
+function todayStrIso() {
+  const t = todayDate();
+  return `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,"0")}-${String(t.getDate()).padStart(2,"0")}`;
 }
 
 function render() {
@@ -743,7 +755,7 @@ function render() {
     b.date.localeCompare(a.date) || (a.show < b.show ? -1 : 1)
   );
 
-  const todayStr = "2026-04-19";
+  const todayStr = todayStrIso();
   $list.innerHTML = days.map(g => {
     const isToday = g.date === todayStr;
     const dateLabel = fmtDate(g.date);
