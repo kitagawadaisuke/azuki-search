@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-21T03:59:16",
+  "generated_at": "2026-04-21T23:12:33",
   "source": "tokyofukubukuro.com okasan-fc weekly report (WP REST API)",
   "items": [
     {
@@ -11,7 +11,17 @@
       "airtime": "08:00",
       "offset": "",
       "order": 1,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "ダンゴムシ",
+        "虫",
+        "丸い",
+        "コロコロ",
+        "転がる",
+        "子供"
+      ],
+      "mood": "楽しい",
+      "snippet": ""
     },
     {
       "id": 10001,
@@ -22,7 +32,16 @@
       "airtime": "08:00",
       "offset": "",
       "order": 2,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "たんぽぽ",
+        "つくし",
+        "春",
+        "花",
+        "俵万智"
+      ],
+      "mood": "優しい",
+      "snippet": ""
     },
     {
       "id": 10002,
@@ -33,7 +52,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 3,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10003,
@@ -44,7 +66,16 @@
       "airtime": "08:00",
       "offset": "",
       "order": 4,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "みもも",
+        "やころ",
+        "ちょろみ",
+        "人形劇",
+        "みんな"
+      ],
+      "mood": "にぎやか",
+      "snippet": "ファンターネ！"
     },
     {
       "id": 10004,
@@ -55,7 +86,18 @@
       "airtime": "08:00",
       "offset": "",
       "order": 5,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "明日",
+        "未来",
+        "前向き",
+        "応援",
+        "がんばれ",
+        "月歌",
+        "今月のうた"
+      ],
+      "mood": "感動",
+      "snippet": "あしたにむかって"
     },
     {
       "id": 10005,
@@ -66,7 +108,18 @@
       "airtime": "08:00",
       "offset": "",
       "order": 6,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "アニメ",
+        "キャラクター",
+        "個性",
+        "友達",
+        "復活",
+        "35年ぶり",
+        "月水土"
+      ],
+      "mood": "なつかしい",
+      "snippet": "こんなこ いるかな"
     },
     {
       "id": 10006,
@@ -77,7 +130,15 @@
       "airtime": "08:00",
       "offset": "",
       "order": 7,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "ファンファン",
+        "コロリンパ",
+        "兄姉",
+        "新しい"
+      ],
+      "mood": "楽しい",
+      "snippet": ""
     },
     {
       "id": 10007,
@@ -88,7 +149,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 8,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10008,
@@ -99,7 +163,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 9,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10009,
@@ -110,7 +177,22 @@
       "airtime": "08:00",
       "offset": "",
       "order": 10,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "体操",
+        "たいそう",
+        "ダンダン",
+        "ダンス",
+        "踊る",
+        "おどる",
+        "朝",
+        "準備",
+        "エンディング直前",
+        "毎日",
+        "佐藤弘道"
+      ],
+      "mood": "元気",
+      "snippet": "からだ☆ダンダン"
     },
     {
       "id": 10010,
@@ -121,7 +203,21 @@
       "airtime": "08:00",
       "offset": "",
       "order": 11,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "きらきら",
+        "キラキラ",
+        "光る",
+        "星",
+        "ぽん",
+        "ED",
+        "エンディング",
+        "終わり",
+        "最後",
+        "手をつなぐ"
+      ],
+      "mood": "優しい",
+      "snippet": "きんらきら ぽん"
     },
     {
       "id": 10011,
@@ -132,7 +228,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 1,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10012,
@@ -143,7 +242,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 2,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10013,
@@ -154,7 +256,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 3,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10014,
@@ -165,7 +270,16 @@
       "airtime": "08:00",
       "offset": "",
       "order": 4,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "みもも",
+        "やころ",
+        "ちょろみ",
+        "人形劇",
+        "みんな"
+      ],
+      "mood": "にぎやか",
+      "snippet": "ファンターネ！"
     },
     {
       "id": 10015,
@@ -176,7 +290,18 @@
       "airtime": "08:00",
       "offset": "",
       "order": 5,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "明日",
+        "未来",
+        "前向き",
+        "応援",
+        "がんばれ",
+        "月歌",
+        "今月のうた"
+      ],
+      "mood": "感動",
+      "snippet": "あしたにむかって"
     },
     {
       "id": 10016,
@@ -187,7 +312,18 @@
       "airtime": "08:00",
       "offset": "",
       "order": 6,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "アニメ",
+        "キャラクター",
+        "個性",
+        "友達",
+        "復活",
+        "35年ぶり",
+        "月水土"
+      ],
+      "mood": "なつかしい",
+      "snippet": "こんなこ いるかな"
     },
     {
       "id": 10017,
@@ -198,7 +334,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 7,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10018,
@@ -209,7 +348,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 8,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10019,
@@ -220,7 +362,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 9,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10020,
@@ -231,7 +376,22 @@
       "airtime": "08:00",
       "offset": "",
       "order": 10,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "体操",
+        "たいそう",
+        "ダンダン",
+        "ダンス",
+        "踊る",
+        "おどる",
+        "朝",
+        "準備",
+        "エンディング直前",
+        "毎日",
+        "佐藤弘道"
+      ],
+      "mood": "元気",
+      "snippet": "からだ☆ダンダン"
     },
     {
       "id": 10021,
@@ -242,7 +402,21 @@
       "airtime": "08:00",
       "offset": "",
       "order": 11,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "きらきら",
+        "キラキラ",
+        "光る",
+        "星",
+        "ぽん",
+        "ED",
+        "エンディング",
+        "終わり",
+        "最後",
+        "手をつなぐ"
+      ],
+      "mood": "優しい",
+      "snippet": "きんらきら ぽん"
     },
     {
       "id": 10022,
@@ -253,7 +427,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 1,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10023,
@@ -264,7 +441,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 2,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10024,
@@ -275,7 +455,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 3,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10025,
@@ -286,7 +469,16 @@
       "airtime": "08:00",
       "offset": "",
       "order": 4,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "みもも",
+        "やころ",
+        "ちょろみ",
+        "人形劇",
+        "みんな"
+      ],
+      "mood": "にぎやか",
+      "snippet": "ファンターネ！"
     },
     {
       "id": 10026,
@@ -297,7 +489,18 @@
       "airtime": "08:00",
       "offset": "",
       "order": 5,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "明日",
+        "未来",
+        "前向き",
+        "応援",
+        "がんばれ",
+        "月歌",
+        "今月のうた"
+      ],
+      "mood": "感動",
+      "snippet": "あしたにむかって"
     },
     {
       "id": 10027,
@@ -308,7 +511,18 @@
       "airtime": "08:00",
       "offset": "",
       "order": 6,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "アニメ",
+        "キャラクター",
+        "個性",
+        "友達",
+        "復活",
+        "35年ぶり",
+        "月水土"
+      ],
+      "mood": "なつかしい",
+      "snippet": "こんなこ いるかな"
     },
     {
       "id": 10028,
@@ -319,7 +533,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 7,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10029,
@@ -330,7 +547,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 8,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10030,
@@ -341,7 +561,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 9,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10031,
@@ -352,7 +575,22 @@
       "airtime": "08:00",
       "offset": "",
       "order": 10,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "体操",
+        "たいそう",
+        "ダンダン",
+        "ダンス",
+        "踊る",
+        "おどる",
+        "朝",
+        "準備",
+        "エンディング直前",
+        "毎日",
+        "佐藤弘道"
+      ],
+      "mood": "元気",
+      "snippet": "からだ☆ダンダン"
     },
     {
       "id": 10032,
@@ -363,7 +601,21 @@
       "airtime": "08:00",
       "offset": "",
       "order": 11,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "きらきら",
+        "キラキラ",
+        "光る",
+        "星",
+        "ぽん",
+        "ED",
+        "エンディング",
+        "終わり",
+        "最後",
+        "手をつなぐ"
+      ],
+      "mood": "優しい",
+      "snippet": "きんらきら ぽん"
     },
     {
       "id": 10033,
@@ -374,7 +626,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 1,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10034,
@@ -385,7 +640,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 2,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10035,
@@ -396,7 +654,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 3,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10036,
@@ -407,7 +668,16 @@
       "airtime": "08:00",
       "offset": "",
       "order": 4,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "みもも",
+        "やころ",
+        "ちょろみ",
+        "人形劇",
+        "みんな"
+      ],
+      "mood": "にぎやか",
+      "snippet": "ファンターネ！"
     },
     {
       "id": 10037,
@@ -418,7 +688,18 @@
       "airtime": "08:00",
       "offset": "",
       "order": 5,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "明日",
+        "未来",
+        "前向き",
+        "応援",
+        "がんばれ",
+        "月歌",
+        "今月のうた"
+      ],
+      "mood": "感動",
+      "snippet": "あしたにむかって"
     },
     {
       "id": 10038,
@@ -429,7 +710,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 6,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10039,
@@ -440,7 +724,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 7,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10040,
@@ -451,7 +738,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 8,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10041,
@@ -462,7 +752,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 9,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10042,
@@ -473,7 +766,22 @@
       "airtime": "08:00",
       "offset": "",
       "order": 10,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "体操",
+        "たいそう",
+        "ダンダン",
+        "ダンス",
+        "踊る",
+        "おどる",
+        "朝",
+        "準備",
+        "エンディング直前",
+        "毎日",
+        "佐藤弘道"
+      ],
+      "mood": "元気",
+      "snippet": "からだ☆ダンダン"
     },
     {
       "id": 10043,
@@ -484,7 +792,21 @@
       "airtime": "08:00",
       "offset": "",
       "order": 11,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "きらきら",
+        "キラキラ",
+        "光る",
+        "星",
+        "ぽん",
+        "ED",
+        "エンディング",
+        "終わり",
+        "最後",
+        "手をつなぐ"
+      ],
+      "mood": "優しい",
+      "snippet": "きんらきら ぽん"
     },
     {
       "id": 10044,
@@ -495,7 +817,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 1,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10045,
@@ -506,7 +831,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 2,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10046,
@@ -517,7 +845,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 3,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10047,
@@ -528,7 +859,16 @@
       "airtime": "08:00",
       "offset": "",
       "order": 4,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "みもも",
+        "やころ",
+        "ちょろみ",
+        "人形劇",
+        "みんな"
+      ],
+      "mood": "にぎやか",
+      "snippet": "ファンターネ！"
     },
     {
       "id": 10048,
@@ -539,7 +879,18 @@
       "airtime": "08:00",
       "offset": "",
       "order": 5,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "明日",
+        "未来",
+        "前向き",
+        "応援",
+        "がんばれ",
+        "月歌",
+        "今月のうた"
+      ],
+      "mood": "感動",
+      "snippet": "あしたにむかって"
     },
     {
       "id": 10049,
@@ -550,7 +901,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 6,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10050,
@@ -561,7 +915,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 7,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10051,
@@ -572,7 +929,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 8,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10052,
@@ -583,7 +943,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 9,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10053,
@@ -594,7 +957,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 10,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10054,
@@ -605,7 +971,22 @@
       "airtime": "08:00",
       "offset": "",
       "order": 11,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "体操",
+        "たいそう",
+        "ダンダン",
+        "ダンス",
+        "踊る",
+        "おどる",
+        "朝",
+        "準備",
+        "エンディング直前",
+        "毎日",
+        "佐藤弘道"
+      ],
+      "mood": "元気",
+      "snippet": "からだ☆ダンダン"
     },
     {
       "id": 10055,
@@ -616,7 +997,21 @@
       "airtime": "08:00",
       "offset": "",
       "order": 12,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "きらきら",
+        "キラキラ",
+        "光る",
+        "星",
+        "ぽん",
+        "ED",
+        "エンディング",
+        "終わり",
+        "最後",
+        "手をつなぐ"
+      ],
+      "mood": "優しい",
+      "snippet": "きんらきら ぽん"
     },
     {
       "id": 10056,
@@ -627,7 +1022,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 1,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10057,
@@ -638,7 +1036,18 @@
       "airtime": "08:00",
       "offset": "",
       "order": 2,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "明日",
+        "未来",
+        "前向き",
+        "応援",
+        "がんばれ",
+        "月歌",
+        "今月のうた"
+      ],
+      "mood": "感動",
+      "snippet": "あしたにむかって"
     },
     {
       "id": 10058,
@@ -649,7 +1058,18 @@
       "airtime": "08:00",
       "offset": "",
       "order": 3,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "アニメ",
+        "キャラクター",
+        "個性",
+        "友達",
+        "復活",
+        "35年ぶり",
+        "月水土"
+      ],
+      "mood": "なつかしい",
+      "snippet": "こんなこ いるかな"
     },
     {
       "id": 10059,
@@ -660,7 +1080,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 4,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10060,
@@ -672,6 +1095,9 @@
       "offset": "",
       "order": 5,
       "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": "",
       "parent": "ファンターネ！とうたおう"
     },
     {
@@ -683,7 +1109,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 6,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10062,
@@ -694,7 +1123,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 7,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10063,
@@ -705,7 +1137,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 8,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10064,
@@ -716,7 +1151,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 9,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10065,
@@ -727,7 +1165,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 10,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10066,
@@ -738,7 +1179,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 11,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10067,
@@ -749,7 +1193,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 12,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 10068,
@@ -760,7 +1207,22 @@
       "airtime": "08:00",
       "offset": "",
       "order": 13,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "体操",
+        "たいそう",
+        "ダンダン",
+        "ダンス",
+        "踊る",
+        "おどる",
+        "朝",
+        "準備",
+        "エンディング直前",
+        "毎日",
+        "佐藤弘道"
+      ],
+      "mood": "元気",
+      "snippet": "からだ☆ダンダン"
     },
     {
       "id": 10069,
@@ -771,7 +1233,225 @@
       "airtime": "08:00",
       "offset": "",
       "order": 14,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "きらきら",
+        "キラキラ",
+        "光る",
+        "星",
+        "ぽん",
+        "ED",
+        "エンディング",
+        "終わり",
+        "最後",
+        "手をつなぐ"
+      ],
+      "mood": "優しい",
+      "snippet": "きんらきら ぽん"
+    },
+    {
+      "id": 11000,
+      "show": "okaasan",
+      "title": "こんにちは",
+      "corner": "うた",
+      "date": "2026-04-06",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 1,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 11001,
+      "show": "okaasan",
+      "title": "ぴぴハピー",
+      "corner": "うた",
+      "date": "2026-04-06",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 2,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 11002,
+      "show": "okaasan",
+      "title": "あっちっちのフライパン",
+      "corner": "うた",
+      "date": "2026-04-06",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 3,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 11003,
+      "show": "okaasan",
+      "title": "ファンターネ！",
+      "corner": "人形劇",
+      "date": "2026-04-06",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 4,
+      "fav": false,
+      "keywords": [
+        "みもも",
+        "やころ",
+        "ちょろみ",
+        "人形劇",
+        "みんな"
+      ],
+      "mood": "にぎやか",
+      "snippet": "ファンターネ！"
+    },
+    {
+      "id": 11004,
+      "show": "okaasan",
+      "title": "あしたにむかって",
+      "corner": "うた",
+      "date": "2026-04-06",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 5,
+      "fav": false,
+      "keywords": [
+        "明日",
+        "未来",
+        "前向き",
+        "応援",
+        "がんばれ",
+        "月歌",
+        "今月のうた"
+      ],
+      "mood": "感動",
+      "snippet": "あしたにむかって"
+    },
+    {
+      "id": 11005,
+      "show": "okaasan",
+      "title": "こんなこいるかな",
+      "corner": "アニメ",
+      "date": "2026-04-06",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 6,
+      "fav": false,
+      "keywords": [
+        "アニメ",
+        "キャラクター",
+        "個性",
+        "友達",
+        "復活",
+        "35年ぶり",
+        "月水土"
+      ],
+      "mood": "なつかしい",
+      "snippet": "こんなこ いるかな"
+    },
+    {
+      "id": 11006,
+      "show": "okaasan",
+      "title": "ぱくぱくるんるん",
+      "corner": "コーナー",
+      "date": "2026-04-06",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 7,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 11007,
+      "show": "okaasan",
+      "title": "ファンファンコロリンパ",
+      "corner": "うた",
+      "date": "2026-04-06",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 8,
+      "fav": false,
+      "keywords": [
+        "ファンファン",
+        "コロリンパ",
+        "兄姉",
+        "新しい"
+      ],
+      "mood": "楽しい",
+      "snippet": ""
+    },
+    {
+      "id": 11008,
+      "show": "okaasan",
+      "title": "はなぐま",
+      "corner": "コーナー",
+      "date": "2026-04-06",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 9,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 11009,
+      "show": "okaasan",
+      "title": "からだ☆ダンダン",
+      "corner": "体操",
+      "date": "2026-04-06",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 10,
+      "fav": false,
+      "keywords": [
+        "体操",
+        "たいそう",
+        "ダンダン",
+        "ダンス",
+        "踊る",
+        "おどる",
+        "朝",
+        "準備",
+        "エンディング直前",
+        "毎日",
+        "佐藤弘道"
+      ],
+      "mood": "元気",
+      "snippet": "からだ☆ダンダン"
+    },
+    {
+      "id": 11010,
+      "show": "okaasan",
+      "title": "きんらきら ぽん",
+      "corner": "コーナー",
+      "date": "2026-04-06",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 11,
+      "fav": false,
+      "keywords": [
+        "きらきら",
+        "キラキラ",
+        "光る",
+        "星",
+        "ぽん",
+        "ED",
+        "エンディング",
+        "終わり",
+        "最後",
+        "手をつなぐ"
+      ],
+      "mood": "優しい",
+      "snippet": "きんらきら ぽん"
     },
     {
       "id": 11011,
@@ -782,7 +1462,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 1,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11012,
@@ -793,7 +1476,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 2,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11013,
@@ -804,7 +1490,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 3,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11014,
@@ -815,7 +1504,16 @@
       "airtime": "08:00",
       "offset": "",
       "order": 4,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "みもも",
+        "やころ",
+        "ちょろみ",
+        "人形劇",
+        "みんな"
+      ],
+      "mood": "にぎやか",
+      "snippet": "ファンターネ！"
     },
     {
       "id": 11015,
@@ -826,7 +1524,18 @@
       "airtime": "08:00",
       "offset": "",
       "order": 5,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "明日",
+        "未来",
+        "前向き",
+        "応援",
+        "がんばれ",
+        "月歌",
+        "今月のうた"
+      ],
+      "mood": "感動",
+      "snippet": "あしたにむかって"
     },
     {
       "id": 11016,
@@ -837,7 +1546,18 @@
       "airtime": "08:00",
       "offset": "",
       "order": 6,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "アニメ",
+        "キャラクター",
+        "個性",
+        "友達",
+        "復活",
+        "35年ぶり",
+        "月水土"
+      ],
+      "mood": "なつかしい",
+      "snippet": "こんなこ いるかな"
     },
     {
       "id": 11017,
@@ -848,7 +1568,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 7,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11018,
@@ -859,7 +1582,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 8,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11019,
@@ -870,7 +1596,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 9,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11020,
@@ -881,7 +1610,22 @@
       "airtime": "08:00",
       "offset": "",
       "order": 10,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "体操",
+        "たいそう",
+        "ダンダン",
+        "ダンス",
+        "踊る",
+        "おどる",
+        "朝",
+        "準備",
+        "エンディング直前",
+        "毎日",
+        "佐藤弘道"
+      ],
+      "mood": "元気",
+      "snippet": "からだ☆ダンダン"
     },
     {
       "id": 11021,
@@ -892,7 +1636,21 @@
       "airtime": "08:00",
       "offset": "",
       "order": 11,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "きらきら",
+        "キラキラ",
+        "光る",
+        "星",
+        "ぽん",
+        "ED",
+        "エンディング",
+        "終わり",
+        "最後",
+        "手をつなぐ"
+      ],
+      "mood": "優しい",
+      "snippet": "きんらきら ぽん"
     },
     {
       "id": 11022,
@@ -903,7 +1661,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 1,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11023,
@@ -914,7 +1675,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 2,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11024,
@@ -925,7 +1689,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 3,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11025,
@@ -936,7 +1703,16 @@
       "airtime": "08:00",
       "offset": "",
       "order": 4,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "みもも",
+        "やころ",
+        "ちょろみ",
+        "人形劇",
+        "みんな"
+      ],
+      "mood": "にぎやか",
+      "snippet": "ファンターネ！"
     },
     {
       "id": 11026,
@@ -947,7 +1723,18 @@
       "airtime": "08:00",
       "offset": "",
       "order": 5,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "明日",
+        "未来",
+        "前向き",
+        "応援",
+        "がんばれ",
+        "月歌",
+        "今月のうた"
+      ],
+      "mood": "感動",
+      "snippet": "あしたにむかって"
     },
     {
       "id": 11027,
@@ -958,7 +1745,18 @@
       "airtime": "08:00",
       "offset": "",
       "order": 6,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "アニメ",
+        "キャラクター",
+        "個性",
+        "友達",
+        "復活",
+        "35年ぶり",
+        "月水土"
+      ],
+      "mood": "なつかしい",
+      "snippet": "こんなこ いるかな"
     },
     {
       "id": 11028,
@@ -969,7 +1767,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 7,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11029,
@@ -980,7 +1781,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 8,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11030,
@@ -991,7 +1795,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 9,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11031,
@@ -1002,7 +1809,22 @@
       "airtime": "08:00",
       "offset": "",
       "order": 10,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "体操",
+        "たいそう",
+        "ダンダン",
+        "ダンス",
+        "踊る",
+        "おどる",
+        "朝",
+        "準備",
+        "エンディング直前",
+        "毎日",
+        "佐藤弘道"
+      ],
+      "mood": "元気",
+      "snippet": "からだ☆ダンダン"
     },
     {
       "id": 11032,
@@ -1013,7 +1835,21 @@
       "airtime": "08:00",
       "offset": "",
       "order": 11,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "きらきら",
+        "キラキラ",
+        "光る",
+        "星",
+        "ぽん",
+        "ED",
+        "エンディング",
+        "終わり",
+        "最後",
+        "手をつなぐ"
+      ],
+      "mood": "優しい",
+      "snippet": "きんらきら ぽん"
     },
     {
       "id": 11033,
@@ -1024,7 +1860,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 1,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11034,
@@ -1035,7 +1874,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 2,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11035,
@@ -1046,7 +1888,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 3,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11036,
@@ -1057,7 +1902,16 @@
       "airtime": "08:00",
       "offset": "",
       "order": 4,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "みもも",
+        "やころ",
+        "ちょろみ",
+        "人形劇",
+        "みんな"
+      ],
+      "mood": "にぎやか",
+      "snippet": "ファンターネ！"
     },
     {
       "id": 11037,
@@ -1068,7 +1922,18 @@
       "airtime": "08:00",
       "offset": "",
       "order": 5,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "明日",
+        "未来",
+        "前向き",
+        "応援",
+        "がんばれ",
+        "月歌",
+        "今月のうた"
+      ],
+      "mood": "感動",
+      "snippet": "あしたにむかって"
     },
     {
       "id": 11038,
@@ -1079,7 +1944,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 6,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11039,
@@ -1090,7 +1958,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 7,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11040,
@@ -1101,7 +1972,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 8,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11041,
@@ -1112,7 +1986,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 9,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11042,
@@ -1123,7 +2000,22 @@
       "airtime": "08:00",
       "offset": "",
       "order": 10,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "体操",
+        "たいそう",
+        "ダンダン",
+        "ダンス",
+        "踊る",
+        "おどる",
+        "朝",
+        "準備",
+        "エンディング直前",
+        "毎日",
+        "佐藤弘道"
+      ],
+      "mood": "元気",
+      "snippet": "からだ☆ダンダン"
     },
     {
       "id": 11043,
@@ -1134,7 +2026,21 @@
       "airtime": "08:00",
       "offset": "",
       "order": 11,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "きらきら",
+        "キラキラ",
+        "光る",
+        "星",
+        "ぽん",
+        "ED",
+        "エンディング",
+        "終わり",
+        "最後",
+        "手をつなぐ"
+      ],
+      "mood": "優しい",
+      "snippet": "きんらきら ぽん"
     },
     {
       "id": 11044,
@@ -1145,7 +2051,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 1,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11045,
@@ -1156,7 +2065,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 2,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11046,
@@ -1167,7 +2079,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 3,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11047,
@@ -1178,7 +2093,16 @@
       "airtime": "08:00",
       "offset": "",
       "order": 4,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "みもも",
+        "やころ",
+        "ちょろみ",
+        "人形劇",
+        "みんな"
+      ],
+      "mood": "にぎやか",
+      "snippet": "ファンターネ！"
     },
     {
       "id": 11048,
@@ -1189,7 +2113,18 @@
       "airtime": "08:00",
       "offset": "",
       "order": 5,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "明日",
+        "未来",
+        "前向き",
+        "応援",
+        "がんばれ",
+        "月歌",
+        "今月のうた"
+      ],
+      "mood": "感動",
+      "snippet": "あしたにむかって"
     },
     {
       "id": 11049,
@@ -1200,7 +2135,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 6,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11050,
@@ -1211,7 +2149,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 7,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11051,
@@ -1222,7 +2163,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 8,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11052,
@@ -1233,7 +2177,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 9,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11053,
@@ -1244,7 +2191,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 10,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11054,
@@ -1255,7 +2205,22 @@
       "airtime": "08:00",
       "offset": "",
       "order": 11,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "体操",
+        "たいそう",
+        "ダンダン",
+        "ダンス",
+        "踊る",
+        "おどる",
+        "朝",
+        "準備",
+        "エンディング直前",
+        "毎日",
+        "佐藤弘道"
+      ],
+      "mood": "元気",
+      "snippet": "からだ☆ダンダン"
     },
     {
       "id": 11055,
@@ -1266,7 +2231,21 @@
       "airtime": "08:00",
       "offset": "",
       "order": 12,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "きらきら",
+        "キラキラ",
+        "光る",
+        "星",
+        "ぽん",
+        "ED",
+        "エンディング",
+        "終わり",
+        "最後",
+        "手をつなぐ"
+      ],
+      "mood": "優しい",
+      "snippet": "きんらきら ぽん"
     },
     {
       "id": 11056,
@@ -1277,7 +2256,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 1,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11057,
@@ -1288,7 +2270,18 @@
       "airtime": "08:00",
       "offset": "",
       "order": 2,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "明日",
+        "未来",
+        "前向き",
+        "応援",
+        "がんばれ",
+        "月歌",
+        "今月のうた"
+      ],
+      "mood": "感動",
+      "snippet": "あしたにむかって"
     },
     {
       "id": 11058,
@@ -1299,7 +2292,18 @@
       "airtime": "08:00",
       "offset": "",
       "order": 3,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "アニメ",
+        "キャラクター",
+        "個性",
+        "友達",
+        "復活",
+        "35年ぶり",
+        "月水土"
+      ],
+      "mood": "なつかしい",
+      "snippet": "こんなこ いるかな"
     },
     {
       "id": 11059,
@@ -1310,7 +2314,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 4,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11060,
@@ -1322,6 +2329,9 @@
       "offset": "",
       "order": 5,
       "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": "",
       "parent": "ファンターネ！とうたおう"
     },
     {
@@ -1333,7 +2343,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 6,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11062,
@@ -1344,7 +2357,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 7,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11063,
@@ -1355,7 +2371,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 8,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11064,
@@ -1366,7 +2385,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 9,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11065,
@@ -1377,7 +2399,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 10,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11066,
@@ -1388,7 +2413,19 @@
       "airtime": "08:00",
       "offset": "",
       "order": 11,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "太鼓",
+        "たいこ",
+        "ドンドン",
+        "ちいさなたいこ",
+        "トントン",
+        "音",
+        "大きい",
+        "小さい"
+      ],
+      "mood": "元気",
+      "snippet": "おおきな たいこ ドーン ドン ドン"
     },
     {
       "id": 11067,
@@ -1399,7 +2436,10 @@
       "airtime": "08:00",
       "offset": "",
       "order": 12,
-      "fav": false
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
     },
     {
       "id": 11068,
@@ -1410,7 +2450,22 @@
       "airtime": "08:00",
       "offset": "",
       "order": 13,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "体操",
+        "たいそう",
+        "ダンダン",
+        "ダンス",
+        "踊る",
+        "おどる",
+        "朝",
+        "準備",
+        "エンディング直前",
+        "毎日",
+        "佐藤弘道"
+      ],
+      "mood": "元気",
+      "snippet": "からだ☆ダンダン"
     },
     {
       "id": 11069,
@@ -1421,7 +2476,1261 @@
       "airtime": "08:00",
       "offset": "",
       "order": 14,
-      "fav": false
+      "fav": false,
+      "keywords": [
+        "きらきら",
+        "キラキラ",
+        "光る",
+        "星",
+        "ぽん",
+        "ED",
+        "エンディング",
+        "終わり",
+        "最後",
+        "手をつなぐ"
+      ],
+      "mood": "優しい",
+      "snippet": "きんらきら ぽん"
+    },
+    {
+      "id": 12000,
+      "show": "okaasan",
+      "title": "きみのなまえ",
+      "corner": "うた",
+      "date": "2026-03-30",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 1,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12001,
+      "show": "okaasan",
+      "title": "はじめてはじめまして",
+      "corner": "うた",
+      "date": "2026-03-30",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 2,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12002,
+      "show": "okaasan",
+      "title": "ことりのうた",
+      "corner": "人形劇",
+      "date": "2026-03-30",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 3,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12003,
+      "show": "okaasan",
+      "title": "ファンターネ！",
+      "corner": "人形劇",
+      "date": "2026-03-30",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 4,
+      "fav": false,
+      "keywords": [
+        "みもも",
+        "やころ",
+        "ちょろみ",
+        "人形劇",
+        "みんな"
+      ],
+      "mood": "にぎやか",
+      "snippet": "ファンターネ！"
+    },
+    {
+      "id": 12004,
+      "show": "okaasan",
+      "title": "あしたにむかって",
+      "corner": "うた",
+      "date": "2026-03-30",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 5,
+      "fav": false,
+      "keywords": [
+        "明日",
+        "未来",
+        "前向き",
+        "応援",
+        "がんばれ",
+        "月歌",
+        "今月のうた"
+      ],
+      "mood": "感動",
+      "snippet": "あしたにむかって"
+    },
+    {
+      "id": 12005,
+      "show": "okaasan",
+      "title": "こんなこいるかな",
+      "corner": "アニメ",
+      "date": "2026-03-30",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 6,
+      "fav": false,
+      "keywords": [
+        "アニメ",
+        "キャラクター",
+        "個性",
+        "友達",
+        "復活",
+        "35年ぶり",
+        "月水土"
+      ],
+      "mood": "なつかしい",
+      "snippet": "こんなこ いるかな"
+    },
+    {
+      "id": 12006,
+      "show": "okaasan",
+      "title": "ぱくぱくるんるん",
+      "corner": "コーナー",
+      "date": "2026-03-30",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 7,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12007,
+      "show": "okaasan",
+      "title": "ファンファンコロリンパ",
+      "corner": "うた",
+      "date": "2026-03-30",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 8,
+      "fav": false,
+      "keywords": [
+        "ファンファン",
+        "コロリンパ",
+        "兄姉",
+        "新しい"
+      ],
+      "mood": "楽しい",
+      "snippet": ""
+    },
+    {
+      "id": 12008,
+      "show": "okaasan",
+      "title": "きたきつね",
+      "corner": "コーナー",
+      "date": "2026-03-30",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 9,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12009,
+      "show": "okaasan",
+      "title": "からだ☆ダンダン",
+      "corner": "体操",
+      "date": "2026-03-30",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 10,
+      "fav": false,
+      "keywords": [
+        "体操",
+        "たいそう",
+        "ダンダン",
+        "ダンス",
+        "踊る",
+        "おどる",
+        "朝",
+        "準備",
+        "エンディング直前",
+        "毎日",
+        "佐藤弘道"
+      ],
+      "mood": "元気",
+      "snippet": "からだ☆ダンダン"
+    },
+    {
+      "id": 12010,
+      "show": "okaasan",
+      "title": "きんらきら ぽん",
+      "corner": "コーナー",
+      "date": "2026-03-30",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 11,
+      "fav": false,
+      "keywords": [
+        "きらきら",
+        "キラキラ",
+        "光る",
+        "星",
+        "ぽん",
+        "ED",
+        "エンディング",
+        "終わり",
+        "最後",
+        "手をつなぐ"
+      ],
+      "mood": "優しい",
+      "snippet": "きんらきら ぽん"
+    },
+    {
+      "id": 12011,
+      "show": "okaasan",
+      "title": "あ・い・う・え・おにぎり",
+      "corner": "うた",
+      "date": "2026-03-31",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 1,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12012,
+      "show": "okaasan",
+      "title": "まほうのくつ",
+      "corner": "アニメ",
+      "date": "2026-03-31",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 2,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12013,
+      "show": "okaasan",
+      "title": "ひげをはやしたい",
+      "corner": "うた",
+      "date": "2026-03-31",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 3,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12014,
+      "show": "okaasan",
+      "title": "ファンターネ！",
+      "corner": "人形劇",
+      "date": "2026-03-31",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 4,
+      "fav": false,
+      "keywords": [
+        "みもも",
+        "やころ",
+        "ちょろみ",
+        "人形劇",
+        "みんな"
+      ],
+      "mood": "にぎやか",
+      "snippet": "ファンターネ！"
+    },
+    {
+      "id": 12015,
+      "show": "okaasan",
+      "title": "あしたにむかって",
+      "corner": "うた",
+      "date": "2026-03-31",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 5,
+      "fav": false,
+      "keywords": [
+        "明日",
+        "未来",
+        "前向き",
+        "応援",
+        "がんばれ",
+        "月歌",
+        "今月のうた"
+      ],
+      "mood": "感動",
+      "snippet": "あしたにむかって"
+    },
+    {
+      "id": 12016,
+      "show": "okaasan",
+      "title": "こんなこいるかな",
+      "corner": "アニメ",
+      "date": "2026-03-31",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 6,
+      "fav": false,
+      "keywords": [
+        "アニメ",
+        "キャラクター",
+        "個性",
+        "友達",
+        "復活",
+        "35年ぶり",
+        "月水土"
+      ],
+      "mood": "なつかしい",
+      "snippet": "こんなこ いるかな"
+    },
+    {
+      "id": 12017,
+      "show": "okaasan",
+      "title": "てーを！",
+      "corner": "コーナー",
+      "date": "2026-03-31",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 7,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12018,
+      "show": "okaasan",
+      "title": "さすらいのポーズマン",
+      "corner": "うた",
+      "date": "2026-03-31",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 8,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12019,
+      "show": "okaasan",
+      "title": "ごりら",
+      "corner": "コーナー",
+      "date": "2026-03-31",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 9,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12020,
+      "show": "okaasan",
+      "title": "からだ☆ダンダン",
+      "corner": "体操",
+      "date": "2026-03-31",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 10,
+      "fav": false,
+      "keywords": [
+        "体操",
+        "たいそう",
+        "ダンダン",
+        "ダンス",
+        "踊る",
+        "おどる",
+        "朝",
+        "準備",
+        "エンディング直前",
+        "毎日",
+        "佐藤弘道"
+      ],
+      "mood": "元気",
+      "snippet": "からだ☆ダンダン"
+    },
+    {
+      "id": 12021,
+      "show": "okaasan",
+      "title": "きんらきら ぽん",
+      "corner": "コーナー",
+      "date": "2026-03-31",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 11,
+      "fav": false,
+      "keywords": [
+        "きらきら",
+        "キラキラ",
+        "光る",
+        "星",
+        "ぽん",
+        "ED",
+        "エンディング",
+        "終わり",
+        "最後",
+        "手をつなぐ"
+      ],
+      "mood": "優しい",
+      "snippet": "きんらきら ぽん"
+    },
+    {
+      "id": 12022,
+      "show": "okaasan",
+      "title": "もぐらトンネル",
+      "corner": "うた",
+      "date": "2026-04-01",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 1,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12023,
+      "show": "okaasan",
+      "title": "むしむしフェスティバル",
+      "corner": "アニメ",
+      "date": "2026-04-01",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 2,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12024,
+      "show": "okaasan",
+      "title": "たんぽぽちゃんとつくしくん",
+      "corner": "うた",
+      "date": "2026-04-01",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 3,
+      "fav": false,
+      "keywords": [
+        "たんぽぽ",
+        "つくし",
+        "春",
+        "花",
+        "俵万智"
+      ],
+      "mood": "優しい",
+      "snippet": ""
+    },
+    {
+      "id": 12025,
+      "show": "okaasan",
+      "title": "ファンターネ！",
+      "corner": "人形劇",
+      "date": "2026-04-01",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 4,
+      "fav": false,
+      "keywords": [
+        "みもも",
+        "やころ",
+        "ちょろみ",
+        "人形劇",
+        "みんな"
+      ],
+      "mood": "にぎやか",
+      "snippet": "ファンターネ！"
+    },
+    {
+      "id": 12026,
+      "show": "okaasan",
+      "title": "あしたにむかって",
+      "corner": "うた",
+      "date": "2026-04-01",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 5,
+      "fav": false,
+      "keywords": [
+        "明日",
+        "未来",
+        "前向き",
+        "応援",
+        "がんばれ",
+        "月歌",
+        "今月のうた"
+      ],
+      "mood": "感動",
+      "snippet": "あしたにむかって"
+    },
+    {
+      "id": 12027,
+      "show": "okaasan",
+      "title": "こんなこいるかな",
+      "corner": "アニメ",
+      "date": "2026-04-01",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 6,
+      "fav": false,
+      "keywords": [
+        "アニメ",
+        "キャラクター",
+        "個性",
+        "友達",
+        "復活",
+        "35年ぶり",
+        "月水土"
+      ],
+      "mood": "なつかしい",
+      "snippet": "こんなこ いるかな"
+    },
+    {
+      "id": 12028,
+      "show": "okaasan",
+      "title": "はみがきじょうずかな",
+      "corner": "コーナー",
+      "date": "2026-04-01",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 7,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12029,
+      "show": "okaasan",
+      "title": "おえかきクレッピー",
+      "corner": "うた",
+      "date": "2026-04-01",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 8,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12030,
+      "show": "okaasan",
+      "title": "もぐら",
+      "corner": "コーナー",
+      "date": "2026-04-01",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 9,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12031,
+      "show": "okaasan",
+      "title": "からだ☆ダンダン",
+      "corner": "体操",
+      "date": "2026-04-01",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 10,
+      "fav": false,
+      "keywords": [
+        "体操",
+        "たいそう",
+        "ダンダン",
+        "ダンス",
+        "踊る",
+        "おどる",
+        "朝",
+        "準備",
+        "エンディング直前",
+        "毎日",
+        "佐藤弘道"
+      ],
+      "mood": "元気",
+      "snippet": "からだ☆ダンダン"
+    },
+    {
+      "id": 12032,
+      "show": "okaasan",
+      "title": "きんらきら ぽん",
+      "corner": "コーナー",
+      "date": "2026-04-01",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 11,
+      "fav": false,
+      "keywords": [
+        "きらきら",
+        "キラキラ",
+        "光る",
+        "星",
+        "ぽん",
+        "ED",
+        "エンディング",
+        "終わり",
+        "最後",
+        "手をつなぐ"
+      ],
+      "mood": "優しい",
+      "snippet": "きんらきら ぽん"
+    },
+    {
+      "id": 12033,
+      "show": "okaasan",
+      "title": "こぶたぬきつねこ",
+      "corner": "うた",
+      "date": "2026-04-02",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 1,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12034,
+      "show": "okaasan",
+      "title": "イップニップジャンプ",
+      "corner": "うた",
+      "date": "2026-04-02",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 2,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12035,
+      "show": "okaasan",
+      "title": "トマト",
+      "corner": "うた",
+      "date": "2026-04-02",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 3,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12036,
+      "show": "okaasan",
+      "title": "ファンターネ！",
+      "corner": "人形劇",
+      "date": "2026-04-02",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 4,
+      "fav": false,
+      "keywords": [
+        "みもも",
+        "やころ",
+        "ちょろみ",
+        "人形劇",
+        "みんな"
+      ],
+      "mood": "にぎやか",
+      "snippet": "ファンターネ！"
+    },
+    {
+      "id": 12037,
+      "show": "okaasan",
+      "title": "あしたにむかって",
+      "corner": "うた",
+      "date": "2026-04-02",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 5,
+      "fav": false,
+      "keywords": [
+        "明日",
+        "未来",
+        "前向き",
+        "応援",
+        "がんばれ",
+        "月歌",
+        "今月のうた"
+      ],
+      "mood": "感動",
+      "snippet": "あしたにむかって"
+    },
+    {
+      "id": 12038,
+      "show": "okaasan",
+      "title": "めいたんていやころ",
+      "corner": "アニメ",
+      "date": "2026-04-02",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 6,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12039,
+      "show": "okaasan",
+      "title": "パジャマでおじゃま",
+      "corner": "コーナー",
+      "date": "2026-04-02",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 7,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12040,
+      "show": "okaasan",
+      "title": "しりたガエルのけけちゃま",
+      "corner": "うた",
+      "date": "2026-04-02",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 8,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12041,
+      "show": "okaasan",
+      "title": "こあら",
+      "corner": "コーナー",
+      "date": "2026-04-02",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 9,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12042,
+      "show": "okaasan",
+      "title": "からだ☆ダンダン",
+      "corner": "体操",
+      "date": "2026-04-02",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 10,
+      "fav": false,
+      "keywords": [
+        "体操",
+        "たいそう",
+        "ダンダン",
+        "ダンス",
+        "踊る",
+        "おどる",
+        "朝",
+        "準備",
+        "エンディング直前",
+        "毎日",
+        "佐藤弘道"
+      ],
+      "mood": "元気",
+      "snippet": "からだ☆ダンダン"
+    },
+    {
+      "id": 12043,
+      "show": "okaasan",
+      "title": "きんらきら ぽん",
+      "corner": "コーナー",
+      "date": "2026-04-02",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 11,
+      "fav": false,
+      "keywords": [
+        "きらきら",
+        "キラキラ",
+        "光る",
+        "星",
+        "ぽん",
+        "ED",
+        "エンディング",
+        "終わり",
+        "最後",
+        "手をつなぐ"
+      ],
+      "mood": "優しい",
+      "snippet": "きんらきら ぽん"
+    },
+    {
+      "id": 12044,
+      "show": "okaasan",
+      "title": "もしもしカメラ",
+      "corner": "うた",
+      "date": "2026-04-03",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 1,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12045,
+      "show": "okaasan",
+      "title": "イカイカイルカ",
+      "corner": "うた",
+      "date": "2026-04-03",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 2,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12046,
+      "show": "okaasan",
+      "title": "ちびっこカウボーイ",
+      "corner": "人形劇",
+      "date": "2026-04-03",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 3,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12047,
+      "show": "okaasan",
+      "title": "ファンターネ！",
+      "corner": "人形劇",
+      "date": "2026-04-03",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 4,
+      "fav": false,
+      "keywords": [
+        "みもも",
+        "やころ",
+        "ちょろみ",
+        "人形劇",
+        "みんな"
+      ],
+      "mood": "にぎやか",
+      "snippet": "ファンターネ！"
+    },
+    {
+      "id": 12048,
+      "show": "okaasan",
+      "title": "あしたにむかって",
+      "corner": "うた",
+      "date": "2026-04-03",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 5,
+      "fav": false,
+      "keywords": [
+        "明日",
+        "未来",
+        "前向き",
+        "応援",
+        "がんばれ",
+        "月歌",
+        "今月のうた"
+      ],
+      "mood": "感動",
+      "snippet": "あしたにむかって"
+    },
+    {
+      "id": 12049,
+      "show": "okaasan",
+      "title": "ドン！ドン！おかたづけ",
+      "corner": "コーナー",
+      "date": "2026-04-03",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 6,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12050,
+      "show": "okaasan",
+      "title": "やぎさんゆうびん",
+      "corner": "うた",
+      "date": "2026-04-03",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 7,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12051,
+      "show": "okaasan",
+      "title": "ほっとけーきはすてき",
+      "corner": "うた",
+      "date": "2026-04-03",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 8,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12052,
+      "show": "okaasan",
+      "title": "ファンキーマーキーチャンネル みせて！はなして！",
+      "corner": "コーナー",
+      "date": "2026-04-03",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 9,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12053,
+      "show": "okaasan",
+      "title": "ゆきうさぎ",
+      "corner": "コーナー",
+      "date": "2026-04-03",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 10,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12054,
+      "show": "okaasan",
+      "title": "からだ☆ダンダン",
+      "corner": "体操",
+      "date": "2026-04-03",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 11,
+      "fav": false,
+      "keywords": [
+        "体操",
+        "たいそう",
+        "ダンダン",
+        "ダンス",
+        "踊る",
+        "おどる",
+        "朝",
+        "準備",
+        "エンディング直前",
+        "毎日",
+        "佐藤弘道"
+      ],
+      "mood": "元気",
+      "snippet": "からだ☆ダンダン"
+    },
+    {
+      "id": 12055,
+      "show": "okaasan",
+      "title": "きんらきら ぽん",
+      "corner": "コーナー",
+      "date": "2026-04-03",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 12,
+      "fav": false,
+      "keywords": [
+        "きらきら",
+        "キラキラ",
+        "光る",
+        "星",
+        "ぽん",
+        "ED",
+        "エンディング",
+        "終わり",
+        "最後",
+        "手をつなぐ"
+      ],
+      "mood": "優しい",
+      "snippet": "きんらきら ぽん"
+    },
+    {
+      "id": 12056,
+      "show": "okaasan",
+      "title": "しゅりけんにんじゃ",
+      "corner": "うた",
+      "date": "2026-04-04",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 1,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12057,
+      "show": "okaasan",
+      "title": "あしたにむかって",
+      "corner": "うた",
+      "date": "2026-04-04",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 2,
+      "fav": false,
+      "keywords": [
+        "明日",
+        "未来",
+        "前向き",
+        "応援",
+        "がんばれ",
+        "月歌",
+        "今月のうた"
+      ],
+      "mood": "感動",
+      "snippet": "あしたにむかって"
+    },
+    {
+      "id": 12058,
+      "show": "okaasan",
+      "title": "こんなこいるかな",
+      "corner": "アニメ",
+      "date": "2026-04-04",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 3,
+      "fav": false,
+      "keywords": [
+        "アニメ",
+        "キャラクター",
+        "個性",
+        "友達",
+        "復活",
+        "35年ぶり",
+        "月水土"
+      ],
+      "mood": "なつかしい",
+      "snippet": "こんなこ いるかな"
+    },
+    {
+      "id": 12059,
+      "show": "okaasan",
+      "title": "ファンターネ！とうたおう",
+      "corner": "人形劇",
+      "date": "2026-04-04",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 4,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12060,
+      "show": "okaasan",
+      "title": "ようこそ ファンターネ島へ",
+      "corner": "うた",
+      "date": "2026-04-04",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 5,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": "",
+      "parent": "ファンターネ！とうたおう"
+    },
+    {
+      "id": 12061,
+      "show": "okaasan",
+      "title": "あ・そ・ぎゅー",
+      "corner": "体操",
+      "date": "2026-04-04",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 6,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12062,
+      "show": "okaasan",
+      "title": "やくめをおえてこのたび自由になりました団",
+      "corner": "アニメ",
+      "date": "2026-04-04",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 7,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12063,
+      "show": "okaasan",
+      "title": "すすめ！すってんすっく！",
+      "corner": "アニメ",
+      "date": "2026-04-04",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 8,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12064,
+      "show": "okaasan",
+      "title": "さるさるさ",
+      "corner": "うた",
+      "date": "2026-04-04",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 9,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12065,
+      "show": "okaasan",
+      "title": "じゃくじゃくあまのじゃく",
+      "corner": "アニメ",
+      "date": "2026-04-04",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 10,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12066,
+      "show": "okaasan",
+      "title": "ぞうのそうぞう",
+      "corner": "アニメ",
+      "date": "2026-04-04",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 11,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12067,
+      "show": "okaasan",
+      "title": "らけっとはちどり",
+      "corner": "コーナー",
+      "date": "2026-04-04",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 12,
+      "fav": false,
+      "keywords": [],
+      "mood": "",
+      "snippet": ""
+    },
+    {
+      "id": 12068,
+      "show": "okaasan",
+      "title": "からだ☆ダンダン",
+      "corner": "体操",
+      "date": "2026-04-04",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 13,
+      "fav": false,
+      "keywords": [
+        "体操",
+        "たいそう",
+        "ダンダン",
+        "ダンス",
+        "踊る",
+        "おどる",
+        "朝",
+        "準備",
+        "エンディング直前",
+        "毎日",
+        "佐藤弘道"
+      ],
+      "mood": "元気",
+      "snippet": "からだ☆ダンダン"
+    },
+    {
+      "id": 12069,
+      "show": "okaasan",
+      "title": "きんらきら ぽん",
+      "corner": "コーナー",
+      "date": "2026-04-04",
+      "airtime": "08:00",
+      "offset": "",
+      "order": 14,
+      "fav": false,
+      "keywords": [
+        "きらきら",
+        "キラキラ",
+        "光る",
+        "星",
+        "ぽん",
+        "ED",
+        "エンディング",
+        "終わり",
+        "最後",
+        "手をつなぐ"
+      ],
+      "mood": "優しい",
+      "snippet": "きんらきら ぽん"
     }
   ]
 }

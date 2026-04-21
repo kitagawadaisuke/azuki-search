@@ -23,7 +23,7 @@ jobs:
         run: pip install requests beautifulsoup4
 
       - name: Run scraper
-        run: python3 scraper.py --weeks 2
+        run: python3 scraper.py --weeks 4
 
       - name: Commit if changed
         run: |

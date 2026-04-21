@@ -520,6 +520,93 @@
     cursor: pointer;
   }
   .row-fav.fav { color: var(--accent); }
+
+  /* 日付タブ（横スクロール） */
+  .day-tabs {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 4px 0 10px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-snap-type: x mandatory;
+  }
+  .day-tabs::-webkit-scrollbar { display: none; }
+  .day-tab {
+    flex: 0 0 auto;
+    min-width: 56px;
+    padding: 8px 10px;
+    border-radius: 12px;
+    background: var(--surface);
+    color: var(--text-dim);
+    border: 2px solid transparent;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.2;
+    cursor: pointer;
+    scroll-snap-align: start;
+    transition: all 0.12s;
+  }
+  .day-tab .dt-wd {
+    font-size: 11px;
+    opacity: 0.7;
+    display: block;
+  }
+  .day-tab .dt-d {
+    font-size: 18px;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+  }
+  .day-tab .dt-sub {
+    font-size: 10px;
+    opacity: 0.6;
+    margin-top: 2px;
+    display: block;
+  }
+  .day-tab.active {
+    background: var(--accent);
+    color: #1a1a2e;
+    border-color: var(--accent);
+  }
+  .day-tab.active .dt-wd,
+  .day-tab.active .dt-sub { opacity: 0.85; }
+  .day-tab.today::before {
+    content: "●";
+    color: var(--accent-2);
+    font-size: 8px;
+    display: block;
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+  .day-tab.active.today::before { color: #1a1a2e; }
+
+  /* タブ下のコンテンツヘッダ */
+  .selected-day-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 8px 4px 4px;
+    margin-bottom: 4px;
+  }
+  .selected-day-header .big {
+    font-size: 20px;
+    font-weight: 800;
+  }
+  .selected-day-header .sub {
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  /* 検索でヒット強調 */
+  .row-tag .mood-chip {
+    display: inline-block;
+    font-size: 10px;
+    padding: 1px 6px;
+    background: rgba(255,184,77,0.15);
+    color: var(--accent);
+    border-radius: 999px;
+    margin-left: 4px;
+  }
 </style>
 </head>
 <body>
@@ -536,7 +623,7 @@
 </header>
 
 <main id="main">
-  <div class="section-title" id="section-title">直近2週間の放送</div>
+  <div class="day-tabs" id="day-tabs"></div>
   <div id="list"></div>
 </main>
 
@@ -659,6 +746,7 @@ function pushRecent(q) {
 const state = {
   filter: "all",
   query: "",
+  selectedDate: null,  // タブで選択中の日付
   favs: new Set(data.filter(d => d.fav).map(d => d.id)),
 };
 
@@ -689,6 +777,20 @@ function todayStrIso() {
   return `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,"0")}-${String(t.getDate()).padStart(2,"0")}`;
 }
 
+function searchMatches(d, q) {
+  if (!q) return true;
+  if (normalize(d.title).includes(q)) return true;
+  if (normalize(d.corner).includes(q)) return true;
+  if (d.mood && normalize(d.mood).includes(q)) return true;
+  if (d.snippet && normalize(d.snippet).includes(q)) return true;
+  if (d.keywords) {
+    for (const kw of d.keywords) {
+      if (normalize(kw).includes(q)) return true;
+    }
+  }
+  return false;
+}
+
 function render() {
   const qRaw = state.query.trim();
   const q = normalize(qRaw);
@@ -696,9 +798,11 @@ function render() {
     if (state.filter === "okaasan" && d.show !== "okaasan") return false;
     if (state.filter === "inai" && d.show !== "inai") return false;
     if (state.filter === "fav" && !state.favs.has(d.id)) return false;
-    if (q && !normalize(d.title).includes(q) && !normalize(d.corner).includes(q)) return false;
+    if (!searchMatches(d, q)) return false;
     return true;
   });
+
+  renderDayTabs();
 
   items.sort((a, b) => b.date.localeCompare(a.date) || a.airtime.localeCompare(b.airtime));
 
@@ -741,32 +845,37 @@ function render() {
     return;
   }
 
-  // 通常表示：日別タイムライン（新しい日付から下に14日スクロール）
+  // 通常表示：日付タブで選択された1日分のタイムラインのみ表示
   const byDay = {};
   items.forEach(d => {
     const k = `${d.date}|${d.show}`;
     if (!byDay[k]) byDay[k] = { date: d.date, show: d.show, items: [] };
     byDay[k].items.push(d);
   });
-  // 各日内は order昇順（放送順）
   Object.values(byDay).forEach(g => g.items.sort((a, b) => (a.order || 0) - (b.order || 0)));
-  // 日付降順（新しい日が上）
-  const days = Object.values(byDay).sort((a, b) =>
-    b.date.localeCompare(a.date) || (a.show < b.show ? -1 : 1)
-  );
 
-  const todayStr = todayStrIso();
-  $list.innerHTML = days.map(g => {
-    const isToday = g.date === todayStr;
-    const dateLabel = fmtDate(g.date);
-    const weekday = ["日","月","火","水","木","金","土"][new Date(g.date).getDay()];
-    const dateSub = isToday ? `${g.date.slice(5).replace("-","/")} (${weekday})` : "";
-    return `
+  const selected = state.selectedDate;
+  const dayGroups = Object.values(byDay).filter(g => g.date === selected)
+    .sort((a, b) => a.show < b.show ? -1 : 1);
+
+  if (dayGroups.length === 0) {
+    $list.innerHTML = `<div class="empty"><div class="empty-emoji">📅</div>${selected ? fmtDate(selected) : "この日"}の放送データなし<br><small>別の日を選んでみてね</small></div>`;
+    return;
+  }
+
+  const weekday = ["日","月","火","水","木","金","土"][new Date(selected).getDay()];
+  const dateLabel = fmtDate(selected);
+  const dateSub = `${selected.slice(5).replace("-","/")} (${weekday})`;
+
+  $list.innerHTML = `
+    <div class="selected-day-header">
+      <span class="big">${dateLabel}</span>
+      <span class="sub">${dateSub}</span>
+    </div>
+  ` + dayGroups.map(g => `
     <div class="day-block">
-      <div class="day-header">
-        <span class="day-label ${isToday ? "today" : ""}">${dateLabel}</span>
-        ${dateSub ? `<span class="day-sub">${dateSub}</span>` : ""}
-        <span class="day-show-badge" style="background:${g.show==="inai"?"rgba(255,107,157,0.18)":"rgba(255,184,77,0.15)"};color:${g.show==="inai"?"var(--inai)":"var(--accent)"};">${SHOWS[g.show].name}</span>
+      <div class="day-header" style="margin-top:4px;padding-bottom:4px;">
+        <span class="day-show-badge" style="margin-left:0;background:${g.show==="inai"?"rgba(255,107,157,0.18)":"rgba(255,184,77,0.15)"};color:${g.show==="inai"?"var(--inai)":"var(--accent)"};">${SHOWS[g.show].name}</span>
       </div>
       <div class="timeline">
         ${g.items.map(d => {
@@ -774,19 +883,54 @@ function render() {
           const cornerClass = ({うた:"corner-uta",人形劇:"corner-ningyo",アニメ:"corner-anime",体操:"corner-taiso",コーナー:"corner-corner"})[d.corner] || "corner-corner";
           const parentTag = d.parent ? ` ・ ${escapeHtml(d.parent)}内` : "";
           const isNested = !!d.parent;
+          const moodChip = d.mood ? `<span class="mood-chip">${escapeHtml(d.mood)}</span>` : "";
           return `
           <div class="timeline-row ${isFav?"is-fav":""} ${isNested?"is-nested":""}" data-id="${d.id}">
             <div class="seq">${isNested ? "♪" : (d.order || "?")}</div>
             <div class="row-main">
               <div class="row-title">${escapeHtml(d.title)}</div>
-              <div class="row-tag ${cornerClass}">${escapeHtml(d.corner)}${parentTag}</div>
+              <div class="row-tag ${cornerClass}">${escapeHtml(d.corner)}${parentTag}${moodChip}</div>
             </div>
             <button class="row-fav ${isFav?"fav":""}" data-fav-id="${d.id}" aria-label="お気に入り">${isFav?"★":"☆"}</button>
           </div>`;
         }).join("")}
       </div>
-    </div>`;
+    </div>
+  `).join("");
+}
+
+function renderDayTabs() {
+  const $tabs = document.getElementById("day-tabs");
+  if (!$tabs) return;
+  const allDates = [...new Set(data.map(d => d.date))].sort().reverse();
+  if (allDates.length === 0) { $tabs.innerHTML = ""; return; }
+  if (!state.selectedDate || !allDates.includes(state.selectedDate)) {
+    const today = todayStrIso();
+    state.selectedDate = allDates.includes(today) ? today : allDates[0];
+  }
+  const todayStr = todayStrIso();
+  const wdays = ["日","月","火","水","木","金","土"];
+  $tabs.innerHTML = allDates.map(d => {
+    const dt = new Date(d);
+    const isSel = d === state.selectedDate;
+    const isToday = d === todayStr;
+    const diffDays = Math.round((new Date(todayStr) - dt) / (1000*60*60*24));
+    let sub = "";
+    if (diffDays === 0) sub = "今日";
+    else if (diffDays === 1) sub = "きのう";
+    else if (diffDays === -1) sub = "あした";
+    return `
+      <button class="day-tab ${isSel?"active":""} ${isToday?"today":""}" data-date="${d}">
+        <span class="dt-wd">${wdays[dt.getDay()]}</span>
+        <span class="dt-d">${dt.getDate()}</span>
+        <span class="dt-sub">${sub || `${dt.getMonth()+1}月`}</span>
+      </button>
+    `;
   }).join("");
+  requestAnimationFrame(() => {
+    const activeTab = $tabs.querySelector(".day-tab.active");
+    if (activeTab) activeTab.scrollIntoView({behavior:"instant", inline:"center", block:"nearest"});
+  });
 }
 
 function renderRecentSearches() {
@@ -827,6 +971,12 @@ document.addEventListener("click", e => {
     $search.value = state.query;
     render();
     renderRecentSearches();
+    return;
+  }
+  const dayTab = e.target.closest(".day-tab[data-date]");
+  if (dayTab) {
+    state.selectedDate = dayTab.dataset.date;
+    render();
   }
 });
 

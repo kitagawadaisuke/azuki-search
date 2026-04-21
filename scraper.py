@@ -19,6 +19,7 @@ import time
 import argparse
 import html as htmllib
 from datetime import date, timedelta, datetime
+from pathlib import Path
 from typing import Optional, List, Dict
 
 import requests
@@ -143,7 +144,22 @@ def clean_title(s: str) -> str:
     return s
 
 
+_KEYWORDS_DB: Optional[Dict] = None
+
+def load_keywords_db() -> Dict:
+    global _KEYWORDS_DB
+    if _KEYWORDS_DB is None:
+        path = Path(__file__).parent / "keywords.json"
+        if path.exists():
+            _KEYWORDS_DB = json.loads(path.read_text(encoding="utf-8"))
+        else:
+            _KEYWORDS_DB = {}
+    return _KEYWORDS_DB
+
+
 def make_item(item_id: int, show_key: str, title: str, section: str, d: date) -> Dict:
+    kw_db = load_keywords_db()
+    entry = kw_db.get(title, {}) if isinstance(kw_db.get(title), dict) else {}
     return {
         "id": item_id,
         "show": show_key,
@@ -154,12 +170,15 @@ def make_item(item_id: int, show_key: str, title: str, section: str, d: date) ->
         "offset": "",
         "order": 0,  # 後で日付ごとに振り直す
         "fav": False,
+        "keywords": entry.get("keywords", []),
+        "mood": entry.get("mood", ""),
+        "snippet": entry.get("snippet", ""),
     }
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--weeks", type=int, default=2, help="何週間分取るか（デフォルト2）")
+    ap.add_argument("--weeks", type=int, default=4, help="何週間分取るか（デフォルト4）")
     ap.add_argument("--out", default="data.json")
     args = ap.parse_args()
 
@@ -176,8 +195,8 @@ def main():
         all_items.extend(items)
         seed += 1000
 
-    # 直近 args.weeks*7 日でフィルタ
-    cutoff = date.today() - timedelta(days=args.weeks * 7)
+    # 直近 args.weeks*7 日でフィルタ（今日を含む）
+    cutoff = date.today() - timedelta(days=args.weeks * 7 - 1)
     all_items = [x for x in all_items if date.fromisoformat(x["date"]) >= cutoff]
 
     # 重複除去（同日・同曲）
