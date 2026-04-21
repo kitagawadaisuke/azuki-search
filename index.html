@@ -76,19 +76,25 @@
     text-align: center;
     color: var(--text);
     text-shadow: 0 1px 0 #fff, 0 2px 8px rgba(255, 138, 61, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
   }
-  h1 .dot {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    margin: 0 3px;
-    vertical-align: middle;
+  h1 .azuki-side {
+    width: 52px;
+    height: auto;
+    max-height: 68px;
+    object-fit: contain;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 4px rgba(61, 40, 23, 0.15));
   }
-  h1 .dot.d1 { background: var(--okaasan); }
-  h1 .dot.d2 { background: var(--inai); }
-  h1 .dot.d3 { background: var(--mint); }
-  h1 .dot.d4 { background: var(--sky); }
+  h1 .azuki-side.flip {
+    transform: scaleX(-1);
+  }
+  h1 .title-text {
+    line-height: 1;
+  }
 
   .search-box {
     width: 100%;
@@ -653,7 +659,11 @@
 <body>
 
 <header>
-  <h1><span class="dot d1"></span><span class="dot d2"></span> あずきサーチ <span class="dot d3"></span><span class="dot d4"></span></h1>
+  <h1>
+    <img class="azuki-side" src="assets/azuki-pose-thumb.png" alt="">
+    <span class="title-text">あずきサーチ</span>
+    <img class="azuki-side flip" src="assets/azuki-scene-thumb.png" alt="">
+  </h1>
   <input type="search" id="search" class="search-box" placeholder="曲名・コーナー名で検索…" autocomplete="off">
   <div class="filter-pills">
     <button class="pill active" data-filter="all">ぜんぶ</button>
