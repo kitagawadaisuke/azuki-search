@@ -347,7 +347,56 @@
     text-decoration: none;
     transition: background 0.15s;
   }
-  .action-btn:active { background: #2c344a; }
+  .action-btn:active { background: var(--surface-2); }
+
+  .meta-block {
+    background: rgba(255, 138, 61, 0.05);
+    border: 1px solid rgba(255, 138, 61, 0.15);
+    border-radius: 14px;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+  }
+  .meta-line {
+    display: flex;
+    gap: 10px;
+    padding: 5px 0;
+    font-size: 13px;
+    border-bottom: 1px dashed rgba(143, 115, 87, 0.12);
+    align-items: baseline;
+  }
+  .meta-line:last-child { border-bottom: none; }
+  .meta-label {
+    flex: 0 0 76px;
+    font-size: 11px;
+    color: var(--text-dim);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .meta-line span:last-child { flex: 1; color: var(--text); }
+  .meta-line.other-dates {
+    display: block;
+  }
+  .meta-line.other-dates .meta-label {
+    flex: unset;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .other-date-list {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .other-date-chip {
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: var(--surface-2);
+    color: var(--text);
+    border: 1px solid rgba(255, 138, 61, 0.2);
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .other-date-chip:active { background: var(--accent); color: #fff; }
   .action-icon {
     flex: 0 0 32px;
     height: 32px;
@@ -932,12 +981,17 @@ function todayStrIso() {
 function searchMatches(d, q) {
   if (!q) return true;
   const variants = expandQuery(q);
+  const creditsFlat = d.credits
+    ? Object.values(d.credits).flat().map(normalize)
+    : [];
   const haystack = [
     normalize(d.title),
     normalize(d.corner),
+    d.subcategory ? normalize(d.subcategory) : "",
     d.mood ? normalize(d.mood) : "",
     d.snippet ? normalize(d.snippet) : "",
     ...(d.keywords || []).map(normalize),
+    ...creditsFlat,
   ].join("|");
   for (const v of variants) {
     if (haystack.includes(v)) return true;
@@ -1204,18 +1258,58 @@ function openModal(id) {
   const d = data.find(x => x.id === id);
   if (!d) return;
   document.getElementById("modal-title").textContent = d.title;
-  document.getElementById("modal-show").textContent = `${SHOWS[d.show].name} ・ ${d.corner}`;
-  document.getElementById("modal-date").textContent = `${fmtDate(d.date)} ${d.airtime} 放送回`;
-  document.getElementById("modal-time").textContent = d.offset;
+  document.getElementById("modal-show").textContent = `${SHOWS[d.show].name} ・ ${d.corner}${d.parent ? ' ・ ' + d.parent + '内' : ''}`;
+  document.getElementById("modal-date").textContent = `${fmtDate(d.date)} ${d.airtime} 放送回 ・ #${d.order || "?"}曲目`;
+  document.getElementById("modal-time").textContent = d.offset || (d.order ? `${d.order}曲目` : "—");
   document.getElementById("modal").dataset.show = d.show;
+
+  // 詳細メタ情報（subcategory / credits / mood / snippet / 放送履歴）
+  const detailParts = [];
+
+  if (d.subcategory && d.subcategory !== d.corner) {
+    detailParts.push(`<div class="meta-line"><span class="meta-label">分類</span><span>${escapeHtml(d.subcategory)}</span></div>`);
+  }
+
+  if (d.credits) {
+    const labelMap = {
+      lyrics: "作詞", music: "作曲", arrange: "編曲",
+      vocals: "歌唱", cast: "出演", anim: "アニメ/イラスト",
+      original: "原作", script: "脚本", director: "演出",
+      choreo: "振付", bgm: "音楽", other: "その他",
+    };
+    for (const [k, v] of Object.entries(d.credits)) {
+      if (!v || !v.length) continue;
+      const label = labelMap[k] || k;
+      detailParts.push(`<div class="meta-line"><span class="meta-label">${label}</span><span>${escapeHtml(v.join("、"))}</span></div>`);
+    }
+  }
+
+  if (d.mood) {
+    detailParts.push(`<div class="meta-line"><span class="meta-label">ムード</span><span>${escapeHtml(d.mood)}</span></div>`);
+  }
+  if (d.snippet) {
+    detailParts.push(`<div class="meta-line"><span class="meta-label">歌い出し</span><span>♪ ${escapeHtml(d.snippet)}</span></div>`);
+  }
+
+  // 同じ曲の他の放送日
+  const sameTitle = data.filter(x => x.title === d.title && x.id !== d.id)
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, 10);
+  if (sameTitle.length > 0) {
+    const chips = sameTitle.map(x =>
+      `<button class="other-date-chip" data-jump-id="${x.id}">${fmtDate(x.date)}</button>`
+    ).join("");
+    detailParts.push(`<div class="meta-line other-dates"><span class="meta-label">他の放送日</span><div class="other-date-list">${chips}</div></div>`);
+  }
 
   const q = encodeURIComponent(d.title + " " + SHOWS[d.show].name);
   document.getElementById("modal-actions").innerHTML = `
-    <div class="action-btn" style="background: rgba(255,184,77,0.1); cursor: default;">
+    ${detailParts.length ? `<div class="meta-block">${detailParts.join("")}</div>` : ""}
+    <div class="action-btn" style="background: rgba(255,138,61,0.08); cursor: default;">
       <span class="action-icon icon-tv">📺</span>
       <div>
         <div style="font-size:14px; color:var(--text-dim); margin-bottom:2px;">録画機の操作手順</div>
-        <div style="font-size:13px; color:var(--text);">番組表 → ${fmtDate(d.date)} → ${SHOWS[d.show].name}<br>→ ${d.offset} までスキップ</div>
+        <div style="font-size:13px; color:var(--text);">番組表 → ${fmtDate(d.date)} → ${SHOWS[d.show].name}<br>→ ${d.order || "?"}曲目（${d.airtime}〜）</div>
       </div>
     </div>
     <a class="action-btn" href="https://www.youtube.com/results?search_query=${q}" target="_blank" rel="noopener">
@@ -1230,6 +1324,14 @@ function openModal(id) {
 }
 
 document.getElementById("modal-backdrop").addEventListener("click", e => {
+  // 他の放送日へジャンプ
+  const jump = e.target.closest("[data-jump-id]");
+  if (jump) {
+    document.getElementById("modal-backdrop").classList.remove("open");
+    const id = +jump.dataset.jumpId;
+    setTimeout(() => openModal(id), 220);
+    return;
+  }
   if (e.target.id === "modal-backdrop") {
     document.getElementById("modal-backdrop").classList.remove("open");
   }

@@ -72,6 +72,7 @@ def parse_post(post: Dict, item_id_seed: int) -> List[Dict]:
 
     current_date: Optional[date] = None
     current_cate: str = "うた"
+    current_cate_full: str = "うた"
 
     for el in soup.find_all(["h2", "div"]):
         cls = " ".join(el.get("class") or [])
@@ -91,6 +92,7 @@ def parse_post(post: Dict, item_id_seed: int) -> List[Dict]:
         # カテゴリ表示（このすぐあとの week_tt がそのカテゴリに属する）
         if el.name == "div" and "week_cate" in cls:
             cate_text = el.get_text(" > ", strip=True).replace(" > > ", " > ")
+            current_cate_full = re.sub(r"\s+", " ", cate_text)
             current_cate = classify_cate(cate_text)
             continue
 
@@ -101,20 +103,32 @@ def parse_post(post: Dict, item_id_seed: int) -> List[Dict]:
             t = clean_title(t)
             if not t:
                 continue
-            items.append(make_item(item_id, "okaasan", t, current_cate, current_date))
+            new_item = make_item(item_id, "okaasan", t, current_cate, current_date)
+            # 細分類（week_cate のフルパス）も保存
+            new_item["subcategory"] = current_cate_full
+            items.append(new_item)
             item_id += 1
 
-            # 直後の week_castaff にネスト曲（コーナー内で実際に歌われた曲）が
-            # 「曲名」or『曲名』形式で書かれてることがある（例: ファンターネ！とうたおう内で「いつもありがとう」）
+            # 直後の week_castaff から credits 情報（作詞・曲・出演）を解析
             sib = el.find_next_sibling("div")
             if sib and "week_castaff" in " ".join(sib.get("class") or []):
-                castaff_text = sib.get_text(" ", strip=True)
+                castaff_text = sib.get_text("\n", strip=True)
+                credits = parse_credits(castaff_text)
+                if credits:
+                    new_item["credits"] = credits
+
+                # ネスト曲（コーナー内で実際に歌われた曲）
                 m_nested = re.match(r"^\s*[「『]([^」』]+)[」』]", castaff_text)
                 if m_nested:
                     nested_title = clean_title(m_nested.group(1))
                     if nested_title and nested_title != t:
                         nested = make_item(item_id, "okaasan", nested_title, "うた", current_date)
-                        nested["parent"] = t  # どのコーナー内で歌われたか保持
+                        nested["parent"] = t
+                        nested["subcategory"] = current_cate_full
+                        # ネスト曲のクレジットは castaff 全体から推定
+                        nested_credits = parse_credits(castaff_text)
+                        if nested_credits:
+                            nested["credits"] = nested_credits
                         items.append(nested)
                         item_id += 1
 
@@ -142,6 +156,64 @@ def clean_title(s: str) -> str:
     if len(s) < 1 or len(s) > 50:
         return ""
     return s
+
+
+def parse_credits(castaff_text: str) -> Optional[Dict]:
+    """
+    week_castaff の改行区切りテキストから credits を抽出する。
+    例:
+      詞：小林純一／曲：中田喜直／編曲：森悠也
+      出演：花田ゆういちろう、ながたまや、佐久本和夢、アンジェ
+      歌唱：花田ゆういちろう、ながたまや
+      原作：有賀忍／脚本：鈴木信博／音楽：渋谷毅
+      アニメーション：キノボリー
+    戻り値: {
+      "lyrics": ["小林純一"],
+      "music":  ["中田喜直"],
+      "arrange":["森悠也"],
+      "cast":   ["花田ゆういちろう", "ながたまや", "佐久本和夢", "アンジェ"],
+      "vocals": ["花田ゆういちろう", "ながたまや"],
+      "anim":   ["キノボリー"],
+      "original": ["有賀忍"],
+      "script": ["鈴木信博"],
+      "other":  ["音楽：渋谷毅"]
+    }
+    """
+    if not castaff_text:
+        return None
+    out: Dict[str, List[str]] = {}
+    field_map = {
+        "詞": "lyrics", "作詞": "lyrics",
+        "曲": "music", "作曲": "music",
+        "編曲": "arrange",
+        "歌": "vocals", "歌唱": "vocals",
+        "出演": "cast",
+        "原作": "original",
+        "脚本": "script",
+        "演出": "director",
+        "監督": "director",
+        "アニメーション": "anim", "イラスト": "anim",
+        "振付": "choreo", "振付け": "choreo",
+        "音楽": "bgm",
+    }
+    # 改行・／・/ で分割された各フラグメントを処理
+    fragments = re.split(r"[\n／/]", castaff_text)
+    for frag in fragments:
+        frag = frag.strip().strip("「」『』")
+        if not frag:
+            continue
+        # 「キー：値」形式
+        m = re.match(r"^\s*([\u4e00-\u9faf]+)\s*[:：]\s*(.+)$", frag)
+        if not m:
+            continue
+        key_jp = m.group(1)
+        val = m.group(2).strip()
+        # 値の中の「、」「,」で複数人分割
+        persons = [p.strip() for p in re.split(r"[、,]", val) if p.strip()]
+        field = field_map.get(key_jp, "other")
+        out.setdefault(field, []).extend(persons)
+    # 空なら None
+    return out if out else None
 
 
 _KEYWORDS_DB: Optional[Dict] = None
