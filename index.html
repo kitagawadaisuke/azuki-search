@@ -96,18 +96,49 @@
     line-height: 1;
   }
 
+  .search-wrap {
+    position: relative;
+  }
   .search-box {
     width: 100%;
     background: var(--surface);
     border: 2px solid transparent;
     border-radius: 18px;
-    padding: 14px 20px;
+    padding: 14px 50px 14px 20px;
     color: var(--text);
     font-size: 17px;
     outline: none;
     box-shadow: var(--shadow-soft);
     text-align: center;
     transition: all 0.15s;
+  }
+  .voice-btn {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(255, 95, 156, 0.35);
+    transition: transform 0.1s;
+  }
+  .voice-btn:active { transform: translateY(-50%) scale(0.92); }
+  .voice-btn.listening {
+    background: linear-gradient(135deg, #ff4444 0%, #ff6b9d 100%);
+    animation: pulse 1.4s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 2px 6px rgba(255, 68, 68, 0.5); }
+    50% { box-shadow: 0 2px 6px rgba(255, 68, 68, 0.5), 0 0 0 12px rgba(255, 68, 68, 0); }
   }
   .search-box:focus {
     border-color: var(--accent);
@@ -654,6 +685,51 @@
     border-radius: 999px;
     margin-left: 4px;
   }
+
+  /* お気に入りショートカット */
+  .fav-shortcuts {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 4px 0 8px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .fav-shortcuts::-webkit-scrollbar { display: none; }
+  .fav-shortcut {
+    flex: 0 0 auto;
+    padding: 8px 14px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #fff3e0 0%, #ffe4ec 100%);
+    color: var(--text);
+    border: 1.5px solid rgba(255, 138, 61, 0.25);
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.1s;
+  }
+  .fav-shortcut:active { transform: scale(0.96); }
+  .fav-shortcut::before {
+    content: "★";
+    color: var(--accent);
+    font-size: 15px;
+  }
+  .fav-shortcut small {
+    font-size: 10px;
+    color: var(--text-dim);
+    font-weight: 600;
+  }
+  .fav-shortcut-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    font-weight: 600;
+    margin: 8px 4px 4px;
+    letter-spacing: 0.05em;
+  }
 </style>
 </head>
 <body>
@@ -664,7 +740,10 @@
     <span class="title-text">あずきサーチ</span>
     <img class="azuki-side flip" src="assets/azuki-scene-thumb.png" alt="">
   </h1>
-  <input type="search" id="search" class="search-box" placeholder="曲名・雰囲気で検索（例：太鼓／元気）" autocomplete="off" enterkeyhint="search" inputmode="search">
+  <div class="search-wrap">
+    <input type="search" id="search" class="search-box" placeholder="曲名・雰囲気で検索（例：太鼓／元気）" autocomplete="off" enterkeyhint="search" inputmode="search">
+    <button type="button" id="voice-btn" class="voice-btn" aria-label="音声で検索" title="音声で検索">🎤</button>
+  </div>
   <div class="filter-pills">
     <button class="pill active" data-filter="all">ぜんぶ</button>
     <button class="pill" data-filter="okaasan">おかあさんといっしょ</button>
@@ -674,6 +753,7 @@
 </header>
 
 <main id="main">
+  <div id="fav-shortcut-host"></div>
   <div class="day-tabs" id="day-tabs"></div>
   <div id="list"></div>
 </main>
@@ -774,6 +854,34 @@ function normalize(s) {
     .replace(/[ー－〜！？\s・]/g, ""); // 記号・空白除去
 }
 
+// 子供番組でよく使われる漢字↔ひらがな対応辞書（検索ゆらぎ対応）
+// 「太鼓」「たいこ」「タイコ」どれでもヒットする
+const KANJI_KANA_MAP = {
+  "太鼓":"たいこ","大":"おおき","小":"ちい","歌":"うた","虹":"にじ","花":"はな",
+  "海":"うみ","山":"やま","川":"かわ","空":"そら","星":"ほし","月":"つき",
+  "太陽":"たいよう","雨":"あめ","雪":"ゆき","風":"かぜ","犬":"いぬ","猫":"ねこ",
+  "鳥":"とり","魚":"さかな","虫":"むし","木":"き","葉":"はっぱ",
+  "赤":"あか","青":"あお","黄色":"きいろ","緑":"みどり","黒":"くろ","白":"しろ",
+  "電車":"でんしゃ","車":"くるま","音":"おと","光":"ひかり","時":"とき",
+  "手":"て","足":"あし","目":"め","口":"くち","耳":"みみ","顔":"かお",
+  "朝":"あさ","夜":"よる","昼":"ひる","今":"いま","体操":"たいそう",
+  "肉":"にく","魚":"さかな","野菜":"やさい","果物":"くだもの","料理":"りょうり",
+  "友達":"ともだち","家族":"かぞく","母":"かあさん","父":"とうさん",
+  "歩":"あるく","走":"はしる","踊":"おどる","歌":"うた","笑":"わら",
+  "蛙":"かえる","兎":"うさぎ","熊":"くま","象":"ぞう","亀":"かめ",
+  "船":"ふね","飛行機":"ひこうき","バス":"ばす","電車":"でんしゃ"
+};
+
+function expandQuery(q) {
+  if (!q) return [q];
+  const variants = new Set([q]);
+  for (const [k, v] of Object.entries(KANJI_KANA_MAP)) {
+    if (q.includes(k)) variants.add(q.split(k).join(v));
+    if (q.includes(v)) variants.add(q.split(v).join(k));
+  }
+  return [...variants].map(normalize);
+}
+
 // 検索履歴（localStorage）
 function getRecent() {
   try { return JSON.parse(localStorage.getItem("recent") || "[]"); }
@@ -823,14 +931,16 @@ function todayStrIso() {
 
 function searchMatches(d, q) {
   if (!q) return true;
-  if (normalize(d.title).includes(q)) return true;
-  if (normalize(d.corner).includes(q)) return true;
-  if (d.mood && normalize(d.mood).includes(q)) return true;
-  if (d.snippet && normalize(d.snippet).includes(q)) return true;
-  if (d.keywords) {
-    for (const kw of d.keywords) {
-      if (normalize(kw).includes(q)) return true;
-    }
+  const variants = expandQuery(q);
+  const haystack = [
+    normalize(d.title),
+    normalize(d.corner),
+    d.mood ? normalize(d.mood) : "",
+    d.snippet ? normalize(d.snippet) : "",
+    ...(d.keywords || []).map(normalize),
+  ].join("|");
+  for (const v of variants) {
+    if (haystack.includes(v)) return true;
   }
   return false;
 }
@@ -847,6 +957,7 @@ function render() {
   });
 
   renderDayTabs();
+  renderFavShortcuts();
 
   items.sort((a, b) => b.date.localeCompare(a.date) || a.airtime.localeCompare(b.airtime));
 
@@ -943,6 +1054,35 @@ function render() {
   `).join("");
 }
 
+function renderFavShortcuts() {
+  const host = document.getElementById("fav-shortcut-host");
+  if (!host) return;
+  // 検索中・お気に入りフィルタ中は非表示（重複感防止）
+  if (state.query || state.filter === "fav") {
+    host.innerHTML = "";
+    return;
+  }
+  // お気に入り → 曲タイトル単位でグループ化、最新放送日付き
+  const favItems = data.filter(d => state.favs.has(d.id));
+  if (favItems.length === 0) { host.innerHTML = ""; return; }
+  const byTitle = {};
+  favItems.forEach(d => {
+    if (!byTitle[d.title] || d.date > byTitle[d.title].date) byTitle[d.title] = d;
+  });
+  const list = Object.values(byTitle).sort((a, b) => b.date.localeCompare(a.date)).slice(0, 12);
+  host.innerHTML = `
+    <div class="fav-shortcut-label">お気に入り（タップで検索）</div>
+    <div class="fav-shortcuts">
+      ${list.map(d => `
+        <button class="fav-shortcut" data-fav-title="${escapeHtml(d.title)}">
+          ${escapeHtml(d.title)}
+          <small>${fmtDate(d.date)}</small>
+        </button>
+      `).join("")}
+    </div>
+  `;
+}
+
 function renderDayTabs() {
   const $tabs = document.getElementById("day-tabs");
   if (!$tabs) return;
@@ -1021,6 +1161,14 @@ document.addEventListener("click", e => {
   if (dayTab) {
     state.selectedDate = dayTab.dataset.date;
     render();
+    return;
+  }
+  const favShort = e.target.closest("[data-fav-title]");
+  if (favShort) {
+    state.query = favShort.dataset.favTitle;
+    $search.value = state.query;
+    render();
+    renderRecentSearches();
   }
 });
 
@@ -1086,6 +1234,64 @@ document.getElementById("modal-backdrop").addEventListener("click", e => {
     document.getElementById("modal-backdrop").classList.remove("open");
   }
 });
+
+// 音声検索（iOS Safari / Chrome が webkitSpeechRecognition 対応）
+(function setupVoiceSearch() {
+  const btn = document.getElementById("voice-btn");
+  if (!btn) return;
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) {
+    btn.style.display = "none";
+    return;
+  }
+  const recog = new SR();
+  recog.lang = "ja-JP";
+  recog.interimResults = true;
+  recog.continuous = false;
+
+  let listening = false;
+
+  btn.addEventListener("click", () => {
+    if (listening) {
+      recog.stop();
+      return;
+    }
+    try {
+      recog.start();
+    } catch (e) {
+      // すでに開始中の場合を無視
+    }
+  });
+
+  recog.onstart = () => {
+    listening = true;
+    btn.classList.add("listening");
+    btn.textContent = "●";
+  };
+  recog.onend = () => {
+    listening = false;
+    btn.classList.remove("listening");
+    btn.textContent = "🎤";
+  };
+  recog.onresult = (ev) => {
+    let text = "";
+    for (let i = ev.resultIndex; i < ev.results.length; i++) {
+      text += ev.results[i][0].transcript;
+    }
+    text = text.trim();
+    if (!text) return;
+    state.query = text;
+    $search.value = text;
+    render();
+    renderRecentSearches();
+  };
+  recog.onerror = (ev) => {
+    console.warn("音声認識エラー:", ev.error);
+    listening = false;
+    btn.classList.remove("listening");
+    btn.textContent = "🎤";
+  };
+})();
 
 // データ読み込み
 async function loadData() {
