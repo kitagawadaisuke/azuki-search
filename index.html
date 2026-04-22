@@ -818,6 +818,47 @@
     margin-left: 4px;
   }
 
+  /* キャラクターチップ */
+  .char-chips {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 6px 0 8px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .char-chips::-webkit-scrollbar { display: none; }
+  .char-chip {
+    flex: 0 0 auto;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--text);
+    border: 1.5px solid rgba(143,115,87,0.18);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    transition: all 0.12s;
+  }
+  .char-chip .ch-icon { font-size: 14px; }
+  .char-chip .ch-cnt {
+    font-size: 10px;
+    color: var(--text-dim);
+    font-weight: 600;
+  }
+  .char-chip.active {
+    background: linear-gradient(135deg, var(--mint) 0%, var(--sky) 100%);
+    color: #fff;
+    border-color: transparent;
+    transform: scale(1.04);
+  }
+  .char-chip.active .ch-cnt { color: rgba(255,255,255,0.85); }
+
   /* お気に入りショートカット */
   .fav-shortcuts {
     display: flex;
@@ -886,6 +927,7 @@
 </header>
 
 <main id="main">
+  <div id="char-chip-host"></div>
   <div id="fav-shortcut-host"></div>
   <div class="day-tabs" id="day-tabs"></div>
   <div id="list"></div>
@@ -1032,8 +1074,12 @@ const state = {
   filter: "all",
   query: "",
   selectedDate: null,  // タブで選択中の日付
+  selectedChar: null,  // フィルタ対象キャラ
   favs: new Set(data.filter(d => d.fav).map(d => d.id)),
 };
+
+// キャラアイコン表（characters.json から流し込み）
+const CHAR_META = {};
 
 // =================== Render ===================
 const $list = document.getElementById("list");
@@ -1092,11 +1138,15 @@ function render() {
     if (state.filter === "okaasan" && d.show !== "okaasan") return false;
     if (state.filter === "inai" && d.show !== "inai") return false;
     if (state.filter === "fav" && !state.favs.has(d.id)) return false;
+    if (state.selectedChar) {
+      if (!d.characters || !d.characters.includes(state.selectedChar)) return false;
+    }
     if (!searchMatches(d, q)) return false;
     return true;
   });
 
   renderDayTabs();
+  renderCharChips();
   renderFavShortcuts();
 
   items.sort((a, b) => b.date.localeCompare(a.date) || a.airtime.localeCompare(b.airtime));
@@ -1222,6 +1272,37 @@ function renderFavShortcuts() {
           <small>${fmtDate(d.date)}</small>
         </button>
       `).join("")}
+    </div>
+  `;
+}
+
+function renderCharChips() {
+  const host = document.getElementById("char-chip-host");
+  if (!host) return;
+  // 検索中は非表示
+  if (state.query) { host.innerHTML = ""; return; }
+
+  // 現在のフィルタ範囲（show のみ）でキャラ集計
+  const scope = data.filter(d => {
+    if (state.filter === "okaasan" && d.show !== "okaasan") return false;
+    if (state.filter === "inai" && d.show !== "inai") return false;
+    if (state.filter === "fav" && !state.favs.has(d.id)) return false;
+    return true;
+  });
+  const counts = {};
+  scope.forEach(d => (d.characters || []).forEach(c => counts[c] = (counts[c]||0)+1));
+  const chars = Object.entries(counts).sort((a,b) => b[1]-a[1]).slice(0, 18);
+  if (chars.length === 0) { host.innerHTML = ""; return; }
+  host.innerHTML = `
+    <div class="char-chips">
+      ${state.selectedChar
+        ? `<button class="char-chip active" data-char="">✕ クリア</button>` : ""}
+      ${chars.map(([name, n]) => {
+        const meta = CHAR_META[name] || {};
+        const icon = meta.icon || "🎭";
+        const isSel = state.selectedChar === name;
+        return `<button class="char-chip ${isSel?"active":""}" data-char="${escapeHtml(name)}"><span class="ch-icon">${icon}</span>${escapeHtml(name)}<span class="ch-cnt">${n}</span></button>`;
+      }).join("")}
     </div>
   `;
 }
@@ -1389,6 +1470,13 @@ document.addEventListener("click", e => {
     document.getElementById("suggest-pop").style.display = "none";
     render();
     renderRecentSearches();
+    return;
+  }
+  const charChip = e.target.closest("[data-char]");
+  if (charChip) {
+    const c = charChip.dataset.char;
+    state.selectedChar = c ? c : null;
+    render();
   }
 });
 
@@ -1628,8 +1716,21 @@ document.getElementById("modal-backdrop").addEventListener("click", async e => {
   }
 })();
 
+// キャラ メタデータ読み込み（characters.json）
+async function loadCharsMeta() {
+  try {
+    const res = await fetch("characters.json", { cache: "no-store" });
+    if (!res.ok) return;
+    const json = await res.json();
+    (json.characters || []).forEach(c => {
+      CHAR_META[c.key] = { icon: c.icon || "🎭", show: c.show };
+    });
+  } catch (e) { /* ignore */ }
+}
+
 // データ読み込み
 async function loadData() {
+  await loadCharsMeta();
   try {
     const res = await fetch("data.json", { cache: "no-store" });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);

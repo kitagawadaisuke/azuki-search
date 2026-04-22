@@ -1,0 +1,32 @@
+{
+  "_comment": "キャラクター辞書。scraper.pyが各itemのcharacters[]を自動付与する判定に使う。エイリアスを含めるとマッチ率が上がる。",
+  "characters": [
+    {"key": "ガラピコ", "show": "okaasan", "aliases": ["ガラピコ", "ガラピコぷ〜", "がらぴこ"], "icon": "🤖"},
+    {"key": "チョロミー", "show": "okaasan", "aliases": ["チョロミー", "ちょろみー"], "icon": "🐰"},
+    {"key": "ムームー", "show": "okaasan", "aliases": ["ムームー", "むーむー"], "icon": "🐑"},
+
+    {"key": "ファンターネ", "show": "okaasan", "aliases": ["ファンターネ", "ファンタネ"], "icon": "🎭"},
+    {"key": "みもも", "show": "okaasan", "aliases": ["みもも", "ミモモ"], "icon": "🍑"},
+    {"key": "やころ", "show": "okaasan", "aliases": ["やころ", "ヤコロ"], "icon": "🦊"},
+    {"key": "ちょろみ", "show": "okaasan", "aliases": ["ちょろみ", "チョロミ"], "icon": "🐶"},
+    {"key": "あーぷん", "show": "okaasan", "aliases": ["あーぷん", "アープン"], "icon": "🦛"},
+    {"key": "アンモ", "show": "okaasan", "aliases": ["アンモ", "あんも"], "icon": "🐰"},
+    {"key": "マーキー", "show": "okaasan", "aliases": ["マーキー", "まーきー"], "icon": "🦝"},
+
+    {"key": "ナーニくん", "show": "okaasan", "aliases": ["ナーニくん", "ナーニ"], "icon": "🧒"},
+    {"key": "けけちゃま", "show": "okaasan", "aliases": ["けけちゃま", "ケケちゃま", "しりたガエル"], "icon": "🐸"},
+    {"key": "クレッピー", "show": "okaasan", "aliases": ["クレッピー", "おえかきクレッピー"], "icon": "🖍️"},
+    {"key": "シルエットはかせ", "show": "okaasan", "aliases": ["シルエットはかせ", "シルエット博士"], "icon": "🕴"},
+    {"key": "オタマジック", "show": "okaasan", "aliases": ["オタマジック", "オタマジックショー"], "icon": "🎩"},
+    {"key": "ジューキーズ", "show": "okaasan", "aliases": ["ジューキーズ"], "icon": "🚜"},
+    {"key": "ポーズマン", "show": "okaasan", "aliases": ["ポーズマン", "さすらいのポーズマン"], "icon": "🤸"},
+    {"key": "ぱくぱくるんるん", "show": "okaasan", "aliases": ["ぱくぱく", "ぱくぱくるんるん"], "icon": "🍴"},
+    {"key": "ファンファンコロリンパ", "show": "okaasan", "aliases": ["ファンファンコロリンパ", "ファンファン", "コロリンパ"], "icon": "🎪"},
+    {"key": "ファンキーマーキー", "show": "okaasan", "aliases": ["ファンキーマーキー"], "icon": "🎤"},
+    {"key": "アンモさん", "show": "okaasan", "aliases": ["アンモさん"], "icon": "🐰"},
+
+    {"key": "ワンワン", "show": "inai", "aliases": ["ワンワン", "わんわん"], "icon": "🐶"},
+    {"key": "おうちゃん", "show": "inai", "aliases": ["おうちゃん", "オウちゃん"], "icon": "🦁"},
+    {"key": "ぽぅぽ", "show": "inai", "aliases": ["ぽぅぽ", "ポゥポ"], "icon": "🦤"}
+  ]
+}

@@ -217,6 +217,7 @@ def parse_credits(castaff_text: str) -> Optional[Dict]:
 
 
 _KEYWORDS_DB: Optional[Dict] = None
+_CHARACTERS_DB: Optional[List[Dict]] = None
 
 def load_keywords_db() -> Dict:
     global _KEYWORDS_DB
@@ -227,6 +228,42 @@ def load_keywords_db() -> Dict:
         else:
             _KEYWORDS_DB = {}
     return _KEYWORDS_DB
+
+
+def load_characters_db() -> List[Dict]:
+    global _CHARACTERS_DB
+    if _CHARACTERS_DB is None:
+        path = Path(__file__).parent / "characters.json"
+        if path.exists():
+            data = json.loads(path.read_text(encoding="utf-8"))
+            _CHARACTERS_DB = data.get("characters", [])
+        else:
+            _CHARACTERS_DB = []
+    return _CHARACTERS_DB
+
+
+def detect_characters(item: Dict) -> List[str]:
+    """item の title/keywords/credits/parent から登場キャラを検出"""
+    chars_db = load_characters_db()
+    found = set()
+    haystack_parts = [
+        item.get("title", ""),
+        item.get("parent", "") or "",
+        item.get("subcategory", "") or "",
+        " ".join(item.get("keywords", [])),
+    ]
+    if item.get("credits"):
+        for v in item["credits"].values():
+            haystack_parts.append(" ".join(v))
+    haystack = " ".join(haystack_parts)
+    for c in chars_db:
+        if c.get("show") and c["show"] != item.get("show"):
+            continue
+        for alias in c.get("aliases", []):
+            if alias and alias in haystack:
+                found.add(c["key"])
+                break
+    return sorted(found)
 
 
 def make_item(item_id: int, show_key: str, title: str, section: str, d: date) -> Dict:
@@ -364,6 +401,8 @@ def main():
         k = (x["date"], x["show"])
         by_day[k] = by_day.get(k, 0) + 1
         x["order"] = by_day[k]
+        # キャラクター検出
+        x["characters"] = detect_characters(x)
 
     # いないいないばあ予測データを追加
     if not args.no_inai:
@@ -376,6 +415,7 @@ def main():
             if key in inai_seen:
                 continue
             inai_seen.add(key)
+            x["characters"] = detect_characters(x)
             deduped.append(x)
         print(f"🔮 いないいないばあ予測データ: {len(inai_items)}件追加")
 
