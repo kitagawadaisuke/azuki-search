@@ -9,8 +9,9 @@ venv/
 *.bak
 
 # iOS / Xcode
-ios/AzukiSearch.xcodeproj/
 ios/build/
 ios/DerivedData/
 *.xcuserstate
 xcuserdata/
+# Note: ios/AzukiSearch.xcodeproj/ は Xcode Cloud がリポジトリから直接ビルドする都合上
+# commit する。xcodegenで再生成可能だが、CI側でxcodegen走らせる手間より楽。

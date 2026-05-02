@@ -1,0 +1,420 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0A6AE4432C9EBFB02C423ECC /* DateSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439383809D534A53934D1EA2 /* DateSearchView.swift */; };
+		189C22DDB3D53E85A879D09D /* bundled_data.json in Resources */ = {isa = PBXBuildFile; fileRef = 36EF1CE50ECBAB044F6B5A1E /* bundled_data.json */; };
+		2F7CC370AB2B8DDC632B9E17 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18AF1976101B28A8D0464E1 /* SpeechRecognizer.swift */; };
+		363C8F0FB451371D936399EA /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE24ADFA60C8556515DDDB /* Theme.swift */; };
+		3A5AD27265BDAFB590413315 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5030C38F8E58698FF33BDDEC /* DataStore.swift */; };
+		3E748F46A7387340C1F38EF2 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B42978C2660A85CE914FEB /* FavoritesView.swift */; };
+		5352E300168F09EAA178DCE8 /* WeekCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A2F30099176A1271E9C2A0 /* WeekCalendarView.swift */; };
+		58218E377658BEF840E2FA97 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743ECD2745BBA8FB856CD7CE /* ContentView.swift */; };
+		63E2F9189A4DD03CB5044DE3 /* MascotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F313E0556FDD188BFA9D15BD /* MascotView.swift */; };
+		884A37EEA0636C95BBE12071 /* AzukiSearchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758ACC8BECF6749B840C848 /* AzukiSearchApp.swift */; };
+		A8D5FAC3CF0243979496C4CE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86114A0964927CE4AA91433C /* HomeView.swift */; };
+		B2D01874D45C02E1F385D617 /* KeywordSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D240403F7BC5B9F460C201A6 /* KeywordSearchView.swift */; };
+		BF85A5069C20F44E4BB2E3BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5423B36B12B74535012C5EA3 /* Assets.xcassets */; };
+		C8418D0653E698ADB3537A82 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5D7E27C6617F7DB3203886 /* HeaderView.swift */; };
+		EB371B8AF3E51945622CE262 /* FavoritesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027D8B96061A3423AA93DC85 /* FavoritesStore.swift */; };
+		F398F56242C12523DBFB012D /* BroadcastItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBE6A9532125AC0B2B2986B /* BroadcastItem.swift */; };
+		F67E6F490D94D4216BBD9FA6 /* ItemCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81F9EDA78DACD6A9ACE492F /* ItemCardView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		027D8B96061A3423AA93DC85 /* FavoritesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesStore.swift; sourceTree = "<group>"; };
+		318C262FA0D418FDF38BB65F /* AzukiSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AzukiSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		36EF1CE50ECBAB044F6B5A1E /* bundled_data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bundled_data.json; sourceTree = "<group>"; };
+		439383809D534A53934D1EA2 /* DateSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSearchView.swift; sourceTree = "<group>"; };
+		5030C38F8E58698FF33BDDEC /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		5423B36B12B74535012C5EA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		743ECD2745BBA8FB856CD7CE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		78A2F30099176A1271E9C2A0 /* WeekCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarView.swift; sourceTree = "<group>"; };
+		7B702DD8D1A07036B19A7A52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		86114A0964927CE4AA91433C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		89EE24ADFA60C8556515DDDB /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		8C5D7E27C6617F7DB3203886 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		9DBE6A9532125AC0B2B2986B /* BroadcastItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastItem.swift; sourceTree = "<group>"; };
+		B18AF1976101B28A8D0464E1 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
+		B3B42978C2660A85CE914FEB /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		D240403F7BC5B9F460C201A6 /* KeywordSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordSearchView.swift; sourceTree = "<group>"; };
+		F313E0556FDD188BFA9D15BD /* MascotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MascotView.swift; sourceTree = "<group>"; };
+		F758ACC8BECF6749B840C848 /* AzukiSearchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzukiSearchApp.swift; sourceTree = "<group>"; };
+		F81F9EDA78DACD6A9ACE492F /* ItemCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCardView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		3E9F7617B8C48CFF36191956 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9DBE6A9532125AC0B2B2986B /* BroadcastItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		48DA3EAF11F17CCAB4A310A3 = {
+			isa = PBXGroup;
+			children = (
+				64A910E3B2693B3690EF4D33 /* AzukiSearch */,
+				A4E77FF07A95D63B2325147D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		64A910E3B2693B3690EF4D33 /* AzukiSearch */ = {
+			isa = PBXGroup;
+			children = (
+				5423B36B12B74535012C5EA3 /* Assets.xcassets */,
+				F758ACC8BECF6749B840C848 /* AzukiSearchApp.swift */,
+				36EF1CE50ECBAB044F6B5A1E /* bundled_data.json */,
+				743ECD2745BBA8FB856CD7CE /* ContentView.swift */,
+				7B702DD8D1A07036B19A7A52 /* Info.plist */,
+				3E9F7617B8C48CFF36191956 /* Models */,
+				E0BC40A167F17B40AC0FA727 /* Stores */,
+				C108B421B6980E32B517C3EF /* Theme */,
+				CF0F39E77DF4F21F7AC59F82 /* Views */,
+			);
+			path = AzukiSearch;
+			sourceTree = "<group>";
+		};
+		A4E77FF07A95D63B2325147D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				318C262FA0D418FDF38BB65F /* AzukiSearch.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C108B421B6980E32B517C3EF /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				89EE24ADFA60C8556515DDDB /* Theme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		CF0F39E77DF4F21F7AC59F82 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				439383809D534A53934D1EA2 /* DateSearchView.swift */,
+				B3B42978C2660A85CE914FEB /* FavoritesView.swift */,
+				8C5D7E27C6617F7DB3203886 /* HeaderView.swift */,
+				86114A0964927CE4AA91433C /* HomeView.swift */,
+				F81F9EDA78DACD6A9ACE492F /* ItemCardView.swift */,
+				D240403F7BC5B9F460C201A6 /* KeywordSearchView.swift */,
+				F313E0556FDD188BFA9D15BD /* MascotView.swift */,
+				78A2F30099176A1271E9C2A0 /* WeekCalendarView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E0BC40A167F17B40AC0FA727 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				5030C38F8E58698FF33BDDEC /* DataStore.swift */,
+				027D8B96061A3423AA93DC85 /* FavoritesStore.swift */,
+				B18AF1976101B28A8D0464E1 /* SpeechRecognizer.swift */,
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8099DA08B6E43F78EBD423EC /* AzukiSearch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB85151A0DCBF9BBCE7EF528 /* Build configuration list for PBXNativeTarget "AzukiSearch" */;
+			buildPhases = (
+				16323B5770C018156142F15D /* Sources */,
+				F305F0AA8913529E9FA4EEEF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AzukiSearch;
+			packageProductDependencies = (
+			);
+			productName = AzukiSearch;
+			productReference = 318C262FA0D418FDF38BB65F /* AzukiSearch.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DAB70F6C94FCA381EE80AA27 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2640;
+				TargetAttributes = {
+					8099DA08B6E43F78EBD423EC = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 5D5F2FC3F8B2E12ECDB5496E /* Build configuration list for PBXProject "AzukiSearch" */;
+			developmentRegion = ja;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				ja,
+			);
+			mainGroup = 48DA3EAF11F17CCAB4A310A3;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = A4E77FF07A95D63B2325147D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8099DA08B6E43F78EBD423EC /* AzukiSearch */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F305F0AA8913529E9FA4EEEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF85A5069C20F44E4BB2E3BF /* Assets.xcassets in Resources */,
+				189C22DDB3D53E85A879D09D /* bundled_data.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		16323B5770C018156142F15D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				884A37EEA0636C95BBE12071 /* AzukiSearchApp.swift in Sources */,
+				F398F56242C12523DBFB012D /* BroadcastItem.swift in Sources */,
+				58218E377658BEF840E2FA97 /* ContentView.swift in Sources */,
+				3A5AD27265BDAFB590413315 /* DataStore.swift in Sources */,
+				0A6AE4432C9EBFB02C423ECC /* DateSearchView.swift in Sources */,
+				EB371B8AF3E51945622CE262 /* FavoritesStore.swift in Sources */,
+				3E748F46A7387340C1F38EF2 /* FavoritesView.swift in Sources */,
+				C8418D0653E698ADB3537A82 /* HeaderView.swift in Sources */,
+				A8D5FAC3CF0243979496C4CE /* HomeView.swift in Sources */,
+				F67E6F490D94D4216BBD9FA6 /* ItemCardView.swift in Sources */,
+				B2D01874D45C02E1F385D617 /* KeywordSearchView.swift in Sources */,
+				63E2F9189A4DD03CB5044DE3 /* MascotView.swift in Sources */,
+				2F7CC370AB2B8DDC632B9E17 /* SpeechRecognizer.swift in Sources */,
+				363C8F0FB451371D936399EA /* Theme.swift in Sources */,
+				5352E300168F09EAA178DCE8 /* WeekCalendarView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		05334ABC9321FA2D5EB7A312 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 9NL434P76B;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.10;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		38BFD7C7B5EBF99A1A99005D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 9NL434P76B;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.10;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		A2D671D362584C1D6575B0D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = AzukiSearch/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "あずきサーチ";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kitagawadaisuke.azukisearch;
+				PRODUCT_NAME = AzukiSearch;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DDACD44AD19F2D330AA72FEB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = AzukiSearch/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "あずきサーチ";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kitagawadaisuke.azukisearch;
+				PRODUCT_NAME = AzukiSearch;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5D5F2FC3F8B2E12ECDB5496E /* Build configuration list for PBXProject "AzukiSearch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05334ABC9321FA2D5EB7A312 /* Debug */,
+				38BFD7C7B5EBF99A1A99005D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		CB85151A0DCBF9BBCE7EF528 /* Build configuration list for PBXNativeTarget "AzukiSearch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2D671D362584C1D6575B0D8 /* Debug */,
+				DDACD44AD19F2D330AA72FEB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DAB70F6C94FCA381EE80AA27 /* Project object */;
+}
