@@ -2,8 +2,15 @@ name: Refresh data.json
 
 on:
   schedule:
-    # 毎日 JST 10:00 = UTC 01:00（週報投稿が完了する朝の時間帯）
-    - cron: "0 1 * * *"
+    # NHK公式ページの放送ページ更新タイミングをカバーするため複数回:
+    #   - JST 06:30 (UTC 21:30) … 当日朝の放送前 (新着episode反映)
+    #   - JST 09:00 (UTC 00:00) … 放送直後 (再放送/補足反映)
+    #   - JST 11:30 (UTC 02:30) … 週報投稿の後追い
+    #   - JST 19:00 (UTC 10:00) … 夕方の再放送後 + 翌日分のepg反映
+    - cron: "30 21 * * *"
+    - cron: "0 0 * * *"
+    - cron: "30 2 * * *"
+    - cron: "0 10 * * *"
   workflow_dispatch:  # 手動実行も可
 
 permissions:

@@ -1,0 +1,243 @@
+import SwiftUI
+
+enum ShowFilter: String, CaseIterable, Identifiable {
+    case okaasan
+    case inai
+    var id: String { rawValue }
+    var shortName: String {
+        switch self {
+        case .okaasan: return "おかあさんといっしょ"
+        case .inai:    return "いないいないばあっ!"
+        }
+    }
+    var key: String { rawValue }
+    var color: Color {
+        switch self {
+        case .okaasan: return Color(red: 1.00, green: 0.65, blue: 0.40)
+        case .inai:    return Color(red: 0.95, green: 0.42, blue: 0.69)
+        }
+    }
+}
+
+struct HomeView: View {
+    @EnvironmentObject var dataStore: DataStore
+    @EnvironmentObject var favs: FavoritesStore
+
+    @AppStorage("selectedShow") private var selectedShowRaw: String = ShowFilter.okaasan.rawValue
+
+    @State private var query: String = ""
+    @State private var selectedDate: Date = Date()
+
+    private var selectedShow: ShowFilter {
+        ShowFilter(rawValue: selectedShowRaw) ?? .okaasan
+    }
+
+    private static let isoFmt: DateFormatter = {
+        let f = DateFormatter()
+        f.dateFormat = "yyyy-MM-dd"
+        f.calendar = Calendar(identifier: .gregorian)
+        f.timeZone = TimeZone(identifier: "Asia/Tokyo")
+        return f
+    }()
+
+    private var selectedIso: String { Self.isoFmt.string(from: selectedDate) }
+
+    private var dayItems: [BroadcastItem] {
+        if !query.trimmingCharacters(in: .whitespaces).isEmpty {
+            // 検索時は番組も絞り込む
+            return dataStore.searchItems(query: query).filter { $0.show == selectedShow.key }
+        }
+        return dataStore.uniqueItems(forDate: selectedIso).filter { $0.show == selectedShow.key }
+    }
+
+    /// 選択中番組でデータがある日付セット
+    private var datesWithData: Set<String> {
+        Set(dataStore.items.filter { $0.show == selectedShow.key }.map { $0.date })
+    }
+
+    private var dateHeading: String {
+        let f = DateFormatter()
+        f.locale = Locale(identifier: "ja_JP")
+        f.dateFormat = "yyyy年M月d日(E)"
+        f.calendar = Calendar(identifier: .gregorian)
+        f.timeZone = TimeZone(identifier: "Asia/Tokyo")
+        return f.string(from: selectedDate) + "の放送内容"
+    }
+
+    private var isSearching: Bool {
+        !query.trimmingCharacters(in: .whitespaces).isEmpty
+    }
+
+    var body: some View {
+        ZStack(alignment: .top) {
+            AppColor.bgGradient.ignoresSafeArea()
+
+            ScrollView {
+                VStack(alignment: .leading, spacing: 0) {
+                    HeaderView(
+                        title: "今日の放送内容",
+                        subtitle: "子ども番組の放送内容を検索・記録・アーカイブ",
+                        query: $query
+                    )
+
+                    // 番組切替セグメント
+                    showSwitcher
+                        .padding(.horizontal, 16)
+                        .padding(.top, 4)
+                        .padding(.bottom, 4)
+
+                    if !isSearching {
+                        WeekCalendarView(
+                            selectedDate: $selectedDate,
+                            datesWithData: datesWithData
+                        )
+                        .padding(.top, 6)
+                        .padding(.bottom, 4)
+
+                        Text(dateHeading)
+                            .font(.system(size: 17, weight: .bold))
+                            .foregroundColor(AppColor.text)
+                            .padding(.horizontal, 16)
+                            .padding(.top, 14)
+                            .padding(.bottom, 10)
+                    } else {
+                        Text("「\(query)」の検索結果 (\(dayItems.count)件)")
+                            .font(.system(size: 16, weight: .bold))
+                            .foregroundColor(AppColor.text)
+                            .padding(.horizontal, 16)
+                            .padding(.top, 14)
+                            .padding(.bottom, 10)
+                    }
+
+                    listContent
+                        .padding(.horizontal, 16)
+
+                    Text("※放送内容は変更になる場合があります。")
+                        .font(.system(size: 10))
+                        .foregroundColor(AppColor.textDim)
+                        .frame(maxWidth: .infinity)
+                        .padding(.top, 18)
+                        .padding(.bottom, 24)
+                }
+            }
+            .refreshable {
+                await dataStore.load(force: true)
+            }
+        }
+        .onAppear {
+            // 初期: 今日の日付がデータにあればそれ、無ければ最新
+            if dataStore.items.isEmpty == false {
+                snapToAvailableDate()
+            }
+        }
+        .onChange(of: dataStore.items.count) { _, _ in
+            snapToAvailableDate()
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    /// 番組(おかいつ/いないばあ)切替のセグメントcontrol
+    @ViewBuilder
+    private var showSwitcher: some View {
+        HStack(spacing: 6) {
+            ForEach(ShowFilter.allCases) { f in
+                let isOn = (f == selectedShow)
+                Button {
+                    selectedShowRaw = f.rawValue
+                } label: {
+                    Text(f.shortName)
+                        .font(.system(size: 12, weight: .bold))
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 8)
+                        .frame(maxWidth: .infinity)
+                        .background(
+                            Capsule().fill(isOn ? f.color : Color.white)
+                        )
+                        .overlay(
+                            Capsule().stroke(isOn ? Color.clear : AppColor.border, lineWidth: 1)
+                        )
+                        .foregroundColor(isOn ? .white : AppColor.textDim)
+                }
+                .buttonStyle(.plain)
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var listContent: some View {
+        if dataStore.loadState == .loading && dataStore.items.isEmpty {
+            ProgressView()
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 40)
+        } else if case .error(let msg) = dataStore.loadState, dataStore.items.isEmpty {
+            VStack(spacing: 8) {
+                Text("⚠️ データ取得失敗")
+                    .font(.system(size: 14, weight: .bold))
+                Text(msg)
+                    .font(.system(size: 11))
+                    .foregroundColor(AppColor.textDim)
+                    .multilineTextAlignment(.center)
+                Button("再試行") {
+                    Task { await dataStore.load(force: true) }
+                }
+            }
+            .padding(.vertical, 40)
+            .frame(maxWidth: .infinity)
+        } else if dayItems.isEmpty {
+            VStack(spacing: 10) {
+                Image(systemName: isSearching ? "magnifyingglass" : "calendar.badge.exclamationmark")
+                    .font(.system(size: 36, weight: .light))
+                    .foregroundColor(AppColor.textVeryDim)
+                Text(isSearching ? "見つかりませんでした" : "この日の放送データはまだ無いよ")
+                    .font(.system(size: 13, weight: .semibold))
+                    .foregroundColor(AppColor.textDim)
+                if !isSearching {
+                    Text("データがある日付には・の印があるよ")
+                        .font(.system(size: 11))
+                        .foregroundColor(AppColor.textDim)
+                }
+            }
+            .padding(.vertical, 40)
+            .frame(maxWidth: .infinity)
+        } else {
+            VStack(spacing: 10) {
+                ForEach(dayItems) { item in
+                    ItemCardView(
+                        item: item,
+                        isFav: favs.contains(item.id),
+                        onToggleFav: { favs.toggle(item.id) },
+                        showDate: isSearching   // 検索中は放送日表示
+                    )
+                }
+            }
+        }
+    }
+
+    private func snapToAvailableDate() {
+        let dates = Set(dataStore.items.map { $0.date })
+        let today = Self.isoFmt.string(from: Date())
+        if dates.contains(today) {
+            // 今日のがあれば今日を選択
+            if let today = parseIso(today) {
+                self.selectedDate = today
+            }
+        } else if let latest = dates.sorted().last, let latestDate = parseIso(latest) {
+            self.selectedDate = latestDate
+        }
+    }
+
+    private func parseIso(_ s: String) -> Date? {
+        Self.isoFmt.date(from: s)
+    }
+}
+
+#Preview {
+    let ds = DataStore()
+    let fs = FavoritesStore()
+    return HomeView()
+        .environmentObject(ds)
+        .environmentObject(fs)
+        .task {
+            await ds.load()
+        }
+}

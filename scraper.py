@@ -31,8 +31,8 @@ WEEKLY_CATEGORY_ID = 388  # おかあさんといっしょ週報
 UA = "Mozilla/5.0 (EtereSagasukunBot/0.1 personal use)"
 
 SHOWS = {
-    "okaasan": {"name": "おかあさんといっしょ", "airtime": "08:00"},
-    "inai":    {"name": "いないいないばあっ!",   "airtime": "08:25"},
+    "okaasan": {"name": "おかあさんといっしょ", "airtime": "07:45"},
+    "inai":    {"name": "いないいないばあっ!",   "airtime": "08:10"},
 }
 
 
@@ -361,12 +361,171 @@ def make_inai_item(item_id: int, tmpl: Dict, d: date, order: int, tag: str = "")
     }
 
 
+def normalize_title(s: str) -> str:
+    """タイトル比較用の正規化。表記ゆれ吸収のため。"""
+    if not s:
+        return ""
+    # 全角/半角・記号・スペース・伸ばし棒のゆれを吸収
+    t = s.strip()
+    t = re.sub(r"[ 　\s]+", "", t)
+    t = re.sub(r"[!！?？♪☆★・…]", "", t)
+    t = t.replace("ヴ", "ブ")
+    t = t.replace("ウィ", "イ").replace("ウェ", "エ").replace("ウォ", "オ")
+    t = t.replace("ぁ", "あ").replace("ぃ", "い").replace("ぅ", "う").replace("ぇ", "え").replace("ぉ", "お")
+    return t.lower()
+
+
+def merge_nhk_into_items(weekly_items: List[Dict], nhk_data: Dict, next_id: int, show_key: str = "okaasan") -> tuple:
+    """既存itemsにNHK公式データをmergeする。
+
+    ルール (Q1=c, Q2=a, Q3=keep):
+      - 同日同曲が両方にある場合: 既存の order/credits/keywords を保持、
+        title はNHK綴り優先 (差異がある場合のみ更新)、source="nhk+weekly"
+      - NHKのみ存在: 仮order(=その日の既存最大order + order_hint)、source="nhk"
+      - 既存のみ存在: そのまま (Q3)
+      - broadcast_meta[date] = {description, episodeName, tvEpisodeId}
+
+    Args:
+      show_key: "okaasan" | "inai" — 対象番組
+
+    Returns: (merged_items, broadcast_meta_by_date)
+    """
+    # 該当showの既存itemsを (date, normalized_title) で索引
+    weekly_index: Dict[tuple, Dict] = {}
+    for it in weekly_items:
+        if it.get("show") != show_key:
+            continue
+        weekly_index[(it["date"], normalize_title(it["title"]))] = it
+
+    # その日の最大orderを把握 (NHKのみitemに連番を振るため)
+    max_order_by_date: Dict[str, int] = {}
+    for it in weekly_items:
+        if it.get("show") != show_key:
+            continue
+        d = it["date"]
+        max_order_by_date[d] = max(max_order_by_date.get(d, 0), it.get("order", 0))
+
+    broadcast_meta: Dict[str, Dict] = {}
+    nhk_added: List[Dict] = []
+    matched_count = 0
+
+    for b in nhk_data.get("broadcasts", []):
+        date_str = b.get("date", "")
+        if not date_str:
+            continue
+        # broadcast_metaは1日1放送が基本だが、特番複数あるケースは後勝ち+items統合
+        if date_str not in broadcast_meta:
+            broadcast_meta[date_str] = {
+                "description": b.get("description", ""),
+                "episodeName": b.get("episodeName", ""),
+                "tvEpisodeId": b.get("tvEpisodeId", ""),
+                "broadcastEventId": b.get("broadcastEventId", ""),
+                "startDate": b.get("startDate", ""),
+                "source": "nhk",
+            }
+        else:
+            # 特番のdescriptionを連結
+            existing = broadcast_meta[date_str]
+            existing["description"] = (existing["description"] + "\n---\n" + b.get("description", "")).strip()
+            existing["episodeName"] = existing["episodeName"] + " / " + b.get("episodeName", "")
+
+        # この放送のorderオフセットは1放送の処理開始時点で固定
+        # (broadcast内のorderはhint通りにし、放送間でのみずらす)
+        broadcast_base = max_order_by_date.get(date_str, 0)
+        broadcast_max = broadcast_base
+
+        for nhk_it in b.get("items", []):
+            nhk_title = nhk_it["title"]
+            key = (date_str, normalize_title(nhk_title))
+            if key in weekly_index:
+                wk = weekly_index[key]
+                # 週報のorder/credits/keywords保持、titleはNHK綴り優先 (差異時のみ)
+                if wk["title"] != nhk_title:
+                    wk["title_alt"] = wk["title"]
+                    wk["title"] = nhk_title
+                wk["source"] = "nhk+weekly"
+                matched_count += 1
+            else:
+                # NHKのみ: 仮order = (放送開始時のbase) + 放送内のorder_hint
+                fallback_order = broadcast_base + nhk_it.get("order_hint", 0)
+                broadcast_max = max(broadcast_max, fallback_order)
+                new_item = {
+                    "id": next_id,
+                    "show": show_key,
+                    "title": nhk_title,
+                    "corner": nhk_it.get("section", "うた"),
+                    "date": date_str,
+                    "airtime": SHOWS[show_key]["airtime"],
+                    "offset": "",
+                    "order": fallback_order,
+                    "fav": False,
+                    "keywords": [],
+                    "mood": "",
+                    "snippet": "",
+                    "snippets": [],
+                    "theme": "",
+                    "subcategory": nhk_it.get("section", "うた"),
+                    "source": "nhk",
+                }
+                # キーワードDBから補強
+                kw_db = load_keywords_db()
+                entry = kw_db.get(nhk_title, {}) if isinstance(kw_db.get(nhk_title), dict) else {}
+                if entry:
+                    new_item["keywords"] = entry.get("keywords", [])
+                    new_item["mood"] = entry.get("mood", "")
+                    snippets = entry.get("snippets", [])
+                    new_item["snippets"] = snippets
+                    new_item["snippet"] = entry.get("snippet", "") or (snippets[0] if snippets else "")
+                    new_item["theme"] = entry.get("theme", "")
+                new_item["characters"] = detect_characters(new_item)
+                nhk_added.append(new_item)
+                next_id += 1
+
+        # この放送が消費したorderレンジを反映 (次の同日放送はその上から振る)
+        max_order_by_date[date_str] = broadcast_max
+
+    print(f"  📊 merge: {matched_count} 件マッチ / {len(nhk_added)} 件NHK追加 / {len(broadcast_meta)} 日メタ生成")
+    return weekly_items + nhk_added, broadcast_meta
+
+
+def load_existing(path: str) -> tuple:
+    """既存 data.json を読み込む (アーカイブ式 merge 用)"""
+    p = Path(path)
+    if not p.exists():
+        return [], {}
+    try:
+        d = json.loads(p.read_text(encoding="utf-8"))
+        items = d.get("items", []) or []
+        meta = d.get("broadcast_meta", {}) or {}
+        # broadcast_meta は番組別ネスト構造に対応
+        if isinstance(meta, dict) and "okaasan" not in meta and "inai" not in meta:
+            # 旧 flat 構造 → 互換のためそのまま入れとく
+            meta = {"okaasan": meta, "inai": {}}
+        return items, meta
+    except Exception as e:
+        print(f"  ⚠️ 既存data.json読み込み失敗: {e}")
+        return [], {}
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--weeks", type=int, default=4, help="何週間分取るか（デフォルト4）")
+    ap.add_argument("--weeks", type=int, default=4, help="週報を何週間分取るか（デフォルト4）")
     ap.add_argument("--out", default="data.json")
     ap.add_argument("--no-inai", action="store_true", help="いないいないばあの予測データを含めない")
+    ap.add_argument("--no-nhk", action="store_true", help="NHK公式データmergeをスキップ")
+    ap.add_argument("--no-archive", action="store_true", help="既存data.jsonを無視して上書き(旧挙動)")
+    ap.add_argument("--retain-weeks", type=int, default=4,
+                    help="アーカイブ保持期間(週数)。これより古いitemは整理される (default=4)")
     args = ap.parse_args()
+
+    # === Archive式 merge: 既存 data.json を起点として、新規scrape分を追加していく ===
+    if args.no_archive:
+        existing_items: List[Dict] = []
+        archived_meta: Dict[str, Dict] = {"okaasan": {}, "inai": {}}
+    else:
+        existing_items, archived_meta = load_existing(args.out)
+        if existing_items:
+            print(f"📦 既存 data.json から {len(existing_items)} 件をアーカイブとしてロード")
 
     print(f"📡 fetching latest {args.weeks} weekly reports from tokyofukubukuro.com ...")
     posts = fetch_weekly_posts(per_page=max(args.weeks, 2))
@@ -381,11 +540,7 @@ def main():
         all_items.extend(items)
         seed += 1000
 
-    # 直近 args.weeks*7 日でフィルタ（今日を含む）
-    cutoff = date.today() - timedelta(days=args.weeks * 7 - 1)
-    all_items = [x for x in all_items if date.fromisoformat(x["date"]) >= cutoff]
-
-    # 重複除去（同日・同曲）
+    # 重複除去（同日・同曲、週報内）
     seen = set()
     deduped = []
     for x in all_items:
@@ -404,12 +559,46 @@ def main():
         # キャラクター検出
         x["characters"] = detect_characters(x)
 
-    # いないいないばあ予測データを追加
+    # NHK公式データをmerge (おかあさん + いないいないばあ)
+    # broadcast_meta は番組別に保持: {"okaasan": {date: {...}}, "inai": {date: {...}}}
+    # ※ 既存アーカイブの broadcast_meta を起点として上書き&追加
+    broadcast_meta: Dict[str, Dict] = {
+        "okaasan": dict(archived_meta.get("okaasan", {})),
+        "inai":    dict(archived_meta.get("inai", {})),
+    }
+    nhk_inai_dates: set = set()  # NHKでカバー済の日付 → 予測データから除外する
+    if not args.no_nhk:
+        try:
+            import scraper_nhk
+            for show_key in ("okaasan", "inai"):
+                print(f"📡 fetching NHK official broadcast data: {show_key} ...")
+                try:
+                    nhk = scraper_nhk.scrape_show(show_key)
+                except Exception as e:
+                    print(f"  ⚠️  {show_key} NHK fetch失敗: {e}")
+                    continue
+                print(f"  → {len(nhk['broadcasts'])} 放送取得")
+                next_id = max((x["id"] for x in deduped), default=20000) + 1
+                if next_id < 20000:
+                    next_id = 20000  # NHKのみitem用ID帯
+                deduped, meta = merge_nhk_into_items(deduped, nhk, next_id, show_key=show_key)
+                # archive: 既存metaに新meta(同日付がある場合上書き)
+                broadcast_meta[show_key].update(meta)
+                if show_key == "inai":
+                    # NHKカバー済日付 = 今回scrapeの日付のみ(過去archive分は除外しない=予測も生成しない)
+                    nhk_inai_dates = set(meta.keys())
+        except Exception as e:
+            print(f"  ⚠️  NHK fetch全体失敗、既存データのみで続行: {e}")
+
+    # いないいないばあ予測データを追加 (NHKでカバーできなかった日付のみ)
     if not args.no_inai:
         next_id = max((x["id"] for x in deduped), default=0) + 1
         inai_items = generate_inai_baa_items(args.weeks, next_id)
+        # NHKでカバー済の日付は除外 (公式優先)
+        inai_items = [x for x in inai_items if x["date"] not in nhk_inai_dates]
         # 重複除去（同日・同曲）
         inai_seen = set()
+        added = 0
         for x in inai_items:
             key = (x["date"], x["show"], x["title"])
             if key in inai_seen:
@@ -417,13 +606,59 @@ def main():
             inai_seen.add(key)
             x["characters"] = detect_characters(x)
             deduped.append(x)
-        print(f"🔮 いないいないばあ予測データ: {len(inai_items)}件追加")
+            added += 1
+        print(f"🔮 いないいないばあ予測データ: {added}件追加 (NHK公式{len(nhk_inai_dates)}日分は除外)")
+
+    # === Archive merge: 既存 items と今回 scrape 結果を統合 ===
+    # ルール:
+    #   - 同 (date, show, normalized_title) があれば、最新(今回scrape)を優先
+    #   - 古い items は touch しない (NHK API から消えた過去日付も保持)
+    if existing_items and not args.no_archive:
+        new_keys = set()
+        for it in deduped:
+            new_keys.add((it.get("date"), it.get("show"), normalize_title(it.get("title", ""))))
+        # 既存のうち、今回scrapeで上書きされないものは保持
+        kept_old = []
+        for it in existing_items:
+            k = (it.get("date"), it.get("show"), normalize_title(it.get("title", "")))
+            if k not in new_keys:
+                kept_old.append(it)
+        # ID 衝突を避けるため、kept_old のIDを大きな番号にrebase
+        if kept_old:
+            max_id = max((x.get("id", 0) for x in deduped), default=20000)
+            next_id = max(max_id + 1, 30000)
+            for it in kept_old:
+                # 既存IDがdedupedと重複する場合のみ振り直す
+                if any(d.get("id") == it.get("id") for d in deduped):
+                    it["id"] = next_id
+                    next_id += 1
+        deduped = deduped + kept_old
+        print(f"📦 archive merge: 新規{len(deduped) - len(kept_old)}件 + 過去保持{len(kept_old)}件 = 合計{len(deduped)}件")
+
+    # === 保持期間 (retention) フィルタ ===
+    # 過去 args.retain_weeks 週より古い items は破棄して肥大化を防ぐ
+    if args.retain_weeks > 0:
+        retain_cutoff = date.today() - timedelta(days=args.retain_weeks * 7)
+        before = len(deduped)
+        deduped = [
+            x for x in deduped
+            if x.get("date") and date.fromisoformat(x["date"]) >= retain_cutoff
+        ]
+        if before != len(deduped):
+            print(f"🗑️  retention: {args.retain_weeks}週より古い {before - len(deduped)} 件を整理")
+        # broadcast_meta も同期で整理
+        for show_key in list(broadcast_meta.keys()):
+            broadcast_meta[show_key] = {
+                d: m for d, m in broadcast_meta[show_key].items()
+                if date.fromisoformat(d) >= retain_cutoff
+            }
 
     print(f"\n✅ 合計 {len(deduped)} 件、{args.out} に保存（重複除去後）")
     with open(args.out, "w", encoding="utf-8") as f:
         json.dump({
             "generated_at": datetime.now().isoformat(timespec="seconds"),
-            "source": "tokyofukubukuro.com okasan-fc weekly report (WP REST API)",
+            "source": "tokyofukubukuro.com weekly + NHK公式 (api.web.nhk)",
+            "broadcast_meta": broadcast_meta,
             "items": deduped,
         }, f, ensure_ascii=False, indent=2)
 

@@ -4,3 +4,13 @@ __pycache__/
 .venv/
 venv/
 *.log
+
+# backup
+*.bak
+
+# iOS / Xcode
+ios/AzukiSearch.xcodeproj/
+ios/build/
+ios/DerivedData/
+*.xcuserstate
+xcuserdata/
