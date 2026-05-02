@@ -31,7 +31,7 @@ struct KeywordSearchView: View {
                 VStack(alignment: .leading, spacing: 0) {
                     HeaderView(
                         title: "キーワード検索",
-                        subtitle: "曲名・コーナー・歌詞・出演者で探す",
+                        subtitle: "曲名・コーナー・歌詞で探す",
                         query: $query
                     )
 
@@ -84,7 +84,7 @@ struct KeywordSearchView: View {
         VStack(spacing: 12) {
             Text("🔎")
                 .font(.system(size: 48))
-            Text("曲名・コーナー・歌詞・出演者などで検索")
+            Text("曲名・コーナー・歌詞などで検索")
                 .font(.system(size: 13, weight: .semibold))
                 .foregroundColor(AppColor.textDim)
                 .multilineTextAlignment(.center)

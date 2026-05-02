@@ -99,7 +99,7 @@ final class DataStore: ObservableObject {
         }
     }
 
-    /// 検索: タイトル/コーナー/歌詞/キーワード/出演者を横断
+    /// 検索: タイトル/コーナー/歌詞/キーワードを横断
     func searchItems(query: String) -> [BroadcastItem] {
         let q = Self.normalizeQuery(query)
         guard !q.isEmpty else { return [] }

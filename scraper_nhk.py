@@ -42,8 +42,15 @@ SHOWS = {
 }
 
 API_BASE = "https://api.web.nhk/r8"
+# NHKシリーズページがbotブロック強化したため、ブラウザ系UAでアクセスする
 HEADERS = {
-    "User-Agent": "Mozilla/5.0 (EtereSagasukunBot/0.3 personal use)",
+    "User-Agent": (
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+        "AppleWebKit/605.1.15 (KHTML, like Gecko) "
+        "Version/17.4 Safari/605.1.15"
+    ),
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "ja,en;q=0.9",
     "Origin": "https://www.nhk.jp",
     "Referer": "https://www.nhk.jp/",
 }

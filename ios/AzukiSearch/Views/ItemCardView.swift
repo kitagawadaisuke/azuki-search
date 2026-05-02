@@ -17,16 +17,12 @@ struct ItemCardView: View {
     }
 
     private var displayTime: String {
-        // airtime "HH:MM" + (order-1)*4分 で擬似時刻
-        guard let order = item.order else { return item.airtime }
-        let parts = item.airtime.split(separator: ":")
-        guard parts.count == 2,
-              let h = Int(parts[0]),
-              let m = Int(parts[1]) else { return item.airtime }
-        let total = h * 60 + m + (order - 1) * 4
-        let nh = total / 60
-        let nm = total % 60
-        return String(format: "%d:%02d", nh, nm)
+        // 番組開始からの経過時間 (録画再生位置の目安、4分刻み擬似)
+        guard let order = item.order else { return "" }
+        let total = (order - 1) * 4
+        let h = total / 60
+        let m = total % 60
+        return String(format: "%d:%02d", h, m)
     }
 
     private var displayTitle: String {
@@ -52,11 +48,11 @@ struct ItemCardView: View {
         return f.string(from: d)
     }
 
-    /// 番組名 short label
+    /// 番組名ラベル
     private var showLabel: String {
         switch item.show {
-        case "okaasan": return "おかいつ"
-        case "inai":    return "いないばあ"
+        case "okaasan": return "おかあさんといっしょ"
+        case "inai":    return "いないいないばあっ!"
         default:        return item.show
         }
     }
@@ -74,20 +70,12 @@ struct ItemCardView: View {
                 raw.append((ch, AppColor.tagPurpleBg, AppColor.tagPurpleFg))
             }
         }
-        // 3) mood (あれば)
-        if let m = item.mood, !m.isEmpty {
-            raw.append((m, AppColor.tagBlueBg, AppColor.tagBlueFg))
-        }
-        // 4) keywords
-        if let kws = item.keywords {
-            for k in kws.prefix(3) {
-                raw.append((k, AppColor.tagPinkBg, AppColor.tagPinkFg))
-            }
-        }
+        // 注: mood / keywords は主観的形容詞が混ざるためタグ表示はしない
+        //     (検索 haystack には DataStore 側で引き続き含めて検索性は維持)
 
         // dedupe & filter
         // - 同じラベル(normalize比較) は1つだけ
-        // - タイトル(normalize)の substring or 逆 は除外 (例: タイトル「ファンターネ！」のタグ「ファンタネ」は不要)
+        // - タイトル(normalize)の substring or 逆 は除外
         // - ただし最初のジャンルchip(index==0)は無条件で残す
         var seen = Set<String>()
         var result: [(String, Color, Color)] = []
@@ -96,17 +84,15 @@ struct ItemCardView: View {
             if key.isEmpty { continue }
             if !seen.insert(key).inserted { continue }
             if i == 0 {
-                // ジャンルは無条件
                 result.append(t)
                 continue
             }
-            // タイトルのsubstringに含まれる/含まれる側 → 除外
             if !titleNorm.isEmpty && (titleNorm.contains(key) || key.contains(titleNorm)) {
                 continue
             }
             result.append(t)
         }
-        return Array(result.prefix(4))
+        return Array(result.prefix(3))
     }
 
     /// 部分文字列比較用normalize: 長音記号/記号/空白除去 + lowercase

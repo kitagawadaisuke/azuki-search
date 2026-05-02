@@ -20,6 +20,13 @@ enum ShowFilter: String, CaseIterable, Identifiable {
 }
 
 struct HomeView: View {
+    enum Mode {
+        case today        // ホーム: 今日固定、カレンダー非表示
+        case dateSearch   // 日付検索: 週カレンダーで日付切替可
+    }
+
+    var mode: Mode = .today
+
     @EnvironmentObject var dataStore: DataStore
     @EnvironmentObject var favs: FavoritesStore
 
@@ -64,6 +71,20 @@ struct HomeView: View {
         return f.string(from: selectedDate) + "の放送内容"
     }
 
+    private var headerTitle: String {
+        switch mode {
+        case .today:      return "今日の放送内容"
+        case .dateSearch: return "日付で探す"
+        }
+    }
+
+    private var headerSubtitle: String {
+        switch mode {
+        case .today:      return "子ども番組の放送内容を検索・記録・アーカイブ"
+        case .dateSearch: return "カレンダーから過去の放送を見る"
+        }
+    }
+
     private var isSearching: Bool {
         !query.trimmingCharacters(in: .whitespaces).isEmpty
     }
@@ -75,8 +96,8 @@ struct HomeView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
                     HeaderView(
-                        title: "今日の放送内容",
-                        subtitle: "子ども番組の放送内容を検索・記録・アーカイブ",
+                        title: headerTitle,
+                        subtitle: headerSubtitle,
                         query: $query
                     )
 
@@ -87,12 +108,14 @@ struct HomeView: View {
                         .padding(.bottom, 4)
 
                     if !isSearching {
-                        WeekCalendarView(
-                            selectedDate: $selectedDate,
-                            datesWithData: datesWithData
-                        )
-                        .padding(.top, 6)
-                        .padding(.bottom, 4)
+                        if mode == .dateSearch {
+                            WeekCalendarView(
+                                selectedDate: $selectedDate,
+                                datesWithData: datesWithData
+                            )
+                            .padding(.top, 6)
+                            .padding(.bottom, 4)
+                        }
 
                         Text(dateHeading)
                             .font(.system(size: 17, weight: .bold))
