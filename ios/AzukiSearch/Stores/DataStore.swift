@@ -19,7 +19,7 @@ final class DataStore: ObservableObject {
 
     // GitHub raw URL — scraper.py が生成した data.json を直接 fetch
     // 24h 以内ならローカル cache を返す (URLCache 経由)
-    static let dataURL = URL(string: "https://raw.githubusercontent.com/kitagawadaisuke/okaa-san-finder/main/data.json")!
+    static let dataURL = URL(string: "https://raw.githubusercontent.com/kitagawadaisuke/azuki-search/main/data.json")!
 
     private var hasLoadedOnce = false
 

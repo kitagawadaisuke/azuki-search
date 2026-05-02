@@ -38,6 +38,23 @@
     --shadow-card: 0 3px 16px rgba(61, 40, 23, 0.08);
     --safe-bottom: env(safe-area-inset-bottom);
     --safe-top: env(safe-area-inset-top);
+
+    /* === Typography scale === */
+    --fs-xs: 11px;       /* メタ・補足・件数バッジ */
+    --fs-sm: 12.5px;     /* セカンダリ情報・ジャンルchip・タグ */
+    --fs-md: 14px;       /* 本文サイズ */
+    --fs-lg: 15.5px;     /* カードタイトル */
+    --fs-xl: 19px;       /* セクション見出し */
+    --fs-2xl: 24px;      /* H1 */
+    --fw-normal: 500;
+    --fw-bold: 700;
+    --fw-heavy: 800;
+
+    /* レイアウト用 spacing */
+    --gap-xs: 4px;
+    --gap-sm: 8px;
+    --gap-md: 12px;
+    --gap-lg: 18px;
   }
 
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -53,12 +70,29 @@
     font-family: -apple-system, BlinkMacSystemFont, "Hiragino Maru Gothic ProN", "Hiragino Sans", "Yu Gothic UI", sans-serif;
     min-height: 100vh;
     padding-top: var(--safe-top);
-    padding-bottom: calc(20px + var(--safe-bottom));
+    /* bottom nav分の余白(72px) + safe area */
+    padding-bottom: calc(76px + var(--safe-bottom));
     line-height: 1.5;
   }
 
+  /* デスクトップ/タブレットでのモバイル幅レイアウトcap */
+  header, main, .bottom-nav {
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  main { padding: 0 16px; }
+  .bottom-nav { left: 0; right: 0; }
+  @media (min-width: 540px) {
+    .bottom-nav {
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
+    }
+  }
+
   header {
-    padding: 20px 20px 14px;
+    padding: 14px 16px 10px;
     position: sticky;
     top: 0;
     background: linear-gradient(180deg, var(--bg) 0%, rgba(255, 247, 232, 0.92) 100%);
@@ -69,31 +103,47 @@
   }
 
   h1 {
-    font-size: 26px;
-    margin: 0 0 14px;
+    font-size: var(--fs-2xl);
+    margin: 0;
     font-weight: 900;
     letter-spacing: 0.01em;
-    text-align: center;
     color: var(--text);
-    text-shadow: 0 1px 0 #fff, 0 2px 8px rgba(255, 138, 61, 0.18);
+    line-height: 1.1;
+  }
+
+  /* ===== ブランド帯 (TVマスコット + サブタイトル) ===== */
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 12px;
+  }
+  .brand-mascot {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #6ac6e8 0%, #4fd6a0 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
-  }
-  h1 .azuki-side {
-    width: 52px;
-    height: auto;
-    max-height: 68px;
-    object-fit: contain;
+    font-size: 24px;
     flex-shrink: 0;
-    filter: drop-shadow(0 2px 4px rgba(61, 40, 23, 0.15));
-  }
-  h1 .azuki-side.flip {
-    transform: scaleX(-1);
-  }
-  h1 .title-text {
+    box-shadow: var(--shadow-soft);
     line-height: 1;
+  }
+  .brand-text {
+    flex: 1;
+    min-width: 0;
+  }
+  .brand-sub {
+    font-size: var(--fs-xs);
+    color: var(--text-dim);
+    font-weight: 600;
+    margin-top: 2px;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .search-wrap {
@@ -592,7 +642,32 @@
 
   /* 日別タイムライン表示 */
   .day-block {
-    margin-bottom: 24px;
+    margin-bottom: 18px;
+  }
+  .show-divider {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 4px 4px 8px;
+    font-size: var(--fs-sm);
+    font-weight: 800;
+  }
+  .show-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: rgba(143,115,87,0.14);
+  }
+  .show-divider-okaasan .show-divider-name { color: var(--accent); }
+  .show-divider-inai .show-divider-name { color: var(--inai); }
+  .show-divider-count {
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    color: var(--text-dim);
+    background: var(--surface);
+    padding: 2px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(143,115,87,0.12);
   }
   .day-header {
     display: flex;
@@ -755,17 +830,17 @@
     transition: all 0.15s;
   }
   .day-tab .dt-wd {
-    font-size: 11px;
+    font-size: var(--fs-xs);
     opacity: 0.7;
     display: block;
   }
   .day-tab .dt-d {
-    font-size: 20px;
+    font-size: var(--fs-xl);
     font-weight: 900;
     font-variant-numeric: tabular-nums;
   }
   .day-tab .dt-sub {
-    font-size: 10px;
+    font-size: var(--fs-xs);
     opacity: 0.7;
     margin-top: 2px;
     display: block;
@@ -816,6 +891,669 @@
     color: var(--accent);
     border-radius: 999px;
     margin-left: 4px;
+  }
+
+  /* ===== 今日のピックアップ（NHK公式あらすじ） ===== */
+  .pickup {
+    background: linear-gradient(135deg, #fffaef 0%, #ffeed1 100%);
+    border-radius: 22px;
+    padding: 14px 16px 16px;
+    margin: 6px 4px 18px;
+    border: 1.5px solid rgba(255, 184, 77, 0.32);
+    box-shadow: var(--shadow-card);
+    position: relative;
+    overflow: hidden;
+  }
+  .pickup::before {
+    content: "✨";
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 60px;
+    opacity: 0.12;
+    pointer-events: none;
+  }
+  .pickup-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: var(--fs-xs);
+    font-weight: 800;
+    color: var(--accent);
+    background: #fff;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 8px;
+    box-shadow: var(--shadow-soft);
+    letter-spacing: 0.04em;
+  }
+  .pickup-label.label-inai {
+    color: var(--inai);
+  }
+  .pickup-title {
+    font-size: var(--fs-md);
+    font-weight: 800;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+  .pickup-desc {
+    font-size: var(--fs-sm);
+    line-height: 1.65;
+    color: var(--text);
+    opacity: 0.82;
+    word-break: break-word;
+  }
+
+  /* ===== カード型アイテム (mockup準拠) ===== */
+  .item-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: var(--surface);
+    border-radius: 16px;
+    margin: 0 0 8px;
+    box-shadow: 0 1px 4px rgba(61, 40, 23, 0.06);
+    cursor: pointer;
+    position: relative;
+    border: 1.5px solid transparent;
+    transition: transform 0.12s, box-shadow 0.12s, border-color 0.12s;
+  }
+  .item-card:active {
+    transform: scale(0.985);
+  }
+  .item-card:hover {
+    box-shadow: 0 3px 12px rgba(61, 40, 23, 0.08);
+  }
+  .item-card.is-fav {
+    border-color: rgba(255, 138, 61, 0.28);
+    background: linear-gradient(180deg, #fff 0%, #fffaf2 100%);
+  }
+  .item-card.is-nested {
+    margin-left: 28px;
+    background: rgba(255, 247, 232, 0.55);
+    box-shadow: none;
+    border: 1px dashed rgba(143, 115, 87, 0.2);
+  }
+
+  /* 左: 番号バッジ + 時刻 */
+  .card-num {
+    flex: 0 0 38px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+  }
+  .card-num-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--sky);
+    color: #fff;
+    font-size: var(--fs-md);
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  .card-num-time {
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    color: var(--text-dim);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+
+  /* ジャンル絵文字square */
+  .card-icon {
+    flex: 0 0 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    line-height: 1;
+  }
+  .card-icon.thumb-uta { background: linear-gradient(135deg, #fff5d6 0%, #ffe19a 100%); }
+  .card-icon.thumb-ningyo { background: linear-gradient(135deg, #ffe2ec 0%, #ffbcd2 100%); }
+  .card-icon.thumb-anime { background: linear-gradient(135deg, #e0f2fa 0%, #aaddef 100%); }
+  .card-icon.thumb-taiso { background: linear-gradient(135deg, #def6e4 0%, #aae3c0 100%); }
+  .card-icon.thumb-corner { background: linear-gradient(135deg, #ede2f7 0%, #ccb7e9 100%); }
+
+  /* タイトルprefix (うた/コーナー/etc.) */
+  .card-title-prefix {
+    color: var(--text-dim);
+    font-weight: 700;
+    margin-right: 2px;
+    font-size: var(--fs-sm);
+  }
+
+  .card-body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 32px; /* fav button space */
+  }
+  .card-title {
+    font-size: var(--fs-md);
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 4px;
+    word-break: break-word;
+    color: var(--text);
+  }
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+    font-size: var(--fs-xs);
+  }
+  .card-genre {
+    font-weight: 700;
+    font-size: var(--fs-xs);
+    padding: 2px 8px;
+    border-radius: 999px;
+    letter-spacing: 0;
+  }
+  .card-genre.g-uta { background: rgba(230, 122, 46, 0.13); color: #c66220; }
+  .card-genre.g-ningyo { background: rgba(217, 78, 141, 0.14); color: #b73e75; }
+  .card-genre.g-anime { background: rgba(58, 157, 200, 0.14); color: #2a83ad; }
+  .card-genre.g-taiso { background: rgba(46, 181, 128, 0.13); color: #1e9268; }
+  .card-genre.g-corner { background: rgba(138, 92, 216, 0.14); color: #6f47b3; }
+  .card-parent {
+    font-size: var(--fs-xs);
+    color: var(--text-dim);
+    font-weight: 600;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 6px;
+  }
+  .card-tag {
+    font-size: var(--fs-xs);
+    padding: 2px 8px;
+    background: #f4eef8;
+    color: var(--text-dim);
+    border-radius: 999px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  /* mockupではタグ最初の1個=ジャンル名(色付き)、残りは普通 */
+  .card-tag-genre {
+    background: #fff3d6;
+    color: #c66220;
+  }
+
+  .card-snippet {
+    font-size: var(--fs-sm);
+    color: var(--accent);
+    margin-top: 6px;
+    font-weight: 600;
+    line-height: 1.35;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .card-snippet::before {
+    content: "♪ ";
+    margin-right: 1px;
+  }
+
+  .card-fav {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    color: rgba(143, 115, 87, 0.4);
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
+    transition: color 0.12s, transform 0.12s;
+  }
+  .card-fav:hover {
+    background: rgba(255, 138, 61, 0.08);
+  }
+  .card-fav:active {
+    transform: translateY(-50%) scale(0.85);
+  }
+  .card-fav.fav { color: var(--accent); }
+
+  .card-source-badge {
+    display: inline-block;
+    background: rgba(106, 198, 232, 0.18);
+    color: #3a9dc8;
+    font-size: 9px;
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+  }
+  .card-source-badge.src-nhk {
+    background: rgba(255, 95, 156, 0.14);
+    color: var(--accent-2);
+  }
+  .search-more {
+    font-size: var(--fs-xs);
+    color: var(--text-dim);
+    padding: 2px 18px 8px;
+    margin: -8px 4px 8px;
+    line-height: 1.4;
+  }
+
+  /* ===== 日付見出し ===== */
+  .date-heading {
+    font-size: var(--fs-lg);
+    font-weight: 800;
+    color: var(--text);
+    margin: 14px 4px 12px;
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+  }
+  .date-heading-empty {
+    color: var(--text-dim);
+    font-weight: 700;
+    font-size: var(--fs-md);
+  }
+
+  /* ===== 番組ラベル(同日に複数番組ある時の小区切り) ===== */
+  .show-label {
+    font-size: var(--fs-sm);
+    font-weight: 800;
+    margin: 14px 4px 8px;
+    color: var(--accent);
+    display: inline-block;
+    padding: 2px 12px;
+    background: rgba(255, 184, 77, 0.15);
+    border-radius: 999px;
+  }
+  .show-label-inai {
+    color: var(--inai);
+    background: rgba(255, 107, 176, 0.15);
+  }
+
+  /* ===== 免責文 ===== */
+  .disclaimer {
+    text-align: center;
+    font-size: var(--fs-xs);
+    color: var(--text-dim);
+    margin: 24px 8px 8px;
+    opacity: 0.7;
+    font-weight: 500;
+  }
+
+  /* ===== Bottom Navigation ===== */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-top: 1px solid rgba(143, 115, 87, 0.14);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    z-index: 100;
+    padding-bottom: var(--safe-bottom);
+  }
+  .bn-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 8px 4px 10px;
+    background: transparent;
+    border: none;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: color 0.12s, background 0.12s;
+    font-family: inherit;
+  }
+  .bn-tab:active {
+    background: rgba(255, 184, 77, 0.1);
+  }
+  .bn-icon {
+    font-size: 22px;
+    line-height: 1;
+  }
+  .bn-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .bn-tab.is-active {
+    color: var(--accent-2);
+  }
+  .bn-tab.is-active .bn-icon {
+    transform: scale(1.05);
+  }
+
+  /* ===== 月カレンダーウィジェット ===== */
+  .calendar {
+    background: var(--surface);
+    border-radius: 18px;
+    padding: 12px 14px 10px;
+    margin: 4px 0 14px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(143, 115, 87, 0.06);
+  }
+  .cal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .cal-month {
+    font-size: var(--fs-md);
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: 0.02em;
+  }
+  .cal-nav {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--surface-2);
+    border: none;
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: background 0.12s;
+  }
+  .cal-nav:hover { background: rgba(255, 184, 77, 0.25); }
+  .cal-nav:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+  .cal-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    color: var(--text-dim);
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .cal-weekdays .sat { color: var(--sky); }
+  .cal-weekdays .sun { color: var(--accent-2); }
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 3px;
+  }
+  .cal-day {
+    width: 100%;
+    height: 44px;
+    max-width: 44px;
+    margin: 0 auto;
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    color: var(--text);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    position: relative;
+    transition: background 0.12s, border-color 0.12s;
+    padding: 0;
+    font-variant-numeric: tabular-nums;
+  }
+  .cal-day:hover:not(:disabled):not(.cal-empty) {
+    background: var(--surface-2);
+  }
+  .cal-day.cal-empty {
+    visibility: hidden;
+    cursor: default;
+  }
+  .cal-day.cal-no-data {
+    color: rgba(143, 115, 87, 0.4);
+    cursor: default;
+    pointer-events: none;
+  }
+  .cal-day.cal-sat:not(.cal-no-data):not(.cal-active) { color: var(--sky); }
+  .cal-day.cal-sun:not(.cal-no-data):not(.cal-active) { color: var(--accent-2); }
+  .cal-day.cal-active {
+    background: rgba(106, 198, 232, 0.12);
+    color: var(--sky);
+    border-color: var(--sky);
+    font-weight: 800;
+    box-shadow: 0 2px 6px rgba(106, 198, 232, 0.25);
+  }
+  .cal-day.cal-today:not(.cal-active) {
+    border-color: rgba(79, 214, 160, 0.6);
+  }
+  .cal-day.cal-today:not(.cal-active)::after {
+    content: "";
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: var(--mint);
+    border-radius: 50%;
+  }
+  .cal-day.cal-has-data:not(.cal-active)::before {
+    content: "";
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 5px;
+    height: 5px;
+    background: var(--accent);
+    border-radius: 50%;
+    opacity: 0.55;
+  }
+
+  /* ===== ジャンル横スクロールバー ===== */
+  .genre-bar {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 4px 0 8px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .genre-bar::-webkit-scrollbar { display: none; }
+  .genre-chip {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    background: var(--surface);
+    color: var(--text);
+    border: 1.5px solid rgba(143, 115, 87, 0.14);
+    border-radius: 999px;
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.12s;
+    line-height: 1;
+  }
+  .genre-chip:hover { background: var(--surface-2); }
+  .genre-chip.is-empty {
+    opacity: 0.45;
+  }
+  .genre-chip.is-on {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 2px 8px rgba(255, 95, 156, 0.25);
+  }
+  .genre-chip-count {
+    font-size: var(--fs-xs);
+    background: rgba(0,0,0,0.05);
+    color: var(--text-dim);
+    padding: 1px 6px;
+    border-radius: 8px;
+    font-weight: 800;
+    line-height: 1.4;
+  }
+  .genre-chip.is-on .genre-chip-count {
+    background: rgba(255,255,255,0.28);
+    color: #fff;
+  }
+  .genre-chip.is-reset {
+    color: var(--accent);
+    border-color: rgba(255, 138, 61, 0.3);
+    background: rgba(255, 240, 214, 0.6);
+  }
+
+  /* ===== 絞り込みパネル(旧) ===== */
+  .filter-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 14px;
+    background: var(--surface);
+    border: 1.5px solid rgba(143, 115, 87, 0.12);
+    border-radius: 14px;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: var(--shadow-soft);
+    margin: 4px 0 8px;
+    transition: background 0.12s, border-color 0.12s;
+  }
+  .filter-toggle:hover { background: var(--surface-2); }
+  .filter-toggle.is-open {
+    background: linear-gradient(135deg, #fff7e8 0%, #ffe19a 100%);
+    border-color: rgba(255, 138, 61, 0.3);
+  }
+  .filter-toggle-icon { font-size: 14px; }
+  .filter-toggle-summary {
+    flex: 1;
+    text-align: left;
+    color: var(--text-dim);
+    font-weight: 600;
+    font-size: 12px;
+  }
+  .filter-toggle.is-active .filter-toggle-summary {
+    color: var(--accent);
+  }
+  .filter-toggle-arrow {
+    font-size: 10px;
+    color: var(--text-dim);
+    transition: transform 0.2s;
+  }
+  .filter-toggle.is-open .filter-toggle-arrow {
+    transform: rotate(180deg);
+  }
+
+  .filter-panel {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 14px 14px 12px;
+    margin: 0 0 12px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(143, 115, 87, 0.08);
+    animation: filter-slide 0.18s ease-out;
+  }
+  @keyframes filter-slide {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .filter-section + .filter-section {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px dashed rgba(143, 115, 87, 0.16);
+  }
+  .filter-section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .filter-section-title {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: 0.04em;
+  }
+  .filter-reset {
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 2px 4px;
+  }
+  .filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    background: var(--surface-2);
+    color: var(--text-dim);
+    border: 1.5px solid transparent;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.12s;
+  }
+  .filter-chip:hover {
+    background: rgba(255, 184, 77, 0.18);
+  }
+  .filter-chip.is-on {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 2px 8px rgba(255, 95, 156, 0.25);
+  }
+  .filter-chip-count {
+    font-size: 10px;
+    background: rgba(255,255,255,0.6);
+    color: var(--text-dim);
+    padding: 1px 5px;
+    border-radius: 8px;
+    font-weight: 700;
+  }
+  .filter-chip.is-on .filter-chip-count {
+    background: rgba(255,255,255,0.3);
+    color: #fff;
   }
 
   /* キャラクターチップ */
@@ -908,30 +1646,45 @@
 <body>
 
 <header>
-  <h1>
-    <img class="azuki-side" src="assets/azuki-pose-thumb.png" alt="">
-    <span class="title-text">あずきサーチ</span>
-    <img class="azuki-side flip" src="assets/azuki-scene-thumb.png" alt="">
-  </h1>
+  <div class="brand">
+    <div class="brand-mascot" aria-hidden="true">📺</div>
+    <div class="brand-text">
+      <h1 id="header-title">今日の放送内容</h1>
+      <div class="brand-sub">子ども番組の放送内容を検索・記録・アーカイブ</div>
+    </div>
+  </div>
   <div class="search-wrap">
-    <input type="search" id="search" class="search-box" placeholder="曲名・雰囲気で検索（例：太鼓／元気）" autocomplete="off" enterkeyhint="search" inputmode="search">
+    <input type="search" id="search" class="search-box" placeholder="番組名・歌名・コーナー名で検索" autocomplete="off" enterkeyhint="search" inputmode="search">
     <button type="button" id="voice-btn" class="voice-btn" aria-label="音声で検索" title="音声で検索">🎤</button>
     <div id="suggest-pop" class="suggest-pop" style="display:none"></div>
-  </div>
-  <div class="filter-pills">
-    <button class="pill active" data-filter="all">ぜんぶ</button>
-    <button class="pill" data-filter="okaasan">おかあさんといっしょ</button>
-    <button class="pill" data-filter="inai">いないいないばぁ</button>
-    <button class="pill" data-filter="fav">⭐ お気に入り</button>
   </div>
 </header>
 
 <main id="main">
-  <div id="char-chip-host"></div>
-  <div id="fav-shortcut-host"></div>
-  <div class="day-tabs" id="day-tabs"></div>
+  <div id="calendar-host"></div>
+  <h2 id="date-heading" class="date-heading"></h2>
   <div id="list"></div>
+  <p class="disclaimer">※放送内容は変更になる場合があります。</p>
 </main>
+
+<nav class="bottom-nav" id="bottom-nav">
+  <button class="bn-tab is-active" data-view="home">
+    <span class="bn-icon">🏠</span>
+    <span class="bn-label">ホーム</span>
+  </button>
+  <button class="bn-tab" data-view="date">
+    <span class="bn-icon">📅</span>
+    <span class="bn-label">日付検索</span>
+  </button>
+  <button class="bn-tab" data-view="keyword">
+    <span class="bn-icon">🔍</span>
+    <span class="bn-label">キーワード検索</span>
+  </button>
+  <button class="bn-tab" data-view="fav">
+    <span class="bn-icon">♡</span>
+    <span class="bn-label">お気に入り</span>
+  </button>
+</nav>
 
 <div class="modal-backdrop" id="modal-backdrop">
   <div class="modal" id="modal">
@@ -957,6 +1710,7 @@ const SHOWS = {
 };
 
 let data = [];
+let broadcastMeta = { okaasan: {}, inai: {} };
 const FALLBACK_DATA = [
   // 4/19 (今日)
   { id: 1, show: "okaasan", title: "ぱぴぷぺぽ", date: "2026-04-19", airtime: "08:00", offset: "12:34", corner: "うた", fav: true },
@@ -1076,6 +1830,15 @@ const state = {
   selectedDate: null,  // タブで選択中の日付
   selectedChar: null,  // フィルタ対象キャラ
   favs: new Set(data.filter(d => d.fav).map(d => d.id)),
+  // 絞り込みパネル
+  filterOpen: false,
+  genres: new Set(),       // multi-select: "うた","人形劇","アニメ","体操","コーナー"
+  dateRange: "all",         // "all"|"week"|"2w"|"month"
+  // カレンダー表示中の年月 (null時はselectedDateから推定)
+  calYear: null,
+  calMonth: null,
+  // bottom nav の現在view: "home"|"date"|"keyword"|"fav"
+  view: "home",
 };
 
 // キャラアイコン表（characters.json から流し込み）
@@ -1108,23 +1871,32 @@ function todayStrIso() {
   return `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,"0")}-${String(t.getDate()).padStart(2,"0")}`;
 }
 
+// データロード時に検索用の正規化済みフィールドを事前計算する。
+// これがないと毎打鍵で全アイテム×全フィールドにnormalize()がかかってFPS落ちる。
+function precomputeSearchFields(items) {
+  for (const d of items) {
+    const snippetsAll = (d.snippets && d.snippets.length) ? d.snippets : (d.snippet ? [d.snippet] : []);
+    const creditsFlat = d.credits ? Object.values(d.credits).flat() : [];
+    d._haystack = [
+      normalize(d.title),
+      normalize(d.corner || ""),
+      d.subcategory ? normalize(d.subcategory) : "",
+      d.mood ? normalize(d.mood) : "",
+      d.theme ? normalize(d.theme) : "",
+      ...snippetsAll.map(normalize),
+      ...(d.keywords || []).map(normalize),
+      ...creditsFlat.map(normalize),
+    ].join("|");
+    d._titleN = normalize(d.title);
+    d._keywordsN = (d.keywords || []).map(normalize);
+    d._creditsN = creditsFlat.map(normalize);
+  }
+}
+
 function searchMatches(d, q) {
   if (!q) return true;
   const variants = expandQuery(q);
-  const creditsFlat = d.credits
-    ? Object.values(d.credits).flat().map(normalize)
-    : [];
-  const snippetsAll = (d.snippets && d.snippets.length) ? d.snippets : (d.snippet ? [d.snippet] : []);
-  const haystack = [
-    normalize(d.title),
-    normalize(d.corner),
-    d.subcategory ? normalize(d.subcategory) : "",
-    d.mood ? normalize(d.mood) : "",
-    d.theme ? normalize(d.theme) : "",
-    ...snippetsAll.map(normalize),
-    ...(d.keywords || []).map(normalize),
-    ...creditsFlat,
-  ].join("|");
+  const haystack = d._haystack || "";
   for (const v of variants) {
     if (haystack.includes(v)) return true;
   }
@@ -1132,22 +1904,38 @@ function searchMatches(d, q) {
 }
 
 function render() {
+  // bottom navのアクティブ状態同期
+  document.querySelectorAll(".bn-tab").forEach(t => {
+    t.classList.toggle("is-active", t.dataset.view === state.view);
+  });
+  // ヘッダタイトルもviewで動かす
+  const titleEl = document.getElementById("header-title");
+  if (titleEl) {
+    titleEl.textContent = ({
+      home: "今日の放送内容",
+      date: "放送日から探す",
+      keyword: "キーワード検索",
+      fav: "お気に入り",
+    })[state.view] || "あずきサーチ";
+  }
+
+  // viewによるquery/filterの上書き
+  // - fav view: state.filterをfavに強制
+  // - keyword view: stateそのまま (検索バー注力)
+  // - home/date: 通常 (showフィルタは無し=両番組統合表示)
   const qRaw = state.query.trim();
   const q = normalize(qRaw);
+  const isFavView = state.view === "fav";
+  const isKeywordView = state.view === "keyword";
+
   let items = data.filter(d => {
-    if (state.filter === "okaasan" && d.show !== "okaasan") return false;
-    if (state.filter === "inai" && d.show !== "inai") return false;
-    if (state.filter === "fav" && !state.favs.has(d.id)) return false;
-    if (state.selectedChar) {
-      if (!d.characters || !d.characters.includes(state.selectedChar)) return false;
-    }
+    if (isFavView && !state.favs.has(d.id)) return false;
+    if (state.genres.size > 0 && !state.genres.has(d.corner)) return false;
     if (!searchMatches(d, q)) return false;
     return true;
   });
 
-  renderDayTabs();
-  renderCharChips();
-  renderFavShortcuts();
+  renderCalendar();
 
   items.sort((a, b) => b.date.localeCompare(a.date) || a.airtime.localeCompare(b.airtime));
 
@@ -1156,8 +1944,19 @@ function render() {
     return;
   }
 
-  // 検索中は「曲タイトルでグループ化」して放送回をすべて並べる（コア体験）
-  if (q) {
+  const $heading = document.getElementById("date-heading");
+
+  // 検索 view (キーワード検索 or 検索クエリあり)
+  if (isKeywordView || q) {
+    if ($heading) {
+      $heading.textContent = q ? `「${qRaw}」の検索結果 (${items.length}件)` : "キーワードを入力してください";
+      $heading.className = "date-heading" + (q ? "" : " date-heading-empty");
+    }
+    if (!q) {
+      $list.innerHTML = `<div class="empty"><div class="empty-emoji">🔎</div>曲名・コーナー・歌い出し・出演者などで検索<br><small>カナ・ひらがな・漢字どれでもOK</small></div>`;
+      return;
+    }
+    // タイトル+show でグループ化、最新放送回を代表表示
     const groups = {};
     items.forEach(d => {
       const k = `${d.title}|${d.show}`;
@@ -1167,84 +1966,178 @@ function render() {
     const groupList = Object.values(groups).sort((a, b) =>
       b.items[0].date.localeCompare(a.items[0].date)
     );
-
-    $list.innerHTML = groupList.map(g => `
-      <div class="group-header">
-        <span style="color: var(--${g.show === "inai" ? "inai" : "okaasan"})">●</span>
-        <span>${escapeHtml(g.title)}</span>
-        <span class="group-count">${g.items.length}回</span>
-      </div>
-      <div class="group-card">
-        ${g.items.map(d => `
-          <div class="group-row" data-id="${d.id}">
-            <div class="when">
-              ${fmtDate(d.date)} ${d.airtime}〜
-              <small>${SHOWS[d.show].name} ・ ${escapeHtml(d.corner)}</small>
-            </div>
-            <div class="at">⏱ ${d.offset}</div>
-            <button class="star ${state.favs.has(d.id) ? "fav" : ""}" data-fav-id="${d.id}" aria-label="お気に入り" style="width:36px;height:36px;font-size:18px;">${state.favs.has(d.id) ? "★" : "☆"}</button>
-          </div>
-        `).join("")}
-      </div>
-    `).join("");
+    $list.innerHTML = groupList.map(g => {
+      const rep = g.items[0];
+      const moreCount = g.items.length - 1;
+      const moreLine = moreCount > 0
+        ? `<div class="search-more">同じ曲: 他に ${moreCount} 回放送 (${g.items.slice(1, 4).map(x => fmtDate(x.date)).join(" / ")}${moreCount > 3 ? " ほか" : ""})</div>`
+        : "";
+      return renderItemCard(rep) + moreLine;
+    }).join("");
     return;
   }
 
-  // 通常表示：日付タブで選択された1日分のタイムラインのみ表示
-  const byDay = {};
-  items.forEach(d => {
-    const k = `${d.date}|${d.show}`;
-    if (!byDay[k]) byDay[k] = { date: d.date, show: d.show, items: [] };
-    byDay[k].items.push(d);
-  });
-  Object.values(byDay).forEach(g => g.items.sort((a, b) => (a.order || 0) - (b.order || 0)));
+  // fav view: お気に入りのみ。日別/番組別グループ化はせず、最新順で並べる
+  if (isFavView) {
+    if ($heading) {
+      $heading.textContent = `お気に入り (${items.length}件)`;
+      $heading.className = "date-heading";
+    }
+    if (items.length === 0) {
+      $list.innerHTML = `<div class="empty"><div class="empty-emoji">♡</div>お気に入りはまだ無いよ<br><small>気になる曲のハートを押して登録</small></div>`;
+      return;
+    }
+    items.sort((a, b) => b.date.localeCompare(a.date) || (a.order||0) - (b.order||0));
+    $list.innerHTML = items.map(d => renderItemCard(d)).join("");
+    return;
+  }
 
+  // home / date view : 選択日の放送内容を表示
   const selected = state.selectedDate;
-  const dayGroups = Object.values(byDay).filter(g => g.date === selected)
-    .sort((a, b) => a.show < b.show ? -1 : 1);
+  // 同日同曲の重複を取り除く (週報 + NHK が両方merge失敗で残ってるケース対策)
+  // (show, normalized_title) 単位で1個に絞り、orderが小さい/keywordsがある方を優先
+  const sameDay = items.filter(d => d.date === selected);
+  const dedupeMap = new Map();
+  const normTitleForDedupe = s => (s || "").replace(/[ 　\s!！?？♪☆★・…]/g, "").toLowerCase();
+  for (const it of sameDay) {
+    const key = `${it.show}|${normTitleForDedupe(it.title)}`;
+    const prev = dedupeMap.get(key);
+    if (!prev) { dedupeMap.set(key, it); continue; }
+    // 優先度: keywordsありを優先 → orderが小さい方を優先
+    const prevHasKw = (prev.keywords || []).length > 0;
+    const curHasKw = (it.keywords || []).length > 0;
+    if (curHasKw && !prevHasKw) { dedupeMap.set(key, it); continue; }
+    if (curHasKw === prevHasKw && (it.order || 999) < (prev.order || 999)) {
+      dedupeMap.set(key, it);
+    }
+  }
+  const dayItems = [...dedupeMap.values()].sort((a, b) => {
+    // okaasanを先、inaiを後、その後 order
+    if (a.show !== b.show) return a.show < b.show ? -1 : 1;
+    return (a.order || 0) - (b.order || 0);
+  });
 
-  if (dayGroups.length === 0) {
-    $list.innerHTML = `<div class="empty"><div class="empty-emoji">📅</div>${selected ? fmtDate(selected) : "この日"}の放送データなし<br><small>別の日を選んでみてね</small></div>`;
+  // 日付見出し
+  if ($heading && selected) {
+    const dt = new Date(selected);
+    const weekday = ["日","月","火","水","木","金","土"][dt.getDay()];
+    $heading.textContent = `${dt.getFullYear()}年${dt.getMonth()+1}月${dt.getDate()}日(${weekday})の放送内容`;
+    $heading.className = "date-heading";
+  }
+
+  if (dayItems.length === 0) {
+    $list.innerHTML = `<div class="empty"><div class="empty-emoji">📅</div>この日の放送データはまだ無いよ<br><small>別の日を選んでみてね</small></div>`;
     return;
   }
 
-  const weekday = ["日","月","火","水","木","金","土"][new Date(selected).getDay()];
-  const dateLabel = fmtDate(selected);
-  const dateSub = `${selected.slice(5).replace("-","/")} (${weekday})`;
+  // ピックアップ枠 (broadcast_metaがあれば、各番組ごとに先頭で表示)
+  const shownShows = [...new Set(dayItems.map(d => d.show))];
+  const pickupHtml = shownShows.map(show => {
+    const meta = (broadcastMeta[show] || {})[selected];
+    if (!meta || !meta.description) return "";
+    return `
+      <div class="pickup">
+        <span class="pickup-label ${show==='inai'?'label-inai':''}">✨ ${SHOWS[show].name} ピックアップ</span>
+        <div class="pickup-title">${escapeHtml(meta.episodeName || '')}</div>
+        <div class="pickup-desc">${escapeHtml(meta.description)}</div>
+      </div>
+    `;
+  }).join("");
 
-  $list.innerHTML = `
-    <div class="selected-day-header">
-      <span class="big">${dateLabel}</span>
-      <span class="sub">${dateSub}</span>
-    </div>
-  ` + dayGroups.map(g => `
-    <div class="day-block">
-      <div class="day-header" style="margin-top:4px;padding-bottom:4px;">
-        <span class="day-show-badge" style="margin-left:0;background:${g.show==="inai"?"rgba(255,107,157,0.18)":"rgba(255,184,77,0.15)"};color:${g.show==="inai"?"var(--inai)":"var(--accent)"};">${SHOWS[g.show].name}</span>
+  // 番組ごとの軽いラベル(複数番組ある場合のみ表示)
+  let html = pickupHtml;
+  if (shownShows.length > 1) {
+    // okaasan items → label → inai items のように差し込む
+    let lastShow = null;
+    dayItems.forEach(d => {
+      if (d.show !== lastShow) {
+        html += `<div class="show-label show-label-${d.show}">${SHOWS[d.show].name}</div>`;
+        lastShow = d.show;
+      }
+      html += renderItemCard(d);
+    });
+  } else {
+    html += dayItems.map(d => renderItemCard(d)).join("");
+  }
+  $list.innerHTML = html;
+}
+
+// 時刻推定: airtime "HH:MM" + (order-1) * ~4分
+function estimateTime(airtime, order) {
+  if (!airtime || !order) return "";
+  const m = airtime.match(/^(\d{1,2}):(\d{2})$/);
+  if (!m) return "";
+  let h = +m[1], min = +m[2];
+  min += (order - 1) * 4;
+  h += Math.floor(min / 60);
+  min = min % 60;
+  return `${h}:${String(min).padStart(2, "0")}`;
+}
+
+// 番号丸バッジの色を order % N で cycle
+const NUM_PALETTE = [
+  "#6ac6e8", // sky blue
+  "#4fd6a0", // mint green
+  "#ffa94d", // orange
+  "#a585e8", // purple
+  "#ff6bb0", // pink
+];
+
+// アイテム1件をカード形式で描画 (mockup準拠)
+function renderItemCard(d) {
+  const isFav = state.favs.has(d.id);
+  const isNested = !!d.parent;
+  const cornerKey = ({うた:"uta",人形劇:"ningyo",アニメ:"anime",体操:"taiso",コーナー:"corner"})[d.corner] || "corner";
+  const cornerEmoji = ({うた:"🎵",人形劇:"🎭",アニメ:"📺",体操:"🤸",コーナー:"✋"})[d.corner] || "🎶";
+
+  // ハッシュタグ風chips: corner種別 + キャラ(最大2) + keywords(最大2) + mood
+  const tagSrc = [];
+  tagSrc.push(d.corner);
+  if (d.characters && d.characters.length) {
+    const charNames = d.characters.slice(0, 2).map(k => {
+      // キャラkey→表示名 (CHAR_METAから)
+      const meta = (CHAR_META || {})[k];
+      return meta ? meta.name : k;
+    });
+    tagSrc.push(...charNames);
+  }
+  if (d.mood) tagSrc.push(d.mood);
+  (d.keywords || []).slice(0, 2).forEach(k => tagSrc.push(k));
+  const tags = [...new Set(tagSrc)].slice(0, 4);
+  const tagHtml = tags.length ? `<div class="card-tags">${tags.map((t, i) => `<span class="card-tag ${i===0?'card-tag-genre':''}">${escapeHtml(t)}</span>`).join("")}</div>` : "";
+
+  const snippetLine = d.snippet ? `<div class="card-snippet">${escapeHtml(d.snippet)}</div>` : "";
+  const sourceBadge = d.source === "nhk" || d.source === "nhk+weekly"
+    ? `<span class="card-source-badge src-nhk">NHK</span>`
+    : (d.source_tag === "predicted" ? `<span class="card-source-badge">予測</span>` : "");
+
+  // 番号と時刻
+  const orderNum = d.order || (isNested ? "♪" : "?");
+  const numColor = isNested
+    ? "#cccccc"
+    : (typeof orderNum === "number" ? NUM_PALETTE[(orderNum - 1) % NUM_PALETTE.length] : NUM_PALETTE[0]);
+  const timeStr = estimateTime(d.airtime, d.order) || d.airtime || "";
+
+  // 表示タイトル (うた/コーナー名は「」付き、その他はそのまま)
+  const wrapInQuote = ["うた", "人形劇", "コーナー"].includes(d.corner);
+  const displayTitle = wrapInQuote
+    ? `<span class="card-title-prefix">${escapeHtml(d.corner)}</span>「${escapeHtml(d.title)}」`
+    : escapeHtml(d.title);
+
+  return `
+    <div class="item-card ${isFav?"is-fav":""} ${isNested?"is-nested":""}" data-id="${d.id}">
+      <div class="card-num">
+        <div class="card-num-circle" style="background:${numColor}">${orderNum}</div>
+        ${timeStr ? `<div class="card-num-time">${timeStr}</div>` : ""}
       </div>
-      <div class="timeline">
-        ${g.items.map(d => {
-          const isFav = state.favs.has(d.id);
-          const cornerClass = ({うた:"corner-uta",人形劇:"corner-ningyo",アニメ:"corner-anime",体操:"corner-taiso",コーナー:"corner-corner"})[d.corner] || "corner-corner";
-          const parentTag = d.parent ? ` ・ ${escapeHtml(d.parent)}内` : "";
-          const isNested = !!d.parent;
-          const moodChip = d.mood ? `<span class="mood-chip">${escapeHtml(d.mood)}</span>` : "";
-          const predBadge = d.source_tag === "predicted" ? `<span class="predicted-badge" title="予測データ（実放送記録未取得）">予測</span>` : "";
-          const snippetLine = d.snippet ? `<div class="row-snippet">♪ ${escapeHtml(d.snippet)}</div>` : "";
-          return `
-          <div class="timeline-row ${isFav?"is-fav":""} ${isNested?"is-nested":""}" data-id="${d.id}">
-            <div class="seq">${isNested ? "♪" : (d.order || "?")}</div>
-            <div class="row-main">
-              <div class="row-title">${escapeHtml(d.title)}${predBadge}</div>
-              <div class="row-tag ${cornerClass}">${escapeHtml(d.corner)}${parentTag}${moodChip}</div>
-              ${snippetLine}
-            </div>
-            <button class="row-fav ${isFav?"fav":""}" data-fav-id="${d.id}" aria-label="お気に入り">${isFav?"★":"☆"}</button>
-          </div>`;
-        }).join("")}
+      <div class="card-icon thumb-${cornerKey}">${cornerEmoji}</div>
+      <div class="card-body">
+        <div class="card-title">${displayTitle}${sourceBadge}</div>
+        ${tagHtml}
+        ${snippetLine}
       </div>
-    </div>
-  `).join("");
+      <button class="card-fav ${isFav?"fav":""}" data-fav-id="${d.id}" aria-label="お気に入り">${isFav?"★":"☆"}</button>
+    </div>`;
 }
 
 function renderFavShortcuts() {
@@ -1307,39 +2200,151 @@ function renderCharChips() {
   `;
 }
 
-function renderDayTabs() {
-  const $tabs = document.getElementById("day-tabs");
-  if (!$tabs) return;
-  const allDates = [...new Set(data.map(d => d.date))].sort().reverse();
-  if (allDates.length === 0) { $tabs.innerHTML = ""; return; }
+// ===== 絞り込みパネル =====
+const DATE_RANGES = [
+  ["all", "すべて"],
+  ["week", "今週"],
+  ["2w", "2週間"],
+  ["month", "1ヶ月"],
+];
+const GENRE_LIST = ["うた", "人形劇", "アニメ", "体操", "コーナー"];
+
+function matchesDateRange(dateStr, range) {
+  if (range === "all") return true;
+  const limits = { week: 7, "2w": 14, month: 30 };
+  const days = limits[range];
+  if (days === undefined) return true;
+  const today = todayDate();
+  const itemDate = new Date(dateStr);
+  // 今日 ±N日 (未来放送も範囲内とする = NHK公式の先行データを活かす)
+  const diffMs = Math.abs(itemDate - today);
+  return diffMs / 86400000 <= days;
+}
+
+function renderFilterPanel() {
+  const host = document.getElementById("filter-panel-host");
+  if (!host) return;
+
+  // ジャンル数: 「他のフィルタ全部かけて、ジャンルだけ未適用」状態の件数を出す
+  const baseItems = data.filter(d => {
+    if (state.filter === "okaasan" && d.show !== "okaasan") return false;
+    if (state.filter === "inai" && d.show !== "inai") return false;
+    if (state.filter === "fav" && !state.favs.has(d.id)) return false;
+    if (state.selectedChar && (!d.characters || !d.characters.includes(state.selectedChar))) return false;
+    if (!matchesDateRange(d.date, state.dateRange)) return false;
+    return true;
+  });
+  const genreCounts = {};
+  GENRE_LIST.forEach(g => genreCounts[g] = 0);
+  baseItems.forEach(d => {
+    if (genreCounts.hasOwnProperty(d.corner)) genreCounts[d.corner]++;
+  });
+
+  // インライン横スクロールchipバー (常時表示、トグル無し)
+  const showReset = state.genres.size > 0;
+  host.innerHTML = `
+    <div class="genre-bar">
+      ${GENRE_LIST.map(g => {
+        const on = state.genres.has(g);
+        const cnt = genreCounts[g];
+        const dim = cnt === 0 ? "is-empty" : "";
+        return `<button class="genre-chip ${on?'is-on':''} ${dim}" data-genre="${escapeHtml(g)}">
+          ${escapeHtml(g)}<span class="genre-chip-count">${cnt}</span>
+        </button>`;
+      }).join('')}
+      ${showReset ? `<button class="genre-chip is-reset" data-filter-reset="genres">× クリア</button>` : ''}
+    </div>
+  `;
+}
+
+// 週カレンダーstrip (mockup準拠: 1週間分だけ表示、前後の週ナビ)
+function renderCalendar() {
+  const host = document.getElementById("calendar-host");
+  if (!host) return;
+  // keyword/favビューではカレンダーを隠す
+  if (state.view === "keyword" || state.view === "fav") {
+    host.innerHTML = "";
+    return;
+  }
+  const allDates = [...new Set(data.map(d => d.date))].sort();
+  if (allDates.length === 0) { host.innerHTML = ""; return; }
+
+  // 選択日の決定
   if (!state.selectedDate || !allDates.includes(state.selectedDate)) {
     const today = todayStrIso();
-    state.selectedDate = allDates.includes(today) ? today : allDates[0];
+    state.selectedDate = allDates.includes(today) ? today : allDates[allDates.length - 1];
   }
+
+  const dataDates = new Set(allDates);
+  const sel = new Date(state.selectedDate);
+  // 月始まりgrid (月=0,..,日=6) で sel の曜日position を計算
+  const selColIdx = (sel.getDay() + 6) % 7;
+  // sel を含む週の月曜日
+  const weekStart = new Date(sel);
+  weekStart.setDate(sel.getDate() - selColIdx);
+
+  // 7日分生成
   const todayStr = todayStrIso();
-  const wdays = ["日","月","火","水","木","金","土"];
-  $tabs.innerHTML = allDates.map(d => {
-    const dt = new Date(d);
-    const isSel = d === state.selectedDate;
-    const isToday = d === todayStr;
-    const diffDays = Math.round((new Date(todayStr) - dt) / (1000*60*60*24));
-    let sub = "";
-    if (diffDays === 0) sub = "今日";
-    else if (diffDays === 1) sub = "きのう";
-    else if (diffDays === -1) sub = "あした";
-    return `
-      <button class="day-tab ${isSel?"active":""} ${isToday?"today":""}" data-date="${d}">
-        <span class="dt-wd">${wdays[dt.getDay()]}</span>
-        <span class="dt-d">${dt.getDate()}</span>
-        <span class="dt-sub">${sub || `${dt.getMonth()+1}月`}</span>
-      </button>
-    `;
+  const cells = [];
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(weekStart);
+    d.setDate(weekStart.getDate() + i);
+    const dateStr = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+    const wday = d.getDay();
+    cells.push({
+      day: d.getDate(),
+      dateStr,
+      hasData: dataDates.has(dateStr),
+      isToday: dateStr === todayStr,
+      isActive: dateStr === state.selectedDate,
+      isSat: wday === 6,
+      isSun: wday === 0,
+    });
+  }
+
+  // 週ナビ可否 (データ範囲内に1日でもあれば可)
+  const minDate = allDates[0];
+  const maxDate = allDates[allDates.length - 1];
+  const prevWeekEnd = new Date(weekStart);
+  prevWeekEnd.setDate(prevWeekEnd.getDate() - 1);
+  const nextWeekStart = new Date(weekStart);
+  nextWeekStart.setDate(nextWeekStart.getDate() + 7);
+  const canPrev = prevWeekEnd.toISOString().slice(0,10) >= minDate;
+  const canNext = nextWeekStart.toISOString().slice(0,10) <= maxDate;
+
+  // ヘッダ表示の年月: 選択中の日付の月を採用 (weekStartが前月のケースで違和感無くす)
+  const headerYear = sel.getFullYear();
+  const headerMonth = sel.getMonth() + 1;
+
+  const cellsHtml = cells.map(c => {
+    const cls = [
+      "cal-day",
+      c.hasData ? "cal-has-data" : "cal-no-data",
+      c.isToday ? "cal-today" : "",
+      c.isActive ? "cal-active" : "",
+      c.isSat ? "cal-sat" : "",
+      c.isSun ? "cal-sun" : "",
+    ].filter(Boolean).join(" ");
+    return `<button class="${cls}" data-date="${c.dateStr}">${c.day}</button>`;
   }).join("");
-  requestAnimationFrame(() => {
-    const activeTab = $tabs.querySelector(".day-tab.active");
-    if (activeTab) activeTab.scrollIntoView({behavior:"instant", inline:"center", block:"nearest"});
-  });
+
+  host.innerHTML = `
+    <div class="calendar calendar-week">
+      <div class="cal-head">
+        <button class="cal-nav" data-cal-step="-7" ${canPrev ? "" : "disabled"} aria-label="前の週">‹</button>
+        <span class="cal-month">${headerYear}年 ${headerMonth}月</span>
+        <button class="cal-nav" data-cal-step="7" ${canNext ? "" : "disabled"} aria-label="次の週">›</button>
+      </div>
+      <div class="cal-weekdays">
+        <span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span class="sat">土</span><span class="sun">日</span>
+      </div>
+      <div class="cal-grid cal-grid-week">${cellsHtml}</div>
+    </div>
+  `;
 }
+
+// 後方互換: render()からの呼び出し用エイリアス
+function renderDayTabs() { renderCalendar(); }
 
 function renderRecentSearches() {
   const recent = getRecent();
@@ -1391,24 +2396,25 @@ function renderSuggestions() {
   const keywordHits = new Map();
   const creditHits = new Map();
   for (const d of data) {
-    const titleN = normalize(d.title);
+    const titleN = d._titleN || normalize(d.title);
     const matchTitle = variants.some(v => titleN.includes(v));
     if (matchTitle) {
       const cur = titleHits.get(d.title);
       if (!cur || d.date > cur.date) titleHits.set(d.title, d);
       continue;
     }
-    if (d.keywords) {
-      const matchKw = d.keywords.some(kw => variants.some(v => normalize(kw).includes(v)));
+    const kwN = d._keywordsN || [];
+    if (kwN.length) {
+      const matchKw = kwN.some(kw => variants.some(v => kw.includes(v)));
       if (matchKw) {
         const cur = keywordHits.get(d.title);
         if (!cur || d.date > cur.date) keywordHits.set(d.title, d);
         continue;
       }
     }
-    if (d.credits) {
-      const flat = Object.values(d.credits).flat();
-      const matchCr = flat.some(p => variants.some(v => normalize(p).includes(v)));
+    const crN = d._creditsN || [];
+    if (crN.length) {
+      const matchCr = crN.some(p => variants.some(v => p.includes(v)));
       if (matchCr) {
         const cur = creditHits.get(d.title);
         if (!cur || d.date > cur.date) creditHits.set(d.title, d);
@@ -1441,6 +2447,64 @@ function renderSuggestions() {
 }
 
 document.addEventListener("click", e => {
+  // Bottom nav: view切替
+  const bnTab = e.target.closest(".bn-tab[data-view]");
+  if (bnTab) {
+    state.view = bnTab.dataset.view;
+    // viewによって追加処理:
+    //  - home: 今日に戻す
+    //  - keyword: 検索バーにfocus、検索クエリは保持
+    //  - fav: 検索クエリクリア
+    if (state.view === "home") {
+      const today = todayStrIso();
+      const allDates = [...new Set(data.map(d => d.date))].sort();
+      state.selectedDate = allDates.includes(today) ? today : allDates[allDates.length - 1] || null;
+      state.query = "";
+      $search.value = "";
+    }
+    if (state.view === "keyword") {
+      setTimeout(() => $search && $search.focus(), 50);
+    }
+    if (state.view === "fav") {
+      state.query = "";
+      $search.value = "";
+    }
+    render();
+    return;
+  }
+
+  // 絞り込みパネル: トグル (旧UIの残存処理だが影響なし)
+  const filterToggle = e.target.closest("[data-filter-toggle]");
+  if (filterToggle) {
+    state.filterOpen = !state.filterOpen;
+    renderFilterPanel();
+    return;
+  }
+  // 絞り込みパネル: ジャンルchip(multi-select)
+  const genreChip = e.target.closest("[data-genre]");
+  if (genreChip) {
+    const g = genreChip.dataset.genre;
+    if (state.genres.has(g)) state.genres.delete(g); else state.genres.add(g);
+    render();
+    return;
+  }
+  // 絞り込みパネル: 放送日範囲(single-select)
+  const rangeChip = e.target.closest("[data-range]");
+  if (rangeChip) {
+    state.dateRange = rangeChip.dataset.range;
+    render();
+    return;
+  }
+  // 絞り込みパネル: リセット
+  const reset = e.target.closest("[data-filter-reset]");
+  if (reset) {
+    const k = reset.dataset.filterReset;
+    if (k === "genres") state.genres = new Set();
+    if (k === "dateRange") state.dateRange = "all";
+    render();
+    return;
+  }
+
   const tag = e.target.closest("[data-recent]");
   if (tag) {
     state.query = tag.dataset.recent;
@@ -1452,6 +2516,27 @@ document.addEventListener("click", e => {
   const dayTab = e.target.closest(".day-tab[data-date]");
   if (dayTab) {
     state.selectedDate = dayTab.dataset.date;
+    render();
+    return;
+  }
+  // カレンダー: 日付タップ
+  const calDay = e.target.closest(".cal-day[data-date]");
+  if (calDay) {
+    state.selectedDate = calDay.dataset.date;
+    // 表示中の月とずれていたら更新
+    const d = new Date(calDay.dataset.date);
+    state.calYear = d.getFullYear();
+    state.calMonth = d.getMonth();
+    render();
+    return;
+  }
+  // カレンダー: 前後ナビ (data-cal-step は日数 ±7)
+  const calStep = e.target.closest("[data-cal-step]");
+  if (calStep && !calStep.disabled) {
+    const step = parseInt(calStep.dataset.calStep, 10);
+    const cur = new Date(state.selectedDate);
+    cur.setDate(cur.getDate() + step);
+    state.selectedDate = `${cur.getFullYear()}-${String(cur.getMonth()+1).padStart(2,"0")}-${String(cur.getDate()).padStart(2,"0")}`;
     render();
     return;
   }
@@ -1480,20 +2565,7 @@ document.addEventListener("click", e => {
   }
 });
 
-document.querySelectorAll(".pill").forEach(p => {
-  p.addEventListener("click", () => {
-    document.querySelectorAll(".pill").forEach(x => x.classList.remove("active"));
-    p.classList.add("active");
-    state.filter = p.dataset.filter;
-    $sectionTitle.textContent = {
-      all: "直近2週間の放送",
-      okaasan: "おかあさんといっしょ（直近2週間）",
-      inai: "いないいないばぁ（直近2週間）",
-      fav: "お気に入り",
-    }[state.filter];
-    render();
-  });
-});
+// 旧 .pill (filter pills) は撤去済み — ハンドラ無し
 
 $list.addEventListener("click", e => {
   const star = e.target.closest("[data-fav-id]");
@@ -1736,6 +2808,8 @@ async function loadData() {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const json = await res.json();
     data = json.items.map(x => ({ ...x }));
+    broadcastMeta = json.broadcast_meta || { okaasan: {}, inai: {} };
+    precomputeSearchFields(data);
     // 既存お気に入り状態を反映
     state.favs = new Set(data.filter(d => d.fav).map(d => d.id));
     // 生成時刻バッジ
@@ -1750,6 +2824,7 @@ async function loadData() {
     console.warn("data.json読み込み失敗、フォールバック使用:", e);
     data = FALLBACK_DATA;
     state.favs = new Set(data.filter(d => d.fav).map(d => d.id));
+    precomputeSearchFields(data);
   }
   render();
   renderRecentSearches();
