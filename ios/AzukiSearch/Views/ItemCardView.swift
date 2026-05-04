@@ -7,6 +7,10 @@ struct ItemCardView: View {
     var onTap: (() -> Void)? = nil
     /// 検索結果など、放送日を表示したい場合 true
     var showDate: Bool = false
+    /// その日その番組の合計アイテム数 (経過時間の按分計算用)
+    var totalItems: Int = 12
+    /// 順番/経過時間を表示するか。検索結果(文脈なし)では false
+    var showOrderTime: Bool = true
 
     private var meta: GenreMeta { genreMeta(for: item.corner) }
 
@@ -17,12 +21,18 @@ struct ItemCardView: View {
     }
 
     private var displayTime: String {
-        // 番組開始からの経過時間 (録画再生位置の目安、4分刻み擬似)
+        // 番組開始からの経過時間 (番組尺をitem数で按分、目安なので分単位アバウト表記)
         guard let order = item.order else { return "" }
-        let total = (order - 1) * 4
-        let h = total / 60
-        let m = total % 60
-        return String(format: "%d:%02d", h, m)
+        let programMin: Double
+        switch item.show {
+        case "okaasan": programMin = 24   // おかあさんといっしょ 24分
+        case "inai":    programMin = 10   // いないいないばあっ! 10分
+        default:        programMin = 24
+        }
+        let perItemMin = programMin / Double(max(totalItems, 1))
+        let elapsedMin = Double(order - 1) * perItemMin
+        let m = Int(elapsedMin.rounded())
+        return "約\(m)分"
     }
 
     private var displayTitle: String {
@@ -58,41 +68,11 @@ struct ItemCardView: View {
     }
 
     private var tags: [(label: String, bg: Color, fg: Color)] {
-        // タイトル文字列を normalize (substring判定用、ー/記号/空白を吸収)
-        let titleNorm = Self.normalizeForCompare(item.title)
-
-        var raw: [(String, Color, Color)] = []
-        // 1) ジャンル chip (常に最初、無条件で残す)
-        raw.append((item.corner, meta.chipBg, meta.chipFg))
-        // 2) キャラクター名 (実データある時だけ、最大2個)
-        if let chars = item.characters {
-            for ch in chars.prefix(2) {
-                raw.append((ch, AppColor.tagPurpleBg, AppColor.tagPurpleFg))
-            }
-        }
-        // 注: mood / keywords は主観的形容詞が混ざるためタグ表示はしない
-        //     (検索 haystack には DataStore 側で引き続き含めて検索性は維持)
-
-        // dedupe & filter
-        // - 同じラベル(normalize比較) は1つだけ
-        // - タイトル(normalize)の substring or 逆 は除外
-        // - ただし最初のジャンルchip(index==0)は無条件で残す
-        var seen = Set<String>()
-        var result: [(String, Color, Color)] = []
-        for (i, t) in raw.enumerated() {
-            let key = Self.normalizeForCompare(t.0)
-            if key.isEmpty { continue }
-            if !seen.insert(key).inserted { continue }
-            if i == 0 {
-                result.append(t)
-                continue
-            }
-            if !titleNorm.isEmpty && (titleNorm.contains(key) || key.contains(titleNorm)) {
-                continue
-            }
-            result.append(t)
-        }
-        return Array(result.prefix(3))
+        // ジャンル(corner)chipのみ表示
+        // 他(characters/mood/keywords)はノイズになるためタグ非表示
+        // ※検索 haystack には DataStore 側で引き続き含め検索性は維持
+        guard !item.corner.isEmpty else { return [] }
+        return [(item.corner, meta.chipBg, meta.chipFg)]
     }
 
     /// 部分文字列比較用normalize: 長音記号/記号/空白除去 + lowercase
@@ -116,21 +96,23 @@ struct ItemCardView: View {
 
     var body: some View {
         HStack(alignment: .center, spacing: 10) {
-            // 左: 番号丸 + 時刻
-            VStack(spacing: 4) {
-                ZStack {
-                    Circle()
-                        .fill(numColor)
-                    Text("\(orderNumber)")
-                        .font(.system(size: 13, weight: .heavy))
-                        .foregroundColor(.white)
+            // 左: 番号丸 + 経過時間 (検索結果では非表示=showOrderTime=false)
+            if showOrderTime {
+                VStack(spacing: 4) {
+                    ZStack {
+                        Circle()
+                            .fill(numColor)
+                        Text("\(orderNumber)")
+                            .font(.system(size: 13, weight: .heavy))
+                            .foregroundColor(.white)
+                    }
+                    .frame(width: 26, height: 26)
+                    Text(displayTime)
+                        .font(.system(size: 10, weight: .semibold))
+                        .foregroundColor(AppColor.textDim)
                 }
-                .frame(width: 26, height: 26)
-                Text(displayTime)
-                    .font(.system(size: 10, weight: .semibold))
-                    .foregroundColor(AppColor.textDim)
+                .frame(width: 40)
             }
-            .frame(width: 40)
 
             // アイコン square
             ZStack {

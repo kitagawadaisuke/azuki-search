@@ -47,7 +47,7 @@ struct FavoritesView: View {
                                     item: item,
                                     isFav: true,
                                     onToggleFav: { favs.toggle(item.id) },
-                                    showDate: true   // お気に入りはいつの放送か明示
+                                    showDate: true
                                 )
                             }
                         }

@@ -57,9 +57,12 @@ struct HomeView: View {
         return dataStore.uniqueItems(forDate: selectedIso).filter { $0.show == selectedShow.key }
     }
 
-    /// 選択中番組でデータがある日付セット
+    /// 選択中番組でデータがある日付セット (録画済み振り返り用途のため未来日付は除外)
     private var datesWithData: Set<String> {
-        Set(dataStore.items.filter { $0.show == selectedShow.key }.map { $0.date })
+        let today = DataStore.todayIso()
+        return Set(dataStore.items
+            .filter { $0.show == selectedShow.key && $0.date <= today }
+            .map { $0.date })
     }
 
     private var dateHeading: String {
@@ -98,7 +101,8 @@ struct HomeView: View {
                     HeaderView(
                         title: headerTitle,
                         subtitle: headerSubtitle,
-                        query: $query
+                        query: $query,
+                        showSearch: false
                     )
 
                     // 番組切替セグメント
@@ -229,7 +233,8 @@ struct HomeView: View {
                         item: item,
                         isFav: favs.contains(item.id),
                         onToggleFav: { favs.toggle(item.id) },
-                        showDate: isSearching   // 検索中は放送日表示
+                        showDate: isSearching,
+                        totalItems: dayItems.count
                     )
                 }
             }
@@ -237,15 +242,13 @@ struct HomeView: View {
     }
 
     private func snapToAvailableDate() {
-        let dates = Set(dataStore.items.map { $0.date })
         let today = Self.isoFmt.string(from: Date())
-        if dates.contains(today) {
-            // 今日のがあれば今日を選択
-            if let today = parseIso(today) {
-                self.selectedDate = today
-            }
-        } else if let latest = dates.sorted().last, let latestDate = parseIso(latest) {
-            self.selectedDate = latestDate
+        // 録画振り返り用途のため、今日以前のデータだけを対象に最新日を選ぶ
+        let pastDates = Set(dataStore.items.map { $0.date }).filter { $0 <= today }
+        if pastDates.contains(today) {
+            if let d = parseIso(today) { self.selectedDate = d }
+        } else if let latest = pastDates.sorted().last, let d = parseIso(latest) {
+            self.selectedDate = d
         }
     }
 

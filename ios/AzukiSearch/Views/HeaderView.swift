@@ -6,6 +6,8 @@ struct HeaderView: View {
     @Binding var query: String
     var searchPlaceholder: String = "番組名・歌名・コーナー名で検索"
     var onSubmit: (() -> Void)? = nil
+    /// 検索バー(マイク含む)を表示するか。ホーム/日付検索では false
+    var showSearch: Bool = true
 
     @StateObject private var speech = SpeechRecognizer()
     @State private var showSpeechAlert: Bool = false
@@ -26,65 +28,67 @@ struct HeaderView: View {
                 Spacer(minLength: 0)
             }
 
-            // search bar
-            HStack(spacing: 8) {
-                Image(systemName: "magnifyingglass")
-                    .font(.system(size: 15))
-                    .foregroundColor(AppColor.textVeryDim)
-                TextField(searchPlaceholder, text: $query)
-                    .font(.system(size: 14))
-                    .foregroundColor(AppColor.text)
-                    .submitLabel(.search)
-                    .onSubmit { onSubmit?() }
-                if !query.isEmpty {
+            if showSearch {
+                // search bar
+                HStack(spacing: 8) {
+                    Image(systemName: "magnifyingglass")
+                        .font(.system(size: 15))
+                        .foregroundColor(AppColor.textVeryDim)
+                    TextField(searchPlaceholder, text: $query)
+                        .font(.system(size: 14))
+                        .foregroundColor(AppColor.text)
+                        .submitLabel(.search)
+                        .onSubmit { onSubmit?() }
+                    if !query.isEmpty {
+                        Button {
+                            query = ""
+                        } label: {
+                            Image(systemName: "xmark.circle.fill")
+                                .foregroundColor(AppColor.textVeryDim)
+                        }
+                        .buttonStyle(.plain)
+                    }
                     Button {
-                        query = ""
+                        speech.toggle()
                     } label: {
-                        Image(systemName: "xmark.circle.fill")
-                            .foregroundColor(AppColor.textVeryDim)
+                        ZStack {
+                            if speech.isRecording {
+                                Circle()
+                                    .fill(AppColor.primaryPink.opacity(0.18))
+                                    .frame(width: 30, height: 30)
+                                    .overlay(
+                                        Circle().stroke(AppColor.primaryPink, lineWidth: 1.5)
+                                    )
+                            }
+                            Image(systemName: speech.isRecording ? "stop.fill" : "mic")
+                                .font(.system(size: 15, weight: speech.isRecording ? .bold : .regular))
+                                .foregroundColor(speech.isRecording ? AppColor.primaryPink : AppColor.textVeryDim)
+                        }
+                        .frame(width: 30, height: 30)
                     }
                     .buttonStyle(.plain)
                 }
-                Button {
-                    speech.toggle()
-                } label: {
-                    ZStack {
-                        if speech.isRecording {
-                            Circle()
-                                .fill(AppColor.primaryPink.opacity(0.18))
-                                .frame(width: 30, height: 30)
-                                .overlay(
-                                    Circle().stroke(AppColor.primaryPink, lineWidth: 1.5)
-                                )
-                        }
-                        Image(systemName: speech.isRecording ? "stop.fill" : "mic")
-                            .font(.system(size: 15, weight: speech.isRecording ? .bold : .regular))
-                            .foregroundColor(speech.isRecording ? AppColor.primaryPink : AppColor.textVeryDim)
-                    }
-                    .frame(width: 30, height: 30)
-                }
-                .buttonStyle(.plain)
-            }
-            .padding(.horizontal, 14)
-            .padding(.vertical, 11)
-            .background(
-                Capsule().fill(AppColor.surface)
-            )
-            .overlay(
-                Capsule().stroke(speech.isRecording ? AppColor.primaryPink : AppColor.border, lineWidth: speech.isRecording ? 1.5 : 1)
-            )
+                .padding(.horizontal, 14)
+                .padding(.vertical, 11)
+                .background(
+                    Capsule().fill(AppColor.surface)
+                )
+                .overlay(
+                    Capsule().stroke(speech.isRecording ? AppColor.primaryPink : AppColor.border, lineWidth: speech.isRecording ? 1.5 : 1)
+                )
 
-            if speech.isRecording {
-                HStack(spacing: 6) {
-                    Circle()
-                        .fill(AppColor.primaryPink)
-                        .frame(width: 6, height: 6)
-                    Text("聞いてるよ…")
-                        .font(.system(size: 11, weight: .semibold))
-                        .foregroundColor(AppColor.primaryPink)
-                    Spacer()
+                if speech.isRecording {
+                    HStack(spacing: 6) {
+                        Circle()
+                            .fill(AppColor.primaryPink)
+                            .frame(width: 6, height: 6)
+                        Text("聞いてるよ…")
+                            .font(.system(size: 11, weight: .semibold))
+                            .foregroundColor(AppColor.primaryPink)
+                        Spacer()
+                    }
+                    .padding(.horizontal, 8)
                 }
-                .padding(.horizontal, 8)
             }
         }
         .padding(.horizontal, 16)

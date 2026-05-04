@@ -100,11 +100,13 @@ final class DataStore: ObservableObject {
     }
 
     /// 検索: タイトル/コーナー/歌詞/キーワードを横断
+    /// 用途は録画済み番組の振り返りなので、未来日付(今日より後)は除外
     func searchItems(query: String) -> [BroadcastItem] {
         let q = Self.normalizeQuery(query)
         guard !q.isEmpty else { return [] }
+        let today = Self.todayIso()
         return items.filter { it in
-            haystack(for: it).contains(q)
+            it.date <= today && haystack(for: it).contains(q)
         }.sorted {
             // 新しい順 (date降順)
             $0.date > $1.date
@@ -114,6 +116,15 @@ final class DataStore: ObservableObject {
     /// data.json に含まれる全日付 (YYYY-MM-DD) を昇順で
     func allDates() -> [String] {
         Array(Set(items.map { $0.date })).sorted()
+    }
+
+    /// 今日(Asia/Tokyo)の日付文字列 "YYYY-MM-DD"
+    static func todayIso() -> String {
+        let f = DateFormatter()
+        f.dateFormat = "yyyy-MM-dd"
+        f.calendar = Calendar(identifier: .gregorian)
+        f.timeZone = TimeZone(identifier: "Asia/Tokyo")
+        return f.string(from: Date())
     }
 
     // MARK: - 検索正規化
