@@ -83,7 +83,7 @@ struct KeywordSearchView: View {
             ItemCardView(
                 item: g.items[0],
                 isFav: favs.contains(g.items[0].id),
-                onToggleFav: { favs.toggle(g.items[0].id) },
+                onToggleFav: { favs.toggle(g.items[0]) },
                 showDate: true
             )
 
@@ -94,7 +94,7 @@ struct KeywordSearchView: View {
                         ItemCardView(
                             item: it,
                             isFav: favs.contains(it.id),
-                            onToggleFav: { favs.toggle(it.id) },
+                            onToggleFav: { favs.toggle(it) },
                             showDate: true
                         )
                     }

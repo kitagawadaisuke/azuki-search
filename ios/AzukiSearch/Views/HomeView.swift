@@ -34,6 +34,9 @@ struct HomeView: View {
 
     @State private var query: String = ""
     @State private var selectedDate: Date = Date()
+    /// 初回データロード後の日付スナップ済みフラグ
+    /// (これがないとタブ復帰のたびに最新日付に戻ってしまう)
+    @State private var didInitialSnap: Bool = false
 
     private var selectedShow: ShowFilter {
         ShowFilter(rawValue: selectedShowRaw) ?? .okaasan
@@ -152,13 +155,18 @@ struct HomeView: View {
             }
         }
         .onAppear {
-            // 初期: 今日の日付がデータにあればそれ、無ければ最新
-            if dataStore.items.isEmpty == false {
+            // 初回のみ: 今日の日付がデータにあればそれ、無ければ最新
+            // (タブ復帰時にユーザーが選んだ日付が上書きされないよう一度きり)
+            if !didInitialSnap && !dataStore.items.isEmpty {
                 snapToAvailableDate()
+                didInitialSnap = true
             }
         }
-        .onChange(of: dataStore.items.count) { _, _ in
-            snapToAvailableDate()
+        .onChange(of: dataStore.items.count) { _, newCount in
+            if !didInitialSnap && newCount > 0 {
+                snapToAvailableDate()
+                didInitialSnap = true
+            }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -232,7 +240,7 @@ struct HomeView: View {
                     ItemCardView(
                         item: item,
                         isFav: favs.contains(item.id),
-                        onToggleFav: { favs.toggle(item.id) },
+                        onToggleFav: { favs.toggle(item) },
                         showDate: isSearching,
                         totalItems: dayItems.count
                     )

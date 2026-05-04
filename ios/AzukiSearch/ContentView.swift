@@ -3,6 +3,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var dataStore = DataStore()
     @StateObject private var favs = FavoritesStore()
+    @StateObject private var memos = MemoStore()
 
     @State private var selectedTab: Int = 0
 
@@ -52,6 +53,7 @@ struct ContentView: View {
         }
         .environmentObject(dataStore)
         .environmentObject(favs)
+        .environmentObject(memos)
         .task {
             await dataStore.load()
         }

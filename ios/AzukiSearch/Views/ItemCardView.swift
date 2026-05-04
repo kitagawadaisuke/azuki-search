@@ -12,6 +12,9 @@ struct ItemCardView: View {
     /// 順番/経過時間を表示するか。検索結果(文脈なし)では false
     var showOrderTime: Bool = true
 
+    @EnvironmentObject var memos: MemoStore
+    @State private var showMemoSheet: Bool = false
+
     private var meta: GenreMeta { genreMeta(for: item.corner) }
 
     private var orderNumber: Int { item.order ?? 1 }
@@ -154,6 +157,19 @@ struct ItemCardView: View {
                             .background(Capsule().fill(tags[i].bg))
                             .foregroundColor(tags[i].fg)
                     }
+                    // メモあり表示
+                    if memos.hasMemo(for: item.id) {
+                        HStack(spacing: 3) {
+                            Image(systemName: "note.text")
+                                .font(.system(size: 9, weight: .semibold))
+                            Text("メモ")
+                                .font(.system(size: 10, weight: .semibold))
+                        }
+                        .padding(.horizontal, 7)
+                        .padding(.vertical, 2)
+                        .background(Capsule().fill(AppColor.tagBlueBg))
+                        .foregroundColor(AppColor.tagBlueFg)
+                    }
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -175,7 +191,15 @@ struct ItemCardView: View {
         .appCardShadow()
         .contentShape(Rectangle())
         .onTapGesture {
-            onTap?()
+            if let cb = onTap {
+                cb()
+            } else {
+                showMemoSheet = true
+            }
+        }
+        .sheet(isPresented: $showMemoSheet) {
+            MemoEditView(item: item)
+                .environmentObject(memos)
         }
     }
 }

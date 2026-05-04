@@ -7,15 +7,13 @@ struct FavoritesView: View {
     @State private var query: String = ""
 
     private var favItems: [BroadcastItem] {
-        let all = dataStore.items.filter { favs.contains($0.id) }
-        let filtered: [BroadcastItem]
+        // favsローカル保存ベース。dataStore.items に無くなった古い回も表示し続ける
+        let all = favs.allItems
         if query.trimmingCharacters(in: .whitespaces).isEmpty {
-            filtered = all
-        } else {
-            let q = DataStore.normalizeQuery(query)
-            filtered = all.filter { DataStore.normalizeTitle($0.title).contains(q) }
+            return all
         }
-        return filtered.sorted { ($0.date, $0.order ?? 0) > ($1.date, $1.order ?? 0) }
+        let q = DataStore.normalizeQuery(query)
+        return all.filter { DataStore.normalizeTitle($0.title).contains(q) }
     }
 
     var body: some View {
@@ -46,7 +44,7 @@ struct FavoritesView: View {
                                 ItemCardView(
                                     item: item,
                                     isFav: true,
-                                    onToggleFav: { favs.toggle(item.id) },
+                                    onToggleFav: { favs.toggle(item) },
                                     showDate: true
                                 )
                             }
